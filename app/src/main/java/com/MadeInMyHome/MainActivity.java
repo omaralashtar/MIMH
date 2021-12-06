@@ -11,12 +11,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         System.out.println("hi6");
-        System.out.println("hi6");
-        System.out.println("hi6");
-        System.out.println("hi6");
-        System.out.println("hi6");
-        System.out.println("hi6");
-        System.out.println("hi6");
-        System.out.println("h555555555555");
     }
 }
