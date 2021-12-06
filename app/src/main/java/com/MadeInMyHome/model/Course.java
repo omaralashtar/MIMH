@@ -2,7 +2,7 @@ package com.MadeInMyHome.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Courses {
+public class Course {
 
     @SerializedName("id")
     private String id;

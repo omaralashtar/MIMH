@@ -1,7 +1,7 @@
 package com.MadeInMyHome.utilities;
 
 public class constants {
-    public static final String BASE_HOST = "http://192.168.1.191/API/";
+    public static final String BASE_HOST = "https://madeinmyhome.000webhostapp.com/API/";
     public static final String USER = "user/";
     public static final String COURSE = "adapter/";
     public static final String ENROLL = "enroll/";
