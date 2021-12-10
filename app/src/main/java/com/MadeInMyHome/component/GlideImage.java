@@ -3,10 +3,10 @@ package com.MadeInMyHome.component;
 import android.content.Context;
 import android.widget.ImageView;
 
+import com.MadeInMyHome.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.love.speed.fullproject.R;
 
 
 public class GlideImage {
