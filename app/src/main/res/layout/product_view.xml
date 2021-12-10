@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/icon"
             android:layout_width="@dimen/_144sdp"
             android:layout_height="@dimen/_144sdp"
             android:adjustViewBounds="true"
@@ -48,7 +48,7 @@
             android:id="@+id/discount_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="top|end"
             android:text="TextView" />
 
         <TextView
@@ -57,6 +57,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|end"
             android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            app:srcCompat="@android:drawable/btn_star" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

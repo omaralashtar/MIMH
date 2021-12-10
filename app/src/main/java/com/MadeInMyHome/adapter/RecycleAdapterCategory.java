@@ -39,6 +39,8 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
     public void onBindViewHolder(viewitem holder, int position) {
         holder.name.setText(items.get(position).getName());
 
+//      glideImage = new GlideImage(context, constants.BASE_HOST + items.get(position).getMealimage(), holder.image);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,13 +58,14 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-        TextView name;
+        TextView name, category;
         ImageView image;
 
         public viewitem(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
-            image = itemView.findViewById(R.id.image);
+            category = itemView.findViewById(R.id.category);
+            image = itemView.findViewById(R.id.icon);
         }
     }
 

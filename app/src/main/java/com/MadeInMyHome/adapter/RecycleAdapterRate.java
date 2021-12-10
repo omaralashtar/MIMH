@@ -38,65 +38,21 @@ public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.
 
     @Override
     public void onBindViewHolder(final viewitem holder, int position) {
-//        final String name = items.get(position).getMealname();
-//        final String[] counter = {items.get(position).getCounter()};
-//        holder.name.setText(name);
-//        holder.counter.setText(counter[0]);
-//        holder.add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (Integer.parseInt(counter[0]) < 100) {
-//                    orderViewModel.updatecounter(context,
-//                            getSharedPreference(context, "email"),
-//                            name,
-//                            (Integer.parseInt(counter[0]) + 1) + "").observeForever(new Observer<Boolean>() {
-//                        @Override
-//                        public void onChanged(Boolean aBoolean) {
-//                            if (aBoolean) {
-//                                holder.counter.setText((Integer.parseInt(counter[0]) + 1) + "");
-//                                counter[0] = (Integer.parseInt(counter[0]) + 1) + "";
-//                            }
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//        holder.delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (Integer.parseInt(counter[0]) > 1) {
-//                    orderViewModel.updatecounter(context,
-//                            getSharedPreference(context, "email"),
-//                            name,
-//                            (Integer.parseInt(counter[0]) - 1) + "").observeForever(new Observer<Boolean>() {
-//                        @Override
-//                        public void onChanged(Boolean aBoolean) {
-//                            if (aBoolean) {
-//                                holder.counter.setText((Integer.parseInt(counter[0]) - 1) + "");
-//                                counter[0] = (Integer.parseInt(counter[0]) - 1) + "";
-//                            }
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//        holder.remove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                orderViewModel.deleteorder(context,
-//                        getSharedPreference(context, "email"),
-//                        name).observeForever(new Observer<Boolean>() {
-//                    @Override
-//                    public void onChanged(Boolean aBoolean) {
-//                        if (aBoolean) {
-//                            items.remove(position);
-//                            notifyItemRemoved(position);
-//                            notifyItemRangeChanged(position,items.size());
-//                        }
-//                    }
-//                });
-//            }
-//        });
+        holder.name.setText(items.get(position).getName());
+        holder.comment.setText(items.get(position).getComment());
+        holder.rate.setText(items.get(position).getRating());
+        holder.update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        holder.remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -106,16 +62,17 @@ public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.
 
     class viewitem extends RecyclerView.ViewHolder {
 
-        TextView name, counter;
-        ImageButton add, delete, remove;
+        TextView name, rate, comment;
+        ImageButton update, remove;
+
 
         public viewitem(View itemView) {
             super(itemView);
-//            name = itemView.findViewById(R.id.mealname);
-//            counter = itemView.findViewById(R.id.counter);
-//            add = itemView.findViewById(R.id.add);
-//            delete = itemView.findViewById(R.id.delete);
-//            remove = itemView.findViewById(R.id.remove);
+            name = itemView.findViewById(R.id.name);
+            rate = itemView.findViewById(R.id.rate);
+            comment = itemView.findViewById(R.id.comment);
+            update = itemView.findViewById(R.id.update);
+            remove = itemView.findViewById(R.id.remove);
         }
     }
 }

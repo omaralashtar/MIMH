@@ -34,7 +34,6 @@ public class Product implements Serializable {
     @SerializedName("discount")
     private float discount;
 
-
     @SerializedName("discount_date")
     private String discount_date;
 

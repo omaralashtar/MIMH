@@ -39,10 +39,10 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
 
     @Override
     public void onBindViewHolder(viewitem holder,int position) {
-//
-//        holder.name.setText(items.get(position).getMealName());
-//        holder.price.setText(items.get(position).getMealPrice() + " " + context.getResources().getString(R.string.jd));
-//
+
+        holder.name.setText(items.get(position).getName());
+        holder.category.setText(items.get(position).getCategory());
+
 //        if (!TextUtils.isEmpty(items.get(position).getMealimage())) {
 //            glideImage = new GlideImage(context, constants.BASE_HOST + items.get(position).getMealimage(), holder.image);
 //        }
@@ -64,16 +64,14 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-        TextView name, presenter, category;
-        ImageView image;
+        TextView name, category;
+        ImageView icon;
 
         public viewitem(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
-            presenter = itemView.findViewById(R.id.price);
-            category = itemView.findViewById(R.id.discount);
-            image = itemView.findViewById(R.id.image);
+            category = itemView.findViewById(R.id.category);
+            icon = itemView.findViewById(R.id.icon);
         }
     }
-
 }

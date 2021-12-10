@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/icon"
             android:layout_width="@dimen/_144sdp"
             android:layout_height="@dimen/_144sdp"
             android:adjustViewBounds="true"

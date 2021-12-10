@@ -1,10 +1,13 @@
 package com.MadeInMyHome.adapter;
 
+import static com.MadeInMyHome.utilities.General.getSharedPreference;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.lifecycle.Observer;
@@ -33,15 +36,18 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
 
     class viewitem extends RecyclerView.ViewHolder {
         TextView name, price, discount, discount_date, category;
-        ImageButton favorite,add, delete, remove;
+        ImageButton favorite;
+        ImageView icon;
 
         public viewitem(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             price = itemView.findViewById(R.id.price);
+            icon = itemView.findViewById(R.id.icon);
             discount = itemView.findViewById(R.id.discount);
             discount_date = itemView.findViewById(R.id.discount_date);
             category = itemView.findViewById(R.id.category);
+            favorite = itemView.findViewById(R.id.favorite);
         }
     }
 
@@ -54,66 +60,23 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
     }
 
     @Override
-    public void onBindViewHolder(final viewitem holder, final int position) {
-//        final String name = items.get(position).getMealname();
-//        final String[] counter = {items.get(position).getCounter()};
-//        holder.name.setText(name);
-//        holder.counter.setText(counter[0]);
-//        holder.add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (Integer.parseInt(counter[0]) < 100) {
-//                    orderViewModel.updatecounter(context,
-//                            getSharedPreference(context, "email"),
-//                            name,
-//                            (Integer.parseInt(counter[0]) + 1) + "").observeForever(new Observer<Boolean>() {
-//                        @Override
-//                        public void onChanged(Boolean aBoolean) {
-//                            if (aBoolean) {
-//                                holder.counter.setText((Integer.parseInt(counter[0]) + 1) + "");
-//                                counter[0] = (Integer.parseInt(counter[0]) + 1) + "";
-//                            }
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//        holder.delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (Integer.parseInt(counter[0]) > 1) {
-//                    orderViewModel.updatecounter(context,
-//                            getSharedPreference(context, "email"),
-//                            name,
-//                            (Integer.parseInt(counter[0]) - 1) + "").observeForever(new Observer<Boolean>() {
-//                        @Override
-//                        public void onChanged(Boolean aBoolean) {
-//                            if (aBoolean) {
-//                                holder.counter.setText((Integer.parseInt(counter[0]) - 1) + "");
-//                                counter[0] = (Integer.parseInt(counter[0]) - 1) + "";
-//                            }
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//        holder.remove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                orderViewModel.deleteorder(context,
-//                        getSharedPreference(context, "email"),
-//                        name).observeForever(new Observer<Boolean>() {
-//                    @Override
-//                    public void onChanged(Boolean aBoolean) {
-//                        if (aBoolean) {
-//                            items.remove(position);
-//                            notifyItemRemoved(position);
-//                            notifyItemRangeChanged(position,items.size());
-//                        }
-//                    }
-//                });
-//            }
-//        });
+    public void onBindViewHolder(final viewitem holder,int position) {
+        holder.name.setText(items.get(position).getName());
+        holder.price.setText(String.valueOf(items.get(position).getPrice()));
+        holder.discount_date.setText(items.get(position).getDiscount_date());
+        holder.category.setText(items.get(position).getCategory());
+
+//        holder.discount.setText(items.get(position).getDiscount());
+//        if(items.get(position).getImage().equals("images_product/defult_product.png"))
+//        glideImage = new GlideImage(context, constants.BASE_HOST + items.get(position).getMealimage(), holder.image);
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override

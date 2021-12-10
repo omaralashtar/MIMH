@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.lifecycle.Observer;
@@ -30,16 +31,14 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-        TextView name, counter;
-        ImageButton add, delete, remove;
+        TextView name;
+        ImageView icon;
 
         public viewitem(View itemView) {
             super(itemView);
-//            name = itemView.findViewById(R.id.mealname);
-//            counter = itemView.findViewById(R.id.counter);
-//            add = itemView.findViewById(R.id.add);
-//            delete = itemView.findViewById(R.id.delete);
-//            remove = itemView.findViewById(R.id.remove);
+            name = itemView.findViewById(R.id.name);
+            icon = itemView.findViewById(R.id.icon);
+
         }
     }
 
