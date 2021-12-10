@@ -1,8 +1,6 @@
 package com.MadeInMyHome.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +26,7 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
     @Override
     public viewitem onCreateViewHolder(final ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.category_view, parent, false);
+                .inflate(R.layout.course_view, parent, false);
 
         return new viewitem(itemView);
     }
@@ -66,14 +64,15 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-        TextView name, price;
+        TextView name, presenter, category;
         ImageView image;
 
         public viewitem(View itemView) {
             super(itemView);
-//            name = itemView.findViewById(R.id.mealname);
-//            price = itemView.findViewById(R.id.counter);
-//            image = itemView.findViewById(R.id.mealimage);
+            name = itemView.findViewById(R.id.name);
+            presenter = itemView.findViewById(R.id.price);
+            category = itemView.findViewById(R.id.discount);
+            image = itemView.findViewById(R.id.image);
         }
     }
 

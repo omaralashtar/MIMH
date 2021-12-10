@@ -16,6 +16,9 @@ public class Product implements Serializable {
     @SerializedName("description")
     private String description;
 
+    @SerializedName("image")
+    private String image;
+
     @SerializedName("price")
     private float price;
 
@@ -30,6 +33,7 @@ public class Product implements Serializable {
 
     @SerializedName("discount")
     private float discount;
+
 
     @SerializedName("discount_date")
     private String discount_date;
@@ -59,6 +63,14 @@ public class Product implements Serializable {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public float getPrice() {

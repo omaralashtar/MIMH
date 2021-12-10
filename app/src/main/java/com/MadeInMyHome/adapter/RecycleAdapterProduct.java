@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterProduct.viewitem> {
 
 
-//    OrderViewModel orderViewModel;
+    //    OrderViewModel orderViewModel;
     ArrayList<Product> items;
     Context context;
 
@@ -32,16 +32,16 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-        TextView name, counter;
-        ImageButton add, delete, remove;
+        TextView name, price, discount, discount_date, category;
+        ImageButton favorite,add, delete, remove;
 
         public viewitem(View itemView) {
             super(itemView);
-//            name = itemView.findViewById(R.id.mealname);
-//            counter = itemView.findViewById(R.id.counter);
-//            add = itemView.findViewById(R.id.add);
-//            delete = itemView.findViewById(R.id.delete);
-//            remove = itemView.findViewById(R.id.remove);
+            name = itemView.findViewById(R.id.name);
+            price = itemView.findViewById(R.id.price);
+            discount = itemView.findViewById(R.id.discount);
+            discount_date = itemView.findViewById(R.id.discount_date);
+            category = itemView.findViewById(R.id.category);
         }
     }
 
