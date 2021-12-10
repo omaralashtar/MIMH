@@ -22,12 +22,12 @@ import com.MadeInMyHome.R;
 import com.MadeInMyHome.utilities.EqualSpacingItemDecoration;
 import com.MadeInMyHome.utilities.Utility;
 
-public class CategoryProduct extends Fragment {
+public class CategoryProductActivity extends Fragment {
 
-    private ShowCategoryProductViewModel mViewModel;
+    private CategoryProductViewModel mViewModel;
     RecyclerView recHorizental;
-    public static CategoryProduct newInstance() {
-        return new CategoryProduct();
+    public static CategoryProductActivity newInstance() {
+        return new CategoryProductActivity();
     }
 
     @Override
@@ -66,7 +66,7 @@ public class CategoryProduct extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ShowCategoryProductViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(CategoryProductViewModel.class);
         // TODO: Use the ViewModel
     }
 

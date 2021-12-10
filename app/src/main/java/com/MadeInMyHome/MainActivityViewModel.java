@@ -23,13 +23,6 @@ import retrofit2.Response;
 
 public class MainActivityViewModel extends ViewModel {
 
-
-
-
-
-
-
-    //___________________________________________________________________________________________________
     public MutableLiveData<String> show_Meal_category_horizental(String str, final Context c, final RecyclerView RecCat) {
         final MutableLiveData<String> myLiveDataList = new MutableLiveData<>();
 
@@ -45,9 +38,7 @@ public class MainActivityViewModel extends ViewModel {
 
                     ArrayList<Category> arr = data.getArrayList();
 
-
                     if (arr.size() > 0) {
-
                         RecycleAdapterCategory a = new RecycleAdapterCategory(c, arr);
                         RecCat.setAdapter(a);
                     }
@@ -61,15 +52,6 @@ public class MainActivityViewModel extends ViewModel {
         });
         return myLiveDataList;
     }
-
-    //_______________________________________________________________________________________________________
-
-
-
-
-
-
-
 }
 
 
