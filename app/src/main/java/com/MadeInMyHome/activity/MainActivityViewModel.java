@@ -1,4 +1,4 @@
-package com.MadeInMyHome;
+package com.MadeInMyHome.activity;
 
 
 import android.content.Context;
@@ -23,7 +23,7 @@ import retrofit2.Response;
 
 public class MainActivityViewModel extends ViewModel {
 
-    public MutableLiveData<String> show_Meal_category_horizental(String str, final Context c, final RecyclerView RecCat) {
+    public MutableLiveData<String> showMealcategoryhorizental(String str, final Context context, final RecyclerView recyclerView) {
         final MutableLiveData<String> myLiveDataList = new MutableLiveData<>();
 
 
@@ -36,11 +36,11 @@ public class MainActivityViewModel extends ViewModel {
 
                 if (data != null) {
 
-                    ArrayList<Category> arr = data.getArrayList();
+                    ArrayList<Category> categoryArrayList = data.getArrayList();
 
-                    if (arr.size() > 0) {
-                        RecycleAdapterCategory a = new RecycleAdapterCategory(c, arr);
-                        RecCat.setAdapter(a);
+                    if (categoryArrayList.size() > 0) {
+                        RecycleAdapterCategory recycleAdapterCategory = new RecycleAdapterCategory(context, categoryArrayList);
+                        recyclerView.setAdapter(recycleAdapterCategory);
                     }
                 }
             }

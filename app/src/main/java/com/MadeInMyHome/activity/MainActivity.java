@@ -1,8 +1,10 @@
-package com.MadeInMyHome;
+package com.MadeInMyHome.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.MadeInMyHome.R;
 
 public class MainActivity extends AppCompatActivity {
 

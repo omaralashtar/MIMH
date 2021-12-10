@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 
-import com.MadeInMyHome.MainActivity;
+import com.MadeInMyHome.activity.MainActivity;
 import com.MadeInMyHome.R;
 
 public class splashActivity extends AppCompatActivity {
