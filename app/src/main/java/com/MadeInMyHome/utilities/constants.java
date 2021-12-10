@@ -29,4 +29,13 @@ public class constants {
 
     public static final String REPORT = "Report.php";
     public static final String WATCH = "Watch.php";
+
+
+
+
+
+    public static final int SPLASH_TIMER=1000;
+
+
+
 }
