@@ -38,7 +38,7 @@ public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.
 
     @Override
     public void onBindViewHolder(final viewitem holder, int position) {
-        holder.name.setText(items.get(position).getName());
+        //holder.name.setText(items.get(position).getName());
         holder.comment.setText(items.get(position).getComment());
         holder.rate.setText(items.get(position).getRating());
         holder.update.setOnClickListener(new View.OnClickListener() {
@@ -68,11 +68,11 @@ public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.
 
         public viewitem(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.name);
-            rate = itemView.findViewById(R.id.rate);
-            comment = itemView.findViewById(R.id.comment);
-            update = itemView.findViewById(R.id.update);
-            remove = itemView.findViewById(R.id.remove);
+//            name = itemView.findViewById(R.id.name);
+//            rate = itemView.findViewById(R.id.rate);
+//            comment = itemView.findViewById(R.id.comment);
+//            update = itemView.findViewById(R.id.update);
+//            remove = itemView.findViewById(R.id.remove);
         }
     }
 }
