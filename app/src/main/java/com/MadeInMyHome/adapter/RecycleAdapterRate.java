@@ -31,7 +31,7 @@ public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.
     @Override
     public viewitem onCreateViewHolder(final ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.category_view, parent, false);
+                .inflate(R.layout.view_category, parent, false);
 
         return new viewitem(itemView);
     }

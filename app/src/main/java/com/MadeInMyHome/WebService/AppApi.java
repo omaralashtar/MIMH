@@ -6,6 +6,7 @@ import com.MadeInMyHome.Response.CourseArrayListResponse;
 import com.MadeInMyHome.Response.ProductArrayListResponse;
 import com.MadeInMyHome.Response.RateArrayListResponse;
 import com.MadeInMyHome.Response.ResultResponse;
+import com.MadeInMyHome.Response.ResultUserResponse;
 import com.MadeInMyHome.Response.UserArrayListResponse;
 import com.MadeInMyHome.Response.VideoArrayListResponse;
 import com.MadeInMyHome.utilities.constants;
@@ -22,7 +23,7 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.USER + constants.SING_UP)
-    Call<ResultResponse> register(@Field("email") String email,
+    Call<ResultResponse> signUp(@Field("email") String email,
                                   @Field("password") String password,
                                   @Field("f_name") String f_name,
                                   @Field("l_name") String l_name,
@@ -33,8 +34,8 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.USER + constants.LOGIN)
-    Call<ResultResponse> login(@Field("email") String email,
-                               @Field("password") String password);
+    Call<ResultUserResponse> signIn(@Field("email") String email,
+                                    @Field("password") String password);
 
     @FormUrlEncoded
     @POST(constants.USER + constants.GET)

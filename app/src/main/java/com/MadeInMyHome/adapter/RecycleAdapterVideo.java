@@ -4,11 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.MadeInMyHome.R;
@@ -45,7 +43,7 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
     @Override
     public viewitem onCreateViewHolder(final ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.category_view, parent, false);
+                .inflate(R.layout.view_category, parent, false);
 
         return new viewitem(itemView);
     }
