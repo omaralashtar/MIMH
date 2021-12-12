@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.ui.main;
+package com.MadeInMyHome.activity.SignInUp;
 
 import android.content.Context;
 

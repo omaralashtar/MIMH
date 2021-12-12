@@ -3,18 +3,12 @@ package com.MadeInMyHome.activity;
 import android.os.Bundle;
 
 import com.MadeInMyHome.databinding.ActivitySignInUpBinding;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-
-import com.MadeInMyHome.activity.ui.main.SectionsPagerAdapter;
+import com.MadeInMyHome.activity.SignInUp.SectionsPagerAdapter;
 
 public class SignInUpActivity extends AppCompatActivity {
 
@@ -34,5 +28,11 @@ public class SignInUpActivity extends AppCompatActivity {
 
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
     }
 }
