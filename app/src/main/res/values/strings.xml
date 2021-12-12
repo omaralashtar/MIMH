@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MIMH</string>
+    <string name="sign_in">Login</string>
+    <string name="sign_up">Sign Up</string>
 </resources>

@@ -1,14 +1,14 @@
 package com.MadeInMyHome.utilities;
 
 public class constants {
-    public static final String BASE_HOST = "http://192.168.1.191/fullproject/";
-    public static final String USER = "fullproject/";
-    public static final String COURSE = "fullproject/";
-    public static final String ENROLL = "fullproject/";
-    public static final String VIDEO = "fullproject/";
-    public static final String PRODUCT = "fullproject/";
-    public static final String FAVORITE = "fullproject/";
-    public static final String RATE = "fullproject/";
+    public static final String BASE_HOST = "https://madeinmyhome.000webhostapp.com/API/";
+    public static final String USER = "user/";
+    public static final String COURSE = "adapter/";
+    public static final String ENROLL = "enroll/";
+    public static final String VIDEO = "video/";
+    public static final String PRODUCT = " product/";
+    public static final String FAVORITE = "favorite/";
+    public static final String RATE = "rate/";
 
     public static final String ADD = "Add.php";
 
@@ -29,4 +29,9 @@ public class constants {
 
     public static final String REPORT = "Report.php";
     public static final String WATCH = "Watch.php";
+
+    public static final int SPLASH_TIMER=1000;
+
+
+
 }
