@@ -2,6 +2,16 @@
     <string name="app_name">MIMH</string>
     <string name="sign_in">Login</string>
     <string name="sign_up">Sign Up</string>
+
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="gender">Gender</string>
+    <string name="date">Date</string>
+
+
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
