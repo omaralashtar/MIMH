@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.introduction.IntroductionActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashActivity.this, SignInUpActivity.class);
+                Intent i = new Intent(SplashActivity.this, IntroductionActivity.class);
                 startActivity(i);
             }
         }, SPLASH_TIMER );

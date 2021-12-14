@@ -2,7 +2,5 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="margin">@dimen/_8sdp</dimen>
     <dimen name="boxCornerRadius">@dimen/_15sdp</dimen>
-    <dimen name="image">@dimen/_144sdp</dimen>
-
 
 </resources>
