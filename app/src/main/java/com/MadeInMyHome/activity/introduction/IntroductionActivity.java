@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.MainActivity;
+import com.MadeInMyHome.activity.welcom.WelcomActivity;
 
 public class IntroductionActivity extends AppCompatActivity implements View.OnClickListener {
     private ViewPager viewPager;
@@ -41,7 +42,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
 
     private void moveMainActivityFromIntroduction() {
         // prefManager.setIsFirstLaunch(false);
-        startActivity(new Intent(IntroductionActivity.this, MainActivity.class));
+        startActivity(new Intent(IntroductionActivity.this, WelcomActivity.class));
         finish();
     }
 
