@@ -16,4 +16,22 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-</resources>
+
+
+    //test mohammad introduction
+    <string name="next">NEXT</string>
+    <string name="finish">FINISH</string>
+    <string name="skip">SKIP</string>
+    <string name="walking">Walking</string>
+    <string name="walking_desc">Go for a walk after meal for better digestion</string>
+    <string name="cycling">Cycling</string>
+    <string name="cycling_desc">if you can\'t run, can\'t walk, then atleat rotate your legs</string>
+    <string name="fit">Become FIT</string>
+    <string name="fit_desc">Do either of the earlier and get a body like this</string>
+    <string name="swimming">Swimming</string>
+    <string name="swimming_desc">Explore the world under water with swimming</string>
+    <string name="running">Running</string>
+    <string name="running_desc">Daily running keeps body in shape and inrease stamina</string>
+
+
+    </resources>

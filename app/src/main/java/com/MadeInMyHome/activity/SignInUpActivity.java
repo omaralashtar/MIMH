@@ -4,11 +4,11 @@ import android.os.Bundle;
 
 import com.MadeInMyHome.databinding.ActivitySignInUpBinding;
 import com.google.android.material.tabs.TabLayout;
-
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.MadeInMyHome.activity.SignInUp.SectionsPagerAdapter;
+
 
 public class SignInUpActivity extends AppCompatActivity {
 
