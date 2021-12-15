@@ -31,11 +31,10 @@ public class SignUpViewModel extends ViewModel {
                         f_name.getText().toString(), l_name.getText().toString(),
                         date.getText().toString(), gender.getText().toString(),
                         phone ,encodedImage);
-        Toast.makeText(context, call.toString(), Toast.LENGTH_SHORT).show();
+        
         call.enqueue(new Callback<ResultUserResponse>() {
             @Override
             public void onResponse(Call<ResultUserResponse> call, Response<ResultUserResponse> response) {
-                Toast.makeText(context, "h", Toast.LENGTH_SHORT).show();
                 ResultUserResponse data = response.body();
                 if (data != null) {
                     if (data.getResult().equals("1")) {
