@@ -7,15 +7,12 @@ import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.MadeInMyHome.R;
 import com.MadeInMyHome.Response.ResultUserResponse;
 import com.MadeInMyHome.WebService.RestClient;
-import com.MadeInMyHome.model.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Field;
 
 public class SignUpViewModel extends ViewModel {
 

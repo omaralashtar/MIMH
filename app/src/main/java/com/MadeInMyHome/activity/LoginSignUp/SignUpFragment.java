@@ -23,7 +23,6 @@ import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.component.PickImage;
 import com.MadeInMyHome.component.convertToString;
 import com.MadeInMyHome.databinding.FragmentSignUpBinding;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 
