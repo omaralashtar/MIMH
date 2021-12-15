@@ -11,6 +11,16 @@
     <string name="gender">Gender</string>
     <string name="date">Date</string>
 
+    <string-array name="genderList">
+        <item>ذكر</item>
+        <item>أنثى</item>
+    </string-array>
+
+    <string-array name="phoneList">
+        <item>079</item>
+        <item>078</item>
+        <item>077</item>
+    </string-array>
 
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>

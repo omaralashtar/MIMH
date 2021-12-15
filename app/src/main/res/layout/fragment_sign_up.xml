@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@color/bg_screen_five" />
+            tools:src="@drawable/images" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/f_name"
@@ -127,10 +127,11 @@
             app:layout_constraintTop_toBottomOf="@id/password">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/datetext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/date"
-                android:inputType="date" />
+                android:editable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -153,7 +154,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/gender"
-                android:inputType="text" />
+                android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
