@@ -22,7 +22,7 @@ import com.MadeInMyHome.databinding.FragmentSignUpBinding;
 
 import java.util.Calendar;
 
-public class SignUpFragment extends Fragment {
+public class SignUpFragment extends Fragment implements View.OnClickListener, View.OnFocusChangeListener {
 
     DatePickerDialog picker;
     String encodedImage;
@@ -52,6 +52,16 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 pickImage = new PickImage(getActivity(), binding.image);
+
+            }
+        });
+        binding.datetext.setOnClickListener(this);
+        binding.datetext.setOnFocusChangeListener(this);
+
+        binding.signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.image.getDrawable()).getBitmap());
                 signUpViewModel.signUp(getActivity(),
                         binding.email.getEditText(), binding.password.getEditText(), binding.fName.getEditText(),
                         binding.lName.getEditText(), binding.date.getEditText(), binding.gender.getEditText(),
@@ -64,32 +74,6 @@ public class SignUpFragment extends Fragment {
                         });
             }
         });
-        binding.date.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (b) {
-                    final Calendar cldr = Calendar.getInstance();
-                    int day = cldr.get(Calendar.DAY_OF_MONTH);
-                    int month = cldr.get(Calendar.MONTH);
-                    int year = cldr.get(Calendar.YEAR);
-                    picker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                            binding.date.getEditText().setText(year + "/" + month + "/" + day);
-                        }
-                    }, year, month, day);
-                    picker.show();
-                }
-            }
-        });
-
-
-        binding.signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.image.getDrawable()).getBitmap());
-            }
-        });
         return root;
     }
 
@@ -97,5 +81,29 @@ public class SignUpFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+    @Override
+    public void onClick(View v) {
+        setDate();
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean b) {
+        if (b)
+            setDate();
+    }
+
+    public void setDate(){
+        final Calendar cldr = Calendar.getInstance();
+        int day = cldr.get(Calendar.DAY_OF_MONTH);
+        int month = cldr.get(Calendar.MONTH);
+        int year = cldr.get(Calendar.YEAR);
+        picker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                binding.date.getEditText().setText(year + "/" + month + "/" + day);
+            }
+        }, year, month, day);
+        picker.show();
     }
 }
