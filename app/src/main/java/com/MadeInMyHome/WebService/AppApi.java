@@ -24,13 +24,13 @@ public interface AppApi {
     @FormUrlEncoded
     @POST(constants.USER + constants.SING_UP)
     Call<ResultUserResponse> signUp(@Field("email") String email,
-                                  @Field("password") String password,
-                                  @Field("f_name") String f_name,
-                                  @Field("l_name") String l_name,
-                                  @Field("image") String image,
-                                  @Field("date") String date,
-                                  @Field("gender") String gender,
-                                  @Field("phone") String phone);
+                                    @Field("password") String password,
+                                    @Field("f_name") String f_name,
+                                    @Field("l_name") String l_name,
+                                    @Field("date") String date,
+                                    @Field("gender") String gender,
+                                    @Field("phone") String phone,
+                                    @Field("image") String image);
 
     @FormUrlEncoded
     @POST(constants.USER + constants.LOGIN)

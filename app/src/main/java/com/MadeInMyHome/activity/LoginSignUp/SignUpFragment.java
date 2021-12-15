@@ -65,7 +65,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
                 signUpViewModel.signUp(getActivity(),
                         binding.email.getEditText(), binding.password.getEditText(), binding.fName.getEditText(),
                         binding.lName.getEditText(), binding.date.getEditText(), binding.gender.getEditText(),
-                        binding.startPhone.getEditText() + "" + binding.phone.getEditText(), encodedImage)
+                        binding.startPhone.getEditText().getText() + "" + binding.phone.getEditText().getText(), encodedImage)
                         .observe(getViewLifecycleOwner(), new Observer<String>() {
                             @Override
                             public void onChanged(String s) {
@@ -101,7 +101,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
         picker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                binding.date.getEditText().setText(year + "/" + month + "/" + day);
+                binding.date.getEditText().setText(year + "-" + month + "-" + day);
             }
         }, year, month, day);
         picker.show();
