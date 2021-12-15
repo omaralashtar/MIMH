@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MIMH">
         <activity
-            android:name=".activity.welcom.WelcomActivity"
+            android:name=".activity.welcom.WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ui.MainActivity"
