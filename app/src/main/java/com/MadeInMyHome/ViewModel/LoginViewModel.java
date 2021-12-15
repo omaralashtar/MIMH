@@ -17,13 +17,13 @@ import retrofit2.Response;
 
 public class LoginViewModel extends ViewModel
 {
-    public MutableLiveData<String> signIn(final Context context, EditText email, EditText pass) {
+    public MutableLiveData<String> login(final Context context, EditText email, EditText pass) {
 
 
         final MutableLiveData<String> userMutableLiveData = new MutableLiveData<>();
 
 
-        Call<ResultUserResponse> call = RestClient.getService().signIn(email.getText().toString(), pass.getText().toString());
+        Call<ResultUserResponse> call = RestClient.getService().login(email.getText().toString(), pass.getText().toString());
         call.enqueue(new Callback<ResultUserResponse>() {
             @Override
             public void onResponse(Call<ResultUserResponse> call, Response<ResultUserResponse> response) {

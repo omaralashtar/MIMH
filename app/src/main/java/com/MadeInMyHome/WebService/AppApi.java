@@ -34,7 +34,7 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.USER + constants.LOGIN)
-    Call<ResultUserResponse> signIn(@Field("email") String email,
+    Call<ResultUserResponse> login(@Field("email") String email,
                                     @Field("password") String password);
 
     @FormUrlEncoded

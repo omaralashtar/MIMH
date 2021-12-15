@@ -1,6 +1,9 @@
 package com.MadeInMyHome.activity.LoginSignUp;
 
+import static com.MadeInMyHome.utilities.General.addToSharedPreference;
+
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,9 +19,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.ViewModel.SignUpViewModel;
+import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.component.PickImage;
 import com.MadeInMyHome.component.convertToString;
 import com.MadeInMyHome.databinding.FragmentSignUpBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 
@@ -69,7 +74,10 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
                         .observe(getViewLifecycleOwner(), new Observer<String>() {
                             @Override
                             public void onChanged(String s) {
-                                Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(getActivity(), MainActivity.class);
+                                addToSharedPreference(getActivity(), "id", s);
+                                startActivity(i);
+                                getActivity().finish();
                             }
                         });
             }

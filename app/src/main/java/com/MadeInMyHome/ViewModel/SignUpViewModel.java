@@ -31,7 +31,7 @@ public class SignUpViewModel extends ViewModel {
                         f_name.getText().toString(), l_name.getText().toString(),
                         date.getText().toString(), gender.getText().toString(),
                         phone ,encodedImage);
-        
+
         call.enqueue(new Callback<ResultUserResponse>() {
             @Override
             public void onResponse(Call<ResultUserResponse> call, Response<ResultUserResponse> response) {

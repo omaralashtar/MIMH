@@ -17,7 +17,7 @@ import com.MadeInMyHome.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.login, R.string.sign_up};
+    private static final int[] TAB_TITLES = new int[]{ R.string.sign_up,R.string.login};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
