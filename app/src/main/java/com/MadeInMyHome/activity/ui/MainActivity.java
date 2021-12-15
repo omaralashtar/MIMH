@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity;
+package com.MadeInMyHome.activity.ui;
 
 import android.os.Bundle;
 

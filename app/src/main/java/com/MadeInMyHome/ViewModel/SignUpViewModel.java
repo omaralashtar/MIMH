@@ -22,7 +22,7 @@ public class SignUpViewModel extends ViewModel {
 
     public MutableLiveData<String> signUp(final Context context, EditText email, EditText pass,
                                           EditText f_name, EditText l_name, EditText date,
-                                          EditText gender, EditText phone, String encodedImage) {
+                                          EditText gender, String phone, String encodedImage) {
 
         final MutableLiveData<String> userMutableLiveData = new MutableLiveData<>();
 
@@ -30,8 +30,8 @@ public class SignUpViewModel extends ViewModel {
                 .signUp( email.getText().toString(), pass.getText().toString(),
                         f_name.getText().toString(), l_name.getText().toString(),
                         date.getText().toString(), gender.getText().toString(),
-                        phone.getText().toString() ,encodedImage);
-        
+                        phone ,encodedImage);
+
         call.enqueue(new Callback<ResultUserResponse>() {
             @Override
             public void onResponse(Call<ResultUserResponse> call, Response<ResultUserResponse> response) {

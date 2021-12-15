@@ -1,24 +1,21 @@
-package com.MadeInMyHome.activity;
+package com.MadeInMyHome.activity.LoginSignUp;
 
 import android.os.Bundle;
 
-import com.MadeInMyHome.databinding.ActivitySignInUpBinding;
+import com.MadeInMyHome.databinding.ActivityLoginSignUpBinding;
 import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.MadeInMyHome.activity.SignInUp.SectionsPagerAdapter;
+public class LoginSignUpActivity extends AppCompatActivity {
 
-
-public class SignInUpActivity extends AppCompatActivity {
-
-    private ActivitySignInUpBinding binding;
+    private ActivityLoginSignUpBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivitySignInUpBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginSignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());

@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.activity.MainActivity;
 import com.MadeInMyHome.activity.welcom.WelcomActivity;
 
 public class IntroductionActivity extends AppCompatActivity implements View.OnClickListener {

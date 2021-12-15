@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".activity.SignInUpActivity">
+    tools:context=".activity.LoginSignUp.LoginSignUpActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
@@ -14,7 +13,6 @@
         android:layout_marginStart="@dimen/margin"
         android:layout_marginTop="@dimen/margin"
         android:layout_marginEnd="@dimen/margin"
-        android:background="@color/design_default_color_error"
         app:layout_constraintBottom_toTopOf="@+id/view_pager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

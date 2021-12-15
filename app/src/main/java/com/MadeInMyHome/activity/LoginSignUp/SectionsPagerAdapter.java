@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.SignInUp;
+package com.MadeInMyHome.activity.LoginSignUp;
 
 import android.content.Context;
 
@@ -9,8 +9,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.activity.SignInUp.SignInFragment;
-import com.MadeInMyHome.activity.SignInUp.SignUpFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -19,7 +17,7 @@ import com.MadeInMyHome.activity.SignInUp.SignUpFragment;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.sign_in, R.string.sign_up};
+    private static final int[] TAB_TITLES = new int[]{R.string.login, R.string.sign_up};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -30,7 +28,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position ==1){
-            return new SignInFragment();
+            return new LoginFragment();
         }else {
             return new SignUpFragment();
         }

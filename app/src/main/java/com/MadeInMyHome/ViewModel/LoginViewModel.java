@@ -15,7 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SignInViewModel extends ViewModel
+public class LoginViewModel extends ViewModel
 {
     public MutableLiveData<String> signIn(final Context context, EditText email, EditText pass) {
 
