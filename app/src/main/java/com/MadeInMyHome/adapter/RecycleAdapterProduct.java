@@ -44,14 +44,14 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
             discount = itemView.findViewById(R.id.discount);
             discount_date = itemView.findViewById(R.id.discount_date);
             category = itemView.findViewById(R.id.category);
-            favorite = itemView.findViewById(R.id.favorite);
+            //favorite = itemView.findViewById(R.id.favorite);
         }
     }
 
     @Override
     public viewitem onCreateViewHolder(final ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.view_category, parent, false);
+                .inflate(R.layout.view_product, parent, false);
 
         return new viewitem(itemView);
     }

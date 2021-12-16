@@ -28,9 +28,6 @@ public class Product implements Serializable {
     @SerializedName("unit")
     private String unit;
 
-    @SerializedName("count_visits")
-    private int count_visits;
-
     @SerializedName("discount")
     private float discount;
 
@@ -39,9 +36,6 @@ public class Product implements Serializable {
 
     @SerializedName("status")
     private boolean status;
-
-    @SerializedName("deleted_at")
-    private boolean deleted_at;
 
     @SerializedName("product_date")
     private String product_date;
@@ -84,10 +78,6 @@ public class Product implements Serializable {
         return unit;
     }
 
-    public int getCount_visits() {
-        return count_visits;
-    }
-
     public float getDiscount() {
         return discount;
     }
@@ -98,10 +88,6 @@ public class Product implements Serializable {
 
     public boolean isStatus() {
         return status;
-    }
-
-    public boolean isDeleted_at() {
-        return deleted_at;
     }
 
     public String getProduct_date() {
