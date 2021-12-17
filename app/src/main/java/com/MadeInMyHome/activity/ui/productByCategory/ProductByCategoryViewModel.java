@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.ui.products;
+package com.MadeInMyHome.activity.ui.productByCategory;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -16,13 +16,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductsViewModel extends ViewModel {
+public class ProductByCategoryViewModel extends ViewModel {
 
-    public MutableLiveData<ArrayList<Product>> getProducts(final Context context, String next) {
+    public MutableLiveData<ArrayList<Product>> getProductByCategory(final Context context, String id) {
 
         final MutableLiveData<ArrayList<Product>> arrayListMutableLiveData = new MutableLiveData<>();
 
-        Call<ProductArrayListResponse> call = RestClient.getService().getAllProduct(next);
+        Call<ProductArrayListResponse> call = RestClient.getService().getProductByCategory(id);
         call.enqueue(new Callback<ProductArrayListResponse>() {
             @Override
             public void onResponse(Call<ProductArrayListResponse> call, Response<ProductArrayListResponse> response) {

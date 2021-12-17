@@ -43,6 +43,8 @@
     <string name="swimming_desc">Explore the world under water with swimming</string>
     <string name="running">Running</string>
     <string name="running_desc">Daily running keeps body in shape and inrease stamina</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

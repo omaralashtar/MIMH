@@ -7,8 +7,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.MadeInMyHome.Response.CategoryArrayListResponse;
+import com.MadeInMyHome.Response.ProductArrayListResponse;
 import com.MadeInMyHome.WebService.RestClient;
 import com.MadeInMyHome.model.Category;
+import com.MadeInMyHome.model.Product;
 
 import java.util.ArrayList;
 
@@ -17,8 +19,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CategoryProductViewModel extends ViewModel {
-
-
     public MutableLiveData<ArrayList<Category>> showCategoryProduct(final Context context) {
         return showCategoryProduct("", context);
     }
@@ -50,9 +50,6 @@ public class CategoryProductViewModel extends ViewModel {
 
         return arrayListMutableLiveData;
     }
-
-
-
 
 
 
