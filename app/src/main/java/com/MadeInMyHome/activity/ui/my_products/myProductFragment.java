@@ -25,6 +25,8 @@ public class myProductFragment extends Fragment {
     MyProductViewModel myProductViewModel;
     RecycleAdapterProduct myProductsAdapter;
     final int id = 1;
+    //final int id = 1;
+    //final int id = 1;
 
     public static myProductFragment newInstance() {
         return new myProductFragment();
