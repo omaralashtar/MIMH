@@ -3,7 +3,7 @@ package com.MadeInMyHome.utilities;
 public class constants {
     public static final String BASE_HOST = "https://madeinmyhome.000webhostapp.com/API/";
     public static final String USER = "user/";
-    public static final String COURSE = "adapter/";
+    public static final String COURSE = "course/";
     public static final String ENROLL = "enroll/";
     public static final String VIDEO = "video/";
     public static final String PRODUCT = " product/";

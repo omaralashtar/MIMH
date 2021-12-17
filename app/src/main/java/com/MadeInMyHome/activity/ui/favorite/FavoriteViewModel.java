@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.ui.Products;
+package com.MadeInMyHome.activity.ui.favorite;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -16,21 +16,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductsViewModel extends ViewModel {
+public class FavoriteViewModel extends ViewModel {
 
-    public MutableLiveData<ArrayList<Product>> getProducts(final Context context, String next) {
+    public MutableLiveData<ArrayList<Product>> getProducts(final Context context, String id, String next) {
 
         final MutableLiveData<ArrayList<Product>> arrayListMutableLiveData = new MutableLiveData<>();
 
-        Call<ProductArrayListResponse> call = RestClient.getService().getAllProduct(next);
+        Call<ProductArrayListResponse> call = RestClient.getService().getFavorite(id,next);
         call.enqueue(new Callback<ProductArrayListResponse>() {
             @Override
             public void onResponse(Call<ProductArrayListResponse> call, Response<ProductArrayListResponse> response) {
                 ProductArrayListResponse productArrayListResponse = response.body();
                 if (productArrayListResponse != null) {
-                    ArrayList<Product> mealArrayList = productArrayListResponse.getArrayList();
-                    if (mealArrayList.size() > 0) {
-                        arrayListMutableLiveData.setValue(mealArrayList);
+                    ArrayList<Product> productArrayList = productArrayListResponse.getArrayList();
+                    if (productArrayList.size() > 0) {
+                        arrayListMutableLiveData.setValue(productArrayList);
                     }
                 } else {
                     Toast.makeText(context, "Field_get_items", Toast.LENGTH_SHORT).show();
@@ -45,5 +45,4 @@ public class ProductsViewModel extends ViewModel {
 
         return arrayListMutableLiveData;
     }
-
 }

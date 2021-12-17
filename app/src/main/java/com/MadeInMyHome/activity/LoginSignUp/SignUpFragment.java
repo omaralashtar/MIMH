@@ -18,7 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.ViewModel.SignUpViewModel;
-import com.MadeInMyHome.activity.MainActivity;
+import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.component.PickImage;
 import com.MadeInMyHome.component.convertToString;
 import com.MadeInMyHome.databinding.FragmentSignUpBinding;

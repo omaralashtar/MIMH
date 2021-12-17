@@ -4,24 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_products">
-
     <fragment
         android:id="@+id/navigation_products"
-        android:name="com.MadeInMyHome.activity.ui.Products.ProductsFragment"
+        android:name="com.MadeInMyHome.activity.ui.products.ProductsFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_products" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.MadeInMyHome.activity.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_courses"
+        android:name="com.MadeInMyHome.activity.ui.courses.CoursesFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_courses" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.MadeInMyHome.activity.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_favorite"
+        android:name="com.MadeInMyHome.activity.ui.favorite.FavoriteFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_favorite" />
+
     <fragment
         android:id="@+id/navigation_myProduct"
         android:name="com.MadeInMyHome.activity.ui.my_products.myProductFragment"

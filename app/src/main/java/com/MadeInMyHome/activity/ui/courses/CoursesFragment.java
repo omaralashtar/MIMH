@@ -1,9 +1,13 @@
-package com.MadeInMyHome.activity.ui.Products;
+package com.MadeInMyHome.activity.ui.courses;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.MadeInMyHome.adapter.RecycleAdapterCourse;
+import com.MadeInMyHome.databinding.FragmentCoursesBinding;
+import com.MadeInMyHome.model.Course;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -12,26 +16,21 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.MadeInMyHome.adapter.RecycleAdapterProduct;
-import com.MadeInMyHome.databinding.FragmentProductsBinding;
-import com.MadeInMyHome.model.Product;
-
 import java.util.ArrayList;
 
+public class CoursesFragment extends Fragment {
 
-public class ProductsFragment extends Fragment {
-
-    RecycleAdapterProduct recycleAdapterProduct;
-    ProductsViewModel productsViewModel;
-    private FragmentProductsBinding binding;
+    RecycleAdapterCourse recycleAdapterCourse;
+    CoursesViewModel coursesViewModel;
+    private FragmentCoursesBinding binding;
 
     int next=0;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        productsViewModel= ViewModelProviders.of(this).get(ProductsViewModel.class);
-        binding = FragmentProductsBinding.inflate(inflater, container, false);
+        coursesViewModel= ViewModelProviders.of(this).get(CoursesViewModel.class);
+        binding = FragmentCoursesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         binding.swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
@@ -39,7 +38,7 @@ public class ProductsFragment extends Fragment {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        binding.productsRecycle.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.coursesRecycle.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         setAdapter();
 
@@ -54,11 +53,11 @@ public class ProductsFragment extends Fragment {
     }
 
     public void setAdapter(){
-        productsViewModel.getProducts(getActivity(),String.valueOf(next)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
+        coursesViewModel.getCourses(getActivity(),String.valueOf(next)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Course>>() {
             @Override
-            public void onChanged(ArrayList<Product> products) {
-                recycleAdapterProduct =new RecycleAdapterProduct(getActivity(),products);
-                binding.productsRecycle.setAdapter(recycleAdapterProduct);
+            public void onChanged(ArrayList<Course> courses) {
+                recycleAdapterCourse =new RecycleAdapterCourse(getActivity(),courses);
+                binding.coursesRecycle.setAdapter(recycleAdapterCourse);
             }
         });
     }

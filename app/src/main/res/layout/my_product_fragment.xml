@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_screen_one"
-    tools:context=".activity.ui.Products.ProductsFragment">
+    tools:context=".activity.ui.products.ProductsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myProductsRecycle"
