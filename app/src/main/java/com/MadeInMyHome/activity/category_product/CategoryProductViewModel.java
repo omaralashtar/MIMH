@@ -1,4 +1,4 @@
-package com.MadeInMyHome.ViewModel;
+package com.MadeInMyHome.activity.category_product;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -17,6 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CategoryProductViewModel extends ViewModel {
+
 
     public MutableLiveData<ArrayList<Category>> showCategoryProduct(final Context context) {
         return showCategoryProduct("", context);
@@ -49,4 +50,10 @@ public class CategoryProductViewModel extends ViewModel {
 
         return arrayListMutableLiveData;
     }
+
+
+
+
+
+
 }

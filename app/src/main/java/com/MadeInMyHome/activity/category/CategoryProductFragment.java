@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.ViewModel.CategoryProductViewModel;
+import com.MadeInMyHome.ViewModel.CategoryProduct;
 import com.MadeInMyHome.adapter.RecycleAdapterCategory;
 import com.MadeInMyHome.model.Category;
 import com.MadeInMyHome.utilities.EqualSpacingItemDecoration;
@@ -25,7 +25,7 @@ public class CategoryProductFragment extends Fragment {
 
     RecyclerView recyclerView;
     RecycleAdapterCategory recycleAdapterCategory;
-    CategoryProductViewModel categoryProductViewModel;
+    CategoryProduct categoryProduct;
 
     public static CategoryProductFragment newInstance() {
         return new CategoryProductFragment();
@@ -34,9 +34,9 @@ public class CategoryProductFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_category_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_category, container, false);
 
-        recyclerView = view.findViewById(R.id.recHori);
+        recyclerView = view.findViewById(R.id.categoryProductRecycle);
 
         int spacing = 10;
         EqualSpacingItemDecoration equalSpacing = new EqualSpacingItemDecoration(spacing);
@@ -45,11 +45,11 @@ public class CategoryProductFragment extends Fragment {
         //int mNoOfColumns = Utility.calculateNoOfColumns(getActivity());
 
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,true));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,true));
         //recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),mNoOfColumns, LinearLayoutManager.HORIZONTAL, true));
 
-        categoryProductViewModel = ViewModelProviders.of(this).get(CategoryProductViewModel.class);
-        categoryProductViewModel.showCategoryProduct(getActivity()).observe(getActivity(), new Observer<ArrayList<Category>>() {
+        categoryProduct = ViewModelProviders.of(this).get(CategoryProduct.class);
+        categoryProduct.showCategoryProduct(getActivity()).observe(getActivity(), new Observer<ArrayList<Category>>() {
             @Override
             public void onChanged(ArrayList<Category> categories) {
                 recycleAdapterCategory = new RecycleAdapterCategory(getActivity(), categories);
