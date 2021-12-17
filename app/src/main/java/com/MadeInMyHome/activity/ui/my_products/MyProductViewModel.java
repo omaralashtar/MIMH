@@ -23,7 +23,7 @@ public class MyProductViewModel extends ViewModel {
 
         final MutableLiveData<ArrayList<Product>> arrayListMutableLiveData = new MutableLiveData<>();
 
-        Call<ProductArrayListResponse> call = RestClient.getService().getProduct(next);
+        Call<ProductArrayListResponse> call = RestClient.getService().getMyProduct(next);
         call.enqueue(new Callback<ProductArrayListResponse>() {
             @Override
             public void onResponse(Call<ProductArrayListResponse> call, Response<ProductArrayListResponse> response) {

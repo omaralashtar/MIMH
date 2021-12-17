@@ -82,8 +82,8 @@ public interface AppApi {
                                     @Field("images") ArrayList<String> images);
 
     @FormUrlEncoded
-    @POST(constants.PRODUCT + constants.GET)
-    Call<ProductArrayListResponse> getProduct(@Field("id") String id);
+    @POST(constants.PRODUCT + constants.GETMyProduct)
+    Call<ProductArrayListResponse> getMyProduct(@Field("id") String id);
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_ALL)
