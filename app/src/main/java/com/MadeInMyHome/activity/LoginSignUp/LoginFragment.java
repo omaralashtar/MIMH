@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.MadeInMyHome.ViewModel.LoginViewModel;
-import com.MadeInMyHome.activity.ui.MainActivity;
+import com.MadeInMyHome.activity.MainActivity;
 import com.MadeInMyHome.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends Fragment {

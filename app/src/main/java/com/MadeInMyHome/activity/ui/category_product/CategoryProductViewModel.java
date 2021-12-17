@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.category_product;
+package com.MadeInMyHome.activity.ui.category_product;
 
 import android.content.Context;
 import android.widget.Toast;

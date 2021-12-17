@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.category_product;
+package com.MadeInMyHome.activity.ui.my_products;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,37 +12,38 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import com.MadeInMyHome.databinding.FramentProductCategoryBinding;
-import com.MadeInMyHome.adapter.RecycleAdapterCategory;
-import com.MadeInMyHome.model.Category;
+
+import com.MadeInMyHome.adapter.RecycleAdapterProduct;
+import com.MadeInMyHome.databinding.MyProductFragmentBinding;
+import com.MadeInMyHome.model.Product;
 
 import java.util.ArrayList;
 
-public class categoryProductFrament extends Fragment {
-    CategoryProductViewModel categoryProductsViewModel;
+public class myProductFragment extends Fragment {
 
-    private FramentProductCategoryBinding binding;
-    RecycleAdapterCategory CategoryProductsRecycleAdapter;
-    int next = 0;
+    private MyProductFragmentBinding binding;
+    MyProductViewModel myProductViewModel;
+    RecycleAdapterProduct myProductsAdapter;
+    final int id = 1;
 
-    public static categoryProductFrament newInstance() {
-        return new categoryProductFrament();
+    public static myProductFragment newInstance() {
+        return new myProductFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-
-        categoryProductsViewModel = ViewModelProviders.of(this).get(CategoryProductViewModel.class);
-        binding = FramentProductCategoryBinding.inflate(inflater, container, false);
+        myProductViewModel = ViewModelProviders.of(this).get(MyProductViewModel.class);
+        binding = MyProductFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
         binding.swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        binding.categoryProductRecycle.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.myProductsRecycle.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         setAdapter();
 
@@ -53,30 +54,22 @@ public class categoryProductFrament extends Fragment {
             }
         });
 
-
-
-
-
-
         return root;
-
-
     }
 
-    public void setAdapter(){
-        categoryProductsViewModel.showCategoryProduct(getActivity()).observe(getActivity(), new Observer<ArrayList<Category>>() {
+    public void setAdapter() {
+        myProductViewModel.getMyProducts(getActivity(), String.valueOf(id)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
-            public void onChanged(ArrayList<Category> categories) {
-                CategoryProductsRecycleAdapter = new RecycleAdapterCategory(getActivity(), categories);
-                binding.categoryProductRecycle.setAdapter(CategoryProductsRecycleAdapter);
+            public void onChanged(ArrayList<Product> myProducts) {
+                myProductsAdapter = new RecycleAdapterProduct(getActivity(), myProducts);
+                binding.myProductsRecycle.setAdapter(myProductsAdapter);
             }
         });
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-
-
 }

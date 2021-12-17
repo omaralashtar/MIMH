@@ -24,12 +24,12 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/navigation_myProduct"
-        android:name="com.MadeInMyHome.activity.myProduct.myProductFragment"
+        android:name="com.MadeInMyHome.activity.ui.my_products.myProductFragment"
         android:label="@string/title_myProducts"
         tools:layout="@layout/my_product_fragment" />
     <fragment
         android:id="@+id/navigation_categoryProducts"
-        android:name="com.MadeInMyHome.activity.category_product.categoryProductFrament"
+        android:name="com.MadeInMyHome.activity.ui.category_product.categoryProductFrament"
         android:label="@string/title_categoryProducts"
         tools:layout="@layout/frament_product_category" />
 

@@ -19,7 +19,7 @@
             android:name=".activity.welcom.WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ui.MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main" />
         <activity
