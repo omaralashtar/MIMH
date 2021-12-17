@@ -41,7 +41,8 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
     public void onBindViewHolder(viewitem holder,int position) {
 
         holder.name.setText(items.get(position).getName());
-        holder.category.setText(items.get(position).getCategory());
+        holder.presenter.setText(items.get(position).getPresenter());
+       // holder.category.setText(items.get(position).getCategory());
 
 //        if (!TextUtils.isEmpty(items.get(position).getMealimage())) {
 //            glideImage = new GlideImage(context, constants.BASE_HOST + items.get(position).getMealimage(), holder.image);
@@ -64,12 +65,13 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-        TextView name, category;
+        TextView name, category,presenter;
         ImageView icon;
 
         public viewitem(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
+            presenter = itemView.findViewById(R.id.presenter);
             category = itemView.findViewById(R.id.category);
             icon = itemView.findViewById(R.id.icon);
         }
