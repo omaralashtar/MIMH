@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.introduction.IntroductionActivity;
 import com.MadeInMyHome.activity.ui.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {

@@ -26,7 +26,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduction);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         viewPager = findViewById(R.id.view_pager);
         dotsLayout = findViewById(R.id.layoutDots);
         btnNext = findViewById(R.id.btn_next);
