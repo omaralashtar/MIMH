@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.ui.productByCategory;
+package com.MadeInMyHome.activity.productsByCategory;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 public class ProductByCategoryViewModel extends ViewModel {
 
-    public MutableLiveData<ArrayList<Product>> getProductByCategory(final Context context, String id) {
+    public MutableLiveData<ArrayList<Product>> getDataProductByCategory(final Context context, String name, String id) {
 
         final MutableLiveData<ArrayList<Product>> arrayListMutableLiveData = new MutableLiveData<>();
 

@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" >
         <activity
+            android:name=".activity.productsByCategory.productsBycategory"
+            android:exported="false" />
+        <activity
             android:name=".activity.welcom.WelcomeActivity"
             android:exported="false" />
         <activity

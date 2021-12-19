@@ -2,6 +2,7 @@ package com.MadeInMyHome.adapter;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.model.Category;
 
 import java.util.ArrayList;
@@ -36,18 +38,18 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
     }
 
     @Override
-    public void onBindViewHolder(viewitem holder, int position) {
-        holder.name.setText(items.get(position).getName());
+    public void onBindViewHolder(viewitem holder,  int positions) {
+        holder.name.setText(items.get(positions).getName());
 
 //      glideImage = new GlideImage(context, constants.BASE_HOST + items.get(position).getMealimage(), holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(context, MainActivity.class);
-//                Category category = items.get(position);
-//                i.putExtra("category", category.getName());
-//                context.startActivity(i);
+               Intent i = new Intent(context, MainActivity.class);
+                Category category = items.get(position);
+                i.putExtra("category", category.getName());
+                context.startActivity(i);
             }
         });
     }
