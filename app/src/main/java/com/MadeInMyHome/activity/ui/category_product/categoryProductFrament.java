@@ -12,8 +12,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import com.MadeInMyHome.databinding.FramentProductCategoryBinding;
+
 import com.MadeInMyHome.adapter.RecycleAdapterCategory;
+import com.MadeInMyHome.databinding.FramentProductCategoryBinding;
 import com.MadeInMyHome.model.Category;
 import com.MadeInMyHome.utilities.EqualSpacingItemDecoration;
 import com.MadeInMyHome.utilities.Utility;
@@ -27,9 +28,6 @@ public class categoryProductFrament extends Fragment {
     RecycleAdapterCategory CategoryProductsRecycleAdapter;
     int next = 0;
 
-    public static categoryProductFrament newInstance() {
-        return new categoryProductFrament();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
