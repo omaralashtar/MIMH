@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
        setContentView(binding.getRoot());
 
-<<<<<<< Updated upstream
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         binding.toolbarTitle.setText(getString(R.string.app_name));
@@ -33,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
         binding.drawerLayout.addDrawerListener(
                 new ActionBarDrawerToggle(this,binding.drawerLayout,binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close));
 
-=======
-       BottomNavigationView navView = findViewById(R.id.nav_view);
->>>>>>> Stashed changes
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_products, R.id.navigation_courses, R.id.navigation_favorite, R.id.navigation_myProduct, R.id.navigation_categoryProducts).build();
        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
@@ -43,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         drawerAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.navigation_myCourse, R.id.navigation_categoryCourse, R.id.nav_slideshow)
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
         NavController navControllerDrawer = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);

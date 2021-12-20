@@ -47,8 +47,8 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
             @Override
             public void onClick(View v) {
                Intent i = new Intent(context, MainActivity.class);
-                Category category = items.get(position);
-                i.putExtra("category", category.getName());
+                /*Category category = items.get(position);
+                i.putExtra("category", category.getName());*/
                 context.startActivity(i);
             }
         });

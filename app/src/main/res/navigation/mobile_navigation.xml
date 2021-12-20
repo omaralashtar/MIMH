@@ -33,9 +33,6 @@
         android:label="@string/title_categoryProducts"
         tools:layout="@layout/frament_product_category" />
 
-
-<<<<<<< Updated upstream
-
     <fragment
         android:id="@+id/nav_home"
         android:name="com.MadeInMyHome.activity.ui.home.HomeFragment"
@@ -54,6 +51,17 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 
-=======
->>>>>>> Stashed changes
+    <fragment
+        android:id="@+id/navigation_myCourse"
+        android:name="com.MadeInMyHome.activity.ui.my_products.myProductFragment"
+        android:label="@string/title_myCourse"
+        tools:layout="@layout/fragment_my_courses" />
+
+    <fragment
+        android:id="@+id/navigation_categoryCourse"
+        android:name="com.MadeInMyHome.activity.ui.category_product.categoryProductFrament"
+        android:label="@string/title_categoryCourse"
+        tools:layout="@layout/fragment_course_category" />
+
+
 </navigation>

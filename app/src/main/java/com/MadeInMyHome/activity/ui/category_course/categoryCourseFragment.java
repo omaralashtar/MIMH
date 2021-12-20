@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.MadeInMyHome.adapter.RecycleAdapterCategory;
-import com.MadeInMyHome.databinding.FramentCourseCategoryBinding;
-import com.MadeInMyHome.databinding.FramentProductCategoryBinding;
+import com.MadeInMyHome.databinding.FragmentCourseCategoryBinding;
 import com.MadeInMyHome.model.Category;
 
 import java.util.ArrayList;
@@ -23,15 +22,15 @@ import java.util.ArrayList;
 public class categoryCourseFragment extends Fragment {
 
     categoryCourseViewModel categoryCourseViewModel;
-    RecycleAdapterCategory CategoryProductsRecycleAdapter;
-    private FramentCourseCategoryBinding binding;
+    RecycleAdapterCategory CategoryCourseRecycleAdapter;
+    private FragmentCourseCategoryBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
         categoryCourseViewModel = ViewModelProviders.of(this).get(categoryCourseViewModel.class);
-        binding = FramentCourseCategoryBinding.inflate(inflater, container, false);
+        binding = FragmentCourseCategoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         binding.swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
@@ -57,8 +56,8 @@ public class categoryCourseFragment extends Fragment {
         categoryCourseViewModel.showCategoryProduct(getActivity()).observe(getActivity(), new Observer<ArrayList<Category>>() {
             @Override
             public void onChanged(ArrayList<Category> categories) {
-                CategoryProductsRecycleAdapter = new RecycleAdapterCategory(getActivity(), categories);
-                binding.courseProductRecycle.setAdapter(CategoryProductsRecycleAdapter);
+                CategoryCourseRecycleAdapter = new RecycleAdapterCategory(getActivity(), categories);
+                binding.courseProductRecycle.setAdapter(CategoryCourseRecycleAdapter);
             }
         });
     }
