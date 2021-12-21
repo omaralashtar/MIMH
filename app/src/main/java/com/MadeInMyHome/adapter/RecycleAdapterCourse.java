@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.component.GlideImage;
+import com.MadeInMyHome.databinding.ViewCourseBinding;
 import com.MadeInMyHome.model.Course;
+import com.MadeInMyHome.utilities.constants;
 
 import java.util.ArrayList;
 
@@ -38,15 +40,15 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
     }
 
     @Override
-    public void onBindViewHolder(viewitem holder,int position) {
+    public void onBindViewHolder(viewitem holder, int position) {
 
         holder.name.setText(items.get(position).getName());
         holder.presenter.setText(items.get(position).getPresenter());
-       // holder.category.setText(items.get(position).getCategory());
+        holder.category.setText(items.get(position).getCategory());
 
-//        if (!TextUtils.isEmpty(items.get(position).getMealimage())) {
-//            glideImage = new GlideImage(context, constants.BASE_HOST + items.get(position).getMealimage(), holder.image);
-//        }
+
+        new GlideImage(context, constants.BASE_HOST + items.get(position).getImage(), holder.image);
+
 //
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -65,15 +67,16 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-        TextView name, category,presenter;
-        ImageView icon;
+        TextView name, category, presenter;
+        ImageView image;
+        ViewCourseBinding binding;
 
         public viewitem(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.name);
-            presenter = itemView.findViewById(R.id.presenter);
-            category = itemView.findViewById(R.id.category);
-            icon = itemView.findViewById(R.id.icon);
+            name = binding.name;
+            presenter = binding.presenter;
+            category = binding.category;
+            image = binding.image;
         }
     }
 }

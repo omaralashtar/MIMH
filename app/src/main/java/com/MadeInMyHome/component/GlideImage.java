@@ -10,8 +10,8 @@ import com.bumptech.glide.request.RequestOptions;
 
 
 public class GlideImage {
-    public GlideImage(Context context , String mealimage, ImageView image){
-        Glide.with(context).load(mealimage)
+    public GlideImage(Context context , String urlimage, ImageView image){
+        Glide.with(context).load(urlimage)
                 .apply(new RequestOptions()
                         .skipMemoryCache(true)
                         .diskCacheStrategy(DiskCacheStrategy.NONE)

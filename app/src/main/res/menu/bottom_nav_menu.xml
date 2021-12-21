@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/navigation_myProduct"
-        android:icon="@drawable/circle"
+        android:icon="@drawable/ic_menu_manage"
         android:title="@string/title_myProducts" />
 
 
