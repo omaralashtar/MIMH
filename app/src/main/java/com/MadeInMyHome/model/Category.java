@@ -4,17 +4,21 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+
 public class Category implements Serializable
 {
     @SerializedName("id")
-    private String id;
+    private int id;
     @SerializedName("name")
     private String name;
     @SerializedName("image")
     private String image;
 
-    public String getId() {
+    public int getId() {
         return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

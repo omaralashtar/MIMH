@@ -1,7 +1,6 @@
 package com.MadeInMyHome.activity.productsByCategory;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,7 +22,7 @@ import com.MadeInMyHome.model.Product;
 import java.util.ArrayList;
 
 
-public class productsBycategory extends AppCompatActivity {
+public class productsBycategoryActivity extends AppCompatActivity {
     RecycleAdapterProduct recycleAdapterProduct;
     ProductByCategoryViewModel productByCategoryViewModel;
    private ActivityProductsBycategoryBinding binding;
@@ -104,7 +103,7 @@ binding.recycleProductByCategory
         productByCategoryViewModel.getDataProductByCategory(this,binding.searchFilter.getText().toString(), intentData).observe(this, new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                recycleAdapterProduct =new RecycleAdapterProduct(productsBycategory.this,products);
+                recycleAdapterProduct =new RecycleAdapterProduct(productsBycategoryActivity.this,products);
                 binding.recycleProductByCategory.setAdapter(recycleAdapterProduct);
 
 

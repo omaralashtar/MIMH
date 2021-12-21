@@ -12,11 +12,13 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.productsByCategory.productsBycategoryActivity;
 import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.databinding.ViewCategoryBinding;
 import com.MadeInMyHome.model.Category;
 import com.MadeInMyHome.utilities.constants;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 
 import java.util.ArrayList;
 
@@ -49,9 +51,10 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent i = new Intent(context, MainActivity.class);
-                /*Category category = items.get(position);
-                i.putExtra("category", category.getName());*/
+
+               Intent i = new Intent(context, productsBycategoryActivity.class);
+                Category category = items.get(holder.getAdapterPosition());
+                i.putExtra("category", category.getName());
                 context.startActivity(i);
             }
         });
@@ -65,11 +68,10 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
     class viewitem extends RecyclerView.ViewHolder {
         TextView name;
         ImageView image;
-        ViewCategoryBinding binding;
         public viewitem(View itemView) {
             super(itemView);
-            name = binding.name;
-            image = binding.image;
+            name = itemView.findViewById(R.id.name);
+            image = itemView.findViewById(R.id.image);
         }
     }
 }
