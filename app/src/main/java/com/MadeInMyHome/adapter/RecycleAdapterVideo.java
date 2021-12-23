@@ -30,12 +30,12 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
 
     class viewitem extends RecyclerView.ViewHolder {
         TextView name;
-        ImageView icon;
+        ImageView image;
 
         public viewitem(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
-            icon = itemView.findViewById(R.id.icon);
+            image = itemView.findViewById(R.id.icon);
 
         }
     }
@@ -43,7 +43,7 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
     @Override
     public viewitem onCreateViewHolder(final ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.view_category, parent, false);
+                .inflate(R.layout.view_video, parent, false);
 
         return new viewitem(itemView);
     }

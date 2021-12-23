@@ -10,7 +10,6 @@
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="٠dp"
         app:layout_constraintBottom_toTopOf="@+id/videorecycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,10 +17,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/videorecycler"
-        android:layout_width="٣٩١dp"
-        android:layout_height="٧٨٣dp"
-        android:layout_marginTop="٠dp"
-        android:layout_marginBottom="٠dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

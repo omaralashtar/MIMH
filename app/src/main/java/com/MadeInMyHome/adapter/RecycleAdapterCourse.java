@@ -69,14 +69,13 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
     class viewitem extends RecyclerView.ViewHolder {
         TextView name, category, presenter;
         ImageView image;
-        ViewCourseBinding binding;
 
         public viewitem(View itemView) {
             super(itemView);
-            name = binding.name;
-            presenter = binding.presenter;
-            category = binding.category;
-            image = binding.image;
+            name = itemView.findViewById(R.id.name);
+            presenter = itemView.findViewById(R.id.presenter);
+            category = itemView.findViewById(R.id.category);
+            image = itemView.findViewById(R.id.image);
         }
     }
 }
