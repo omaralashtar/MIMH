@@ -59,7 +59,7 @@ public class MyCourseFragment extends Fragment {
         myCourseViewModel.showMyCourse(getActivity(),id,next).observe(getActivity(), new Observer<ArrayList<Course>>() {
             @Override
             public void onChanged(ArrayList<Course> courses) {
-                courserRecycleAdapter = new RecycleAdapterCourse(getActivity(), courses);
+                courserRecycleAdapter = new RecycleAdapterCourse(getActivity(), courses,"myCourse");
                 binding.coursesRecycle.setAdapter(courserRecycleAdapter);
             }
         });

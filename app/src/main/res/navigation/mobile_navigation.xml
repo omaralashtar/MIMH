@@ -7,26 +7,26 @@
     <fragment
         android:id="@+id/navigation_products"
         android:name="com.MadeInMyHome.activity.ui.products.ProductsFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_my_product" />
+        android:label="@string/title_products"
+        tools:layout="@layout/my_product_fragment" />
 
     <fragment
         android:id="@+id/navigation_courses"
         android:name="com.MadeInMyHome.activity.ui.courses.CoursesFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_courses"
         tools:layout="@layout/fragment_courses" />
 
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.MadeInMyHome.activity.ui.favorite.FavoriteFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_favorite"
         tools:layout="@layout/fragment_favorite" />
 
     <fragment
         android:id="@+id/navigation_myProduct"
         android:name="com.MadeInMyHome.activity.ui.my_products.myProductFragment"
         android:label="@string/title_myProducts"
-        tools:layout="@layout/fragment_my_product" />
+        tools:layout="@layout/my_product_fragment" />
     <fragment
         android:id="@+id/navigation_categoryProducts"
         android:name="com.MadeInMyHome.activity.ui.category_product.categoryProductFrament"
@@ -53,13 +53,13 @@
 
     <fragment
         android:id="@+id/navigation_myCourse"
-        android:name="com.MadeInMyHome.activity.ui.my_products.myProductFragment"
+        android:name="com.MadeInMyHome.activity.ui.my_Course.MyCourseFragment"
         android:label="@string/title_myCourse"
         tools:layout="@layout/fragment_my_courses" />
 
     <fragment
         android:id="@+id/navigation_categoryCourse"
-        android:name="com.MadeInMyHome.activity.ui.category_product.categoryProductFrament"
+        android:name="com.MadeInMyHome.activity.ui.category_course.categoryCourseFragment"
         android:label="@string/title_categoryCourse"
         tools:layout="@layout/fragment_course_category" />
 

@@ -23,11 +23,11 @@
     </string-array>
 
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_products">products</string>
+    <string name="title_courses">courses</string>
+    <string name="title_favorite">favorite</string>
     <string name="title_myProducts">my products</string>
-    <string name="title_categoryProducts">category</string>
+    <string name="title_categoryProducts">category products</string>
 
     <string name="title_myCourse">my Course</string>
     <string name="title_categoryCourse">category Course</string>

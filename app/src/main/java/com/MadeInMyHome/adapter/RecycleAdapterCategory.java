@@ -8,18 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.activity.productsByCategory.productsBycategoryActivity;
-import com.MadeInMyHome.activity.ui.MainActivity;
+import com.MadeInMyHome.activity.productsByCategory.ProductByCategoryActivity;
 import com.MadeInMyHome.component.GlideImage;
-import com.MadeInMyHome.databinding.ViewCategoryBinding;
 import com.MadeInMyHome.model.Category;
 import com.MadeInMyHome.utilities.constants;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 
 import java.util.ArrayList;
 
@@ -47,17 +43,15 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
     public void onBindViewHolder(viewitem holder,  int position) {
         holder.name.setText(items.get(position).getName());
 
-        new GlideImage(context, constants.BASE_HOST + items.get(position).getImage(), holder.image);
+        new GlideImage(context, constants.BASE_HOST +constants.IMAGE_PRODUCT+ items.get(position).getImage(), holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-               Intent i = new Intent(context, productsBycategoryActivity.class);
-                //Category category = items.get(holder.getAdapterPosition());
-                //i.putExtra("idCategory", category.getId());
-
-                Toast.makeText(context.getApplicationContext(), ";;;;;;;;", Toast.LENGTH_SHORT).show();
+               Intent i = new Intent(context, ProductByCategoryActivity.class);
+                Category category = items.get(holder.getAdapterPosition());
+                i.putExtra("category", category.getName());
                 context.startActivity(i);
             }
         });
