@@ -22,7 +22,7 @@ import com.MadeInMyHome.model.Product;
 import java.util.ArrayList;
 
 
-public class productsBycategoryActivity extends AppCompatActivity {
+public class ProductByCategoryActivity extends AppCompatActivity {
     RecycleAdapterProduct recycleAdapterProduct;
     ProductByCategoryViewModel productByCategoryViewModel;
    private ActivityProductsBycategoryBinding binding;
@@ -98,12 +98,12 @@ binding.recycleProductByCategory
     public void getDataSomMeal()
     {
 
-        String intentData=String.valueOf(getIntent().getExtras().getInt("idCategory"));
+        String intentData=String.valueOf(getIntent().getExtras().getInt("id"));
         productByCategoryViewModel= ViewModelProviders.of(this).get(ProductByCategoryViewModel.class);
         productByCategoryViewModel.getDataProductByCategory(this,binding.searchFilter.getText().toString(), intentData).observe(this, new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                recycleAdapterProduct =new RecycleAdapterProduct(productsBycategoryActivity.this,products);
+                recycleAdapterProduct =new RecycleAdapterProduct(ProductByCategoryActivity.this,products);
                 binding.recycleProductByCategory.setAdapter(recycleAdapterProduct);
 
 

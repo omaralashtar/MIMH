@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class VideoViewModel extends ViewModel {
 
-    public MutableLiveData<ArrayList<Video>> showCategoryProduct(final Context context,String id) {
+    public MutableLiveData<ArrayList<Video>> getVideos(final Context context,String id) {
 
         final MutableLiveData<ArrayList<Video>> arrayListMutableLiveData = new MutableLiveData<>();
 

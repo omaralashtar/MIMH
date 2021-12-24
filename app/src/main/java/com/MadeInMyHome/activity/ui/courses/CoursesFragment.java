@@ -56,7 +56,7 @@ public class CoursesFragment extends Fragment {
         coursesViewModel.getCourses(getActivity(),String.valueOf(next)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Course>>() {
             @Override
             public void onChanged(ArrayList<Course> courses) {
-                recycleAdapterCourse =new RecycleAdapterCourse(getActivity(),courses);
+                recycleAdapterCourse =new RecycleAdapterCourse(getActivity(),courses,"course");
                 binding.coursesRecycle.setAdapter(recycleAdapterCourse);
             }
         });

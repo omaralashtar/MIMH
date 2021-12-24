@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,27 +18,21 @@ import java.util.ArrayList;
 public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVideo.viewitem> {
 
 
-//    OrderViewModel orderViewModel;
     ArrayList<Video> items;
     Context context;
+    WebView webView;
 
-    public RecycleAdapterVideo(Context c, ArrayList<Video> item/*, OrderViewModel o*/) {
+    String STARTHTML = "<html><body><iframe width='420' height='345' src=\"http://www.youtube.com/embed/";
+    String ENDHTML = "\" allowfullscreen></iframe></body></html>";
+
+
+    public RecycleAdapterVideo(Context c, ArrayList<Video> item, WebView View) {
         items = item;
         context = c;
-//        orderViewModel = o;
-    }
-
-    class viewitem extends RecyclerView.ViewHolder {
-        TextView name;
-        ImageView image;
-
-        public viewitem(View itemView) {
-            super(itemView);
-            name = itemView.findViewById(R.id.name);
-            image = itemView.findViewById(R.id.icon);
-
-        }
-    }
+        webView = View;
+        /*webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadData(STARTHTML+items.get(0).getUrl()+ENDHTML, "text/html", "utf-8");
+   */ }
 
     @Override
     public viewitem onCreateViewHolder(final ViewGroup parent, int viewType) {
@@ -49,70 +43,36 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
     }
 
     @Override
-    public void onBindViewHolder(final viewitem holder,int position) {
-//        final String name = items.get(position).getMealname();
-//        final String[] counter = {items.get(position).getCounter()};
-//        holder.name.setText(name);
-//        holder.counter.setText(counter[0]);
-//        holder.add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (Integer.parseInt(counter[0]) < 100) {
-//                    orderViewModel.updatecounter(context,
-//                            getSharedPreference(context, "email"),
-//                            name,
-//                            (Integer.parseInt(counter[0]) + 1) + "").observeForever(new Observer<Boolean>() {
-//                        @Override
-//                        public void onChanged(Boolean aBoolean) {
-//                            if (aBoolean) {
-//                                holder.counter.setText((Integer.parseInt(counter[0]) + 1) + "");
-//                                counter[0] = (Integer.parseInt(counter[0]) + 1) + "";
-//                            }
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//        holder.delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (Integer.parseInt(counter[0]) > 1) {
-//                    orderViewModel.updatecounter(context,
-//                            getSharedPreference(context, "email"),
-//                            name,
-//                            (Integer.parseInt(counter[0]) - 1) + "").observeForever(new Observer<Boolean>() {
-//                        @Override
-//                        public void onChanged(Boolean aBoolean) {
-//                            if (aBoolean) {
-//                                holder.counter.setText((Integer.parseInt(counter[0]) - 1) + "");
-//                                counter[0] = (Integer.parseInt(counter[0]) - 1) + "";
-//                            }
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//        holder.remove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                orderViewModel.deleteorder(context,
-//                        getSharedPreference(context, "email"),
-//                        name).observeForever(new Observer<Boolean>() {
-//                    @Override
-//                    public void onChanged(Boolean aBoolean) {
-//                        if (aBoolean) {
-//                            items.remove(position);
-//                            notifyItemRemoved(position);
-//                            notifyItemRangeChanged(position,items.size());
-//                        }
-//                    }
-//                });
-//            }
-//        });
+    public void onBindViewHolder(final viewitem holder, int position) {
+        String url = items.get(position).getUrl();
+        holder.name.setText(items.get(position).getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //String YouTubeVideoEmbedCode = "<html><body><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/-fEIzQ5JD84\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
+
+                //webView.loadData(STARTHTML+url+ENDHTML, "text/html", "utf-8");
+
+                /*webView.loadDataWithBaseURL("", html,
+                        mimeType, encoding, "");
+                webView.loadUrl("javascript:(function() { document.getElementsByTagName('video')[0].play(); })()");*/
+
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    class viewitem extends RecyclerView.ViewHolder {
+        TextView name;
+
+        public viewitem(View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.name);
+        }
     }
 }

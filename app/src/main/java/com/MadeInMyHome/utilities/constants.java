@@ -10,6 +10,12 @@ public class constants {
     public static final String FAVORITE = "favorite/";
     public static final String RATE = "rate/";
 
+    public static final String IMAGE_USER = " images_user/";
+    public static final String IMAGE_COURSE = " image_course/";
+    public static final String IMAGE_PRODUCT = " image_product/";
+
+
+
     public static final String ADD = "Add.php";
 
     public static final String DELETE = "Delete.php";
