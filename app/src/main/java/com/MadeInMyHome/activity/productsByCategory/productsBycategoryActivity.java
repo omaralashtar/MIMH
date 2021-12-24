@@ -2,12 +2,6 @@ package com.MadeInMyHome.activity.productsByCategory;
 
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -25,94 +19,34 @@ import java.util.ArrayList;
 public class productsBycategoryActivity extends AppCompatActivity {
     RecycleAdapterProduct recycleAdapterProduct;
     ProductByCategoryViewModel productByCategoryViewModel;
-   private ActivityProductsBycategoryBinding binding;
-
-
+    private ActivityProductsBycategoryBinding binding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_bycategory);
+        productByCategoryViewModel = ViewModelProviders.of(this).get(ProductByCategoryViewModel.class);
 
-binding.recycleProductByCategory
-        .setLayoutManager(new
-                LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        getDataSomMeal();
-
-        binding.imgBtnRPWC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getDataSomMeal();
-
-            }
-        });
-
-        binding.searchFilter.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                getDataSomMeal();
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start,
-                                          int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start,
-                                      int before, int count) {
-
-            }
-        });
+        //binding.recycleProductByCategory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
 
-        binding.searchFilter.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-
-
-                    getDataSomMeal();
-
-
-                    return true;
-                }
-
-
-
-                return false;
-
-
-            }
-        });
-
-
-
-
+        //setAdapter();
     }
 
 
-    public void getDataSomMeal()
-    {
 
-        String intentData=String.valueOf(getIntent().getExtras().getInt("idCategory"));
-        productByCategoryViewModel= ViewModelProviders.of(this).get(ProductByCategoryViewModel.class);
-        productByCategoryViewModel.getDataProductByCategory(this,binding.searchFilter.getText().toString(), intentData).observe(this, new Observer<ArrayList<Product>>() {
+
+    public void setAdapter(){
+        int intentData = getIntent().getExtras().getInt("idCategory");
+
+        productByCategoryViewModel.getDataProductByCategory(this,intentData).observe(this, new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                recycleAdapterProduct =new RecycleAdapterProduct(productsBycategoryActivity.this,products);
+                recycleAdapterProduct = new RecycleAdapterProduct(productsBycategoryActivity.this, products);
                 binding.recycleProductByCategory.setAdapter(recycleAdapterProduct);
-
-
 
             }
         });
-
-
     }
-
-
 }

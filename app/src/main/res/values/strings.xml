@@ -35,22 +35,28 @@
     <string name="profile">profile</string>
 
     <string name="title_categoryByProducts">ProductBycategory</string>
-    >>>>>>> Stashed changes
 
     //test mohammad introduction
+
     <string name="next">NEXT</string>
-    <string name="finish">FINISH</string>
     <string name="skip">SKIP</string>
-    <string name="walking">Walking</string>
-    <string name="walking_desc">Go for a walk after meal for better digestion</string>
-    <string name="cycling">Cycling</string>
-    <string name="cycling_desc">if you can\'t run, can\'t walk, then atleat rotate your legs</string>
-    <string name="fit">Become FIT</string>
-    <string name="fit_desc">Do either of the earlier and get a body like this</string>
-    <string name="swimming">Swimming</string>
-    <string name="swimming_desc">Explore the world under water with swimming</string>
-    <string name="running">Running</string>
-    <string name="running_desc">Daily running keeps body in shape and inrease stamina</string>
+    <string name="finish">GOT IT</string>
+
+    <string name="slide_1_title">أختر منتجك بنفسك!</string>
+    <string name="slide_1_desc">أسهل طريقة لطلب المنتج من متجرك المفضل!</string>
+
+    <string name="slide_2_title">أضف منتجك !</string>
+    <string name="slide_2_desc">قم بإضافة منتجك الآن كما تريد!</string>
+
+    <string name="slide_3_title"> الخصم المميز ! </string>
+    <string name="slide_3_desc">أضف خصما مميزا إلى منتجك لكي يسهل ترويجه !</string>
+
+    <string name="slide_4_title">تعلمي بنفسك</string>
+    <string name="slide_4_desc">تعلمي بنفسك وأصنعي المنتج الذي تحلمي به!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_drawer">drawerActivity</string>

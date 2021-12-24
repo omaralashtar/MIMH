@@ -1,61 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.productsByCategory.productsBycategoryActivity">
 
-    <SearchView
-        android:id="@+id/search_product"
-        android:layout_width="263dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="116dp"
-        android:background="#D50000"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleProductByCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.574"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/searchFilter"
-            android:layout_width="326dp"
-            android:layout_height="match_parent"
-            android:background="#A988FF00"
-            android:ems="10"
-            android:imeOptions="actionSearch"
-            android:inputType="textPersonName" />
-
-        <ImageButton
-            android:id="@+id/imgBtnRPWC"
-            android:layout_width="83dp"
-            android:layout_height="match_parent"
-            android:background="#8F5050"
-            android:src="@android:drawable/ic_menu_search" />
-    </LinearLayout>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleProductByCategory"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#C7D8D6"
+        android:layout_height="19dp"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

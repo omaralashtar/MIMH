@@ -65,14 +65,14 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
             mDots[i] = new TextView(this);
             mDots[i].setText(Html.fromHtml("•"));// Html code for bullet
             mDots[i].setTextSize(35);
-            mDots[i].setTextColor(getResources().getColor(R.color.dot_inactive_color));
+            mDots[i].setTextColor(getResources().getColor(R.color.dot_light_screen1));
 
             dotsLayout.addView(mDots[i]);
         }
 
         if (mDots.length > 0) {
             // change color of the current selected dot
-            mDots[position].setTextColor(getResources().getColor(R.color.dot_active_color));
+            mDots[position].setTextColor(getResources().getColor(R.color.dot_dark_screen1));
         }
     }
 

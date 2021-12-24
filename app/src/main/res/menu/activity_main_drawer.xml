@@ -6,7 +6,6 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/navigation_myCourse"
-            android:icon="@drawable/ic_menu_camera"
             android:title="@string/title_myCourse" />
         <item
             android:id="@+id/navigation_categoryCourse"

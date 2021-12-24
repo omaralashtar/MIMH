@@ -96,7 +96,7 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_Product_By_CATEGORY)
-    Call<ProductArrayListResponse> getProductByCategory(@Field("id") String id);
+    Call<ProductArrayListResponse> getProductByCategory(@Field("id") int id);
 
 
     @FormUrlEncoded

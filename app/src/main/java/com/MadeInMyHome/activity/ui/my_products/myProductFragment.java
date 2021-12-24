@@ -14,14 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.MadeInMyHome.adapter.RecycleAdapterProduct;
-import com.MadeInMyHome.databinding.MyProductFragmentBinding;
+import com.MadeInMyHome.databinding.FragmentMyProductBinding;
 import com.MadeInMyHome.model.Product;
 
 import java.util.ArrayList;
 
 public class myProductFragment extends Fragment {
 
-    private MyProductFragmentBinding binding;
+    private FragmentMyProductBinding binding;
     MyProductViewModel myProductViewModel;
     RecycleAdapterProduct myProductsAdapter;
     final int id = 1;
@@ -37,7 +37,7 @@ public class myProductFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         myProductViewModel = ViewModelProviders.of(this).get(MyProductViewModel.class);
-        binding = MyProductFragmentBinding.inflate(inflater, container, false);
+        binding = FragmentMyProductBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         binding.swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,

@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 public class ProductByCategoryViewModel extends ViewModel {
 
-    public MutableLiveData<ArrayList<Product>> getDataProductByCategory(final Context context, String name, String id) {
+    public MutableLiveData<ArrayList<Product>> getDataProductByCategory(final Context context, int id) {
 
         final MutableLiveData<ArrayList<Product>> arrayListMutableLiveData = new MutableLiveData<>();
 

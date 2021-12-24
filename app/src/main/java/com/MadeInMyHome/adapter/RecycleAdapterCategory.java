@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,8 +54,10 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
             public void onClick(View v) {
 
                Intent i = new Intent(context, productsBycategoryActivity.class);
-                Category category = items.get(holder.getAdapterPosition());
-                i.putExtra("category", category.getName());
+                //Category category = items.get(holder.getAdapterPosition());
+                //i.putExtra("idCategory", category.getId());
+
+                Toast.makeText(context.getApplicationContext(), ";;;;;;;;", Toast.LENGTH_SHORT).show();
                 context.startActivity(i);
             }
         });

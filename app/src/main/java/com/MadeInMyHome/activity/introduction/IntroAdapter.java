@@ -25,7 +25,7 @@ public class IntroAdapter extends PagerAdapter {
             R.layout.screen_tow,
             R.layout.screen_three,
             R.layout.screen_four,
-            R.layout.screen_five
+
     };
 
 
