@@ -8,7 +8,7 @@
         android:id="@+id/navigation_products"
         android:name="com.MadeInMyHome.activity.ui.products.ProductsFragment"
         android:label="@string/title_products"
-        tools:layout="@layout/my_product_fragment" />
+        tools:layout="@layout/fragment_my_product" />
 
     <fragment
         android:id="@+id/navigation_courses"
@@ -22,11 +22,7 @@
         android:label="@string/title_favorite"
         tools:layout="@layout/fragment_favorite" />
 
-    <fragment
-        android:id="@+id/navigation_myProduct"
-        android:name="com.MadeInMyHome.activity.ui.my_products.myProductFragment"
-        android:label="@string/title_myProducts"
-        tools:layout="@layout/my_product_fragment" />
+
     <fragment
         android:id="@+id/navigation_categoryProducts"
         android:name="com.MadeInMyHome.activity.ui.category_product.categoryProductFrament"

@@ -91,6 +91,16 @@
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
+    <Button
+        android:id="@+id/login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        app:backgroundTint="@color/colorPrimaryEditor"
+        app:cornerRadius="@dimen/boxCornerRadius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/visitWelcome"
@@ -105,7 +115,8 @@
         android:text="Log in as a visitor"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:cornerRadius="@dimen/boxCornerRadius" />
 
 
 </RelativeLayout>

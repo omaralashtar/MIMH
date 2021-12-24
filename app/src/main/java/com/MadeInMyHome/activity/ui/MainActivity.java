@@ -23,23 +23,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-       setContentView(binding.getRoot());
+        setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         binding.toolbarTitle.setText(getString(R.string.app_name));
 
         binding.drawerLayout.addDrawerListener(
-                new ActionBarDrawerToggle(this,binding.drawerLayout,binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close));
-
+                new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close));
+//nav
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_products, R.id.navigation_courses, R.id.navigation_favorite, R.id.navigation_myProduct, R.id.navigation_categoryProducts).build();
-       NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        ).build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         drawerAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_myCourse, R.id.navigation_categoryCourse, R.id.nav_slideshow)
+                R.id.navigation_myCourse,
+                R.id.navigation_categoryCourse,
+                R.id.nav_slideshow,
+                R.id.navigation_products,
+                R.id.navigation_courses,
+                R.id.navigation_favorite,
+                R.id.navigation_myProduct,
+                R.id.navigation_categoryProducts)
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
         NavController navControllerDrawer = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
