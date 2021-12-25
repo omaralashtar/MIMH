@@ -23,6 +23,8 @@ public class LoginSignUpActivity extends AppCompatActivity {
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
 
+        //viewPager.setCurrentItem(0);
+
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
     }
