@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.LoginSignUp;
+package com.MadeInMyHome.activity.user;
 
 import android.os.Bundle;
 

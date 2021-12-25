@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.adapter.RecycleAdapterProduct;
+import com.MadeInMyHome.databinding.ActivityLoginSignUpBinding;
 import com.MadeInMyHome.databinding.ActivityProductsBycategoryBinding;
 import com.MadeInMyHome.model.Product;
 
@@ -33,7 +34,9 @@ public class ProductByCategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products_bycategory);
+        binding = ActivityProductsBycategoryBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
 
 binding.recycleProductByCategory
         .setLayoutManager(new
@@ -49,12 +52,16 @@ binding.recycleProductByCategory
 
 
     }
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 
     public void getDataSomMeal()
     {
 
-        int intentData=getIntent().getExtras().getInt("idCategory");
+        int intentData=getIntent().getExtras().getInt("category");
         productByCategoryViewModel= ViewModelProviders.of(this).get(ProductByCategoryViewModel.class);
         productByCategoryViewModel.getDataProductByCategory(this, intentData).observe(this, new Observer<ArrayList<Product>>() {
             @Override

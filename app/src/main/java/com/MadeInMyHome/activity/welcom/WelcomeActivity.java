@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.activity.LoginSignUp.LoginSignUpActivity;
+import com.MadeInMyHome.activity.user.LoginSignUpActivity;
 import com.MadeInMyHome.activity.ui.MainActivity;
 
 public class WelcomeActivity extends AppCompatActivity {

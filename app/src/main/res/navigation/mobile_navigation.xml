@@ -59,5 +59,9 @@
         android:label="@string/title_categoryCourse"
         tools:layout="@layout/fragment_course_category" />
 
-
+    <fragment
+        android:id="@+id/navigation_myProduct"
+        android:name="com.MadeInMyHome.activity.ui.category_course.categoryCourseFragment"
+        android:label="@string/title_categoryCourse"
+        tools:layout="@layout/fragment_my_product" />
 </navigation>
