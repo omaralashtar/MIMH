@@ -86,6 +86,10 @@ public interface AppApi {
     Call<ProductArrayListResponse> getMyProduct(@Field("id") String id);
 
     @FormUrlEncoded
+    @POST(constants.PRODUCT + constants.GET)
+    Call<ProductArrayListResponse> getProduct(@Field("id") String id);
+
+    @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_ALL)
     Call<ProductArrayListResponse> getAllProduct(@Field("next") String next);
 

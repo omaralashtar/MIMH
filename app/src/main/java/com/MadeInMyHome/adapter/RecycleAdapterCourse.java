@@ -26,9 +26,6 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
     ArrayList<Course> items;
     Context context;
     String course;
-    Intent i;
-    String id;
-    GlideImage glideImage;
 
     public RecycleAdapterCourse(Context c, ArrayList<Course> item, String typeCourse) {
         items = item;
@@ -46,17 +43,17 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
 
     @Override
     public void onBindViewHolder(viewitem holder, int position) {
-        id = items.get(position).getId();
         holder.name.setText(items.get(position).getName());
         holder.presenter.setText(items.get(position).getPresenter());
         holder.category.setText(items.get(position).getCategory());
 
-
-        new GlideImage(context, constants.BASE_HOST + items.get(position).getImage(), holder.image);
+        //new GlideImage(context, constants.BASE_HOST + items.get(position).getImage(), holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i;
+                String id = items.get(holder.getAdapterPosition()).getId();
                 if (course.equals("myCourse")) {
                     i = new Intent(context, VideoActivity.class);
                 } else {

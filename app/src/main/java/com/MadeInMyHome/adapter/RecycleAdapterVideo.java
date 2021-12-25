@@ -22,17 +22,17 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
     Context context;
     WebView webView;
 
-    String STARTHTML = "<html><body><iframe width='420' height='345' src=\"http://www.youtube.com/embed/";
-    String ENDHTML = "\" allowfullscreen></iframe></body></html>";
+    String STARTHTML = "<html><body style=\"margin:0px;\"><iframe width='100%' height='100%' src=\"http://www.youtube.com/embed/";
+    String ENDHTML = "\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></body></html>";
 
 
     public RecycleAdapterVideo(Context c, ArrayList<Video> item, WebView View) {
         items = item;
         context = c;
         webView = View;
-        /*webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.loadData(STARTHTML+items.get(0).getUrl()+ENDHTML, "text/html", "utf-8");
-   */ }
+    }
 
     @Override
     public viewitem onCreateViewHolder(final ViewGroup parent, int viewType) {
@@ -49,15 +49,7 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //String YouTubeVideoEmbedCode = "<html><body><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/-fEIzQ5JD84\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
-
-                //webView.loadData(STARTHTML+url+ENDHTML, "text/html", "utf-8");
-
-                /*webView.loadDataWithBaseURL("", html,
-                        mimeType, encoding, "");
-                webView.loadUrl("javascript:(function() { document.getElementsByTagName('video')[0].play(); })()");*/
-
+                webView.loadData(STARTHTML+url+ENDHTML, "text/html", "utf-8");
             }
         });
     }
