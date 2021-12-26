@@ -2,12 +2,6 @@ package com.MadeInMyHome.activity.productsByCategory;
 
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -23,11 +17,10 @@ import java.util.ArrayList;
 
 
 public class ProductByCategoryActivity extends AppCompatActivity {
+
     RecycleAdapterProduct recycleAdapterProduct;
     ProductByCategoryViewModel productByCategoryViewModel;
-   private ActivityProductsBycategoryBinding binding;
-
-
+    private ActivityProductsBycategoryBinding binding;
 
 
     @Override
@@ -35,40 +28,20 @@ public class ProductByCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_bycategory);
 
-binding.recycleProductByCategory
-        .setLayoutManager(new
-                LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        productByCategoryViewModel = ViewModelProviders.of(this).get(ProductByCategoryViewModel.class);
+
+        binding.recycleProductByCategory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
         getDataSomMeal();
-
-
-
-
-
-
-
-
-
     }
 
-
-    public void getDataSomMeal()
-    {
-
-        int intentData=getIntent().getExtras().getInt("idCategory");
-        productByCategoryViewModel= ViewModelProviders.of(this).get(ProductByCategoryViewModel.class);
-        productByCategoryViewModel.getDataProductByCategory(this, intentData).observe(this, new Observer<ArrayList<Product>>() {
+    public void getDataSomMeal() {
+        productByCategoryViewModel.getDataProductByCategory(this, getIntent().getExtras().getString("id")).observe(this, new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                recycleAdapterProduct =new RecycleAdapterProduct(ProductByCategoryActivity.this,products);
+                recycleAdapterProduct = new RecycleAdapterProduct(ProductByCategoryActivity.this, products);
                 binding.recycleProductByCategory.setAdapter(recycleAdapterProduct);
-
-
-
             }
         });
-
-
     }
-
-
 }

@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.MadeInMyHome.Response.CategoryArrayListResponse;
-import com.MadeInMyHome.Response.ProductArrayListResponse;
 import com.MadeInMyHome.WebService.RestClient;
 import com.MadeInMyHome.model.Category;
 import com.MadeInMyHome.model.Product;

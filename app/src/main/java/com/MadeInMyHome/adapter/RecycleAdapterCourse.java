@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.productsByCategory.ProductByCategoryActivity;
+import com.MadeInMyHome.activity.show_course.CourseActivity;
 import com.MadeInMyHome.activity.video.VideoActivity;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.model.Course;
@@ -57,7 +58,7 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
                 if (course.equals("myCourse")) {
                     i = new Intent(context, VideoActivity.class);
                 } else {
-                    i = new Intent(context, ProductByCategoryActivity.class);
+                    i = new Intent(context, CourseActivity.class);
                 }
                 i.putExtra("id", id);
                 context.startActivity(i);
