@@ -1,6 +1,7 @@
 package com.MadeInMyHome.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.productsByCategory.ProductByCategoryActivity;
+import com.MadeInMyHome.activity.show_product.ProductActivity;
+import com.MadeInMyHome.activity.video.VideoActivity;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.model.Product;
 import com.MadeInMyHome.utilities.constants;
@@ -56,7 +60,10 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String id = items.get(holder.getAdapterPosition()).getId();
+                Intent i = new Intent(context, ProductActivity.class);
+                i.putExtra("id", id);
+                context.startActivity(i);
             }
         });
     }

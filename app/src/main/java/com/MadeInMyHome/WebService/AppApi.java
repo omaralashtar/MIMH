@@ -82,7 +82,7 @@ public interface AppApi {
                                     @Field("images") ArrayList<String> images);
 
     @FormUrlEncoded
-    @POST(constants.PRODUCT + constants.GETMyProduct)
+    @POST(constants.PRODUCT + constants.GET_MY_PRODUCT)
     Call<ProductArrayListResponse> getMyProduct(@Field("id") String id);
 
     @FormUrlEncoded
@@ -99,8 +99,8 @@ public interface AppApi {
 
 
     @FormUrlEncoded
-    @POST(constants.PRODUCT + constants.GET_Product_By_CATEGORY)
-    Call<ProductArrayListResponse> getProductByCategory(@Field("id") int id);
+    @POST(constants.PRODUCT + constants.GET_PRODUCT_BY_CATEGORY)
+    Call<ProductArrayListResponse> getProductByCategory(@Field("id") String id);
 
 
     @FormUrlEncoded
