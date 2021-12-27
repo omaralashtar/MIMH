@@ -6,8 +6,8 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.MadeInMyHome.activity.LoginSignUp.LoginSignUpActivity;
 import com.MadeInMyHome.activity.ui.MainActivity;
+import com.MadeInMyHome.activity.user.LoginSignUpActivity;
 import com.MadeInMyHome.databinding.ActivityWelcomBinding;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -47,5 +47,4 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
     }
-
 }
