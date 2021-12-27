@@ -1,62 +1,51 @@
 package com.MadeInMyHome.activity.welcom;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.MadeInMyHome.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.MadeInMyHome.activity.LoginSignUp.LoginSignUpActivity;
 import com.MadeInMyHome.activity.ui.MainActivity;
+import com.MadeInMyHome.databinding.ActivityWelcomBinding;
 
 public class WelcomeActivity extends AppCompatActivity {
 
-    Button loginWelcome,signupWelcome,visitWelcome;
-//ActivityWelcomBinding binding;
+    ActivityWelcomBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcom);
 
-        loginWelcome=findViewById(R.id.loginWelcome);
-        signupWelcome=findViewById(R.id.signupWelcome);
-        visitWelcome=findViewById(R.id.visitWelcome);
+        binding=ActivityWelcomBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
 
-visitWelcome.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-
-        Toast.makeText(WelcomeActivity.this, "jjjjjjjjjj", Toast.LENGTH_SHORT).show();
-        Intent i=new Intent(WelcomeActivity.this, MainActivity.class);
-
-        startActivity(i);
-        Toast.makeText(WelcomeActivity.this, "jkkpkkiip", Toast.LENGTH_SHORT).show();
-
-
-
-    }
-});
-
-
-      loginWelcome.setOnClickListener(new View.OnClickListener() {
+        binding.visitWelcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent i=new Intent(WelcomeActivity.this, LoginSignUpActivity.class);
-
+                Intent i = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(i);
-
             }
         });
 
-
-
-
-
+        binding.loginWelcome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(WelcomeActivity.this, LoginSignUpActivity.class);
+                i.putExtra("name","login");
+                startActivity(i);
+            }
+        });
+        binding.signupWelcome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(WelcomeActivity.this, LoginSignUpActivity.class);
+                i.putExtra("name","signup");
+                startActivity(i);
+            }
+        });
     }
+
 }

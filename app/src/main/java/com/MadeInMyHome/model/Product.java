@@ -37,9 +37,6 @@ public class Product implements Serializable {
     @SerializedName("status")
     private boolean status;
 
-    @SerializedName("deleted_at")
-    private boolean deleted_at;
-
     @SerializedName("product_date")
     private String product_date;
 

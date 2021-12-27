@@ -17,7 +17,7 @@ import com.MadeInMyHome.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{ R.string.sign_up,R.string.login};
+    private static final int[] TAB_TITLES = new int[]{ R.string.login,R.string.sign_up};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -27,7 +27,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position ==1){
+        if (position ==0){
             return new LoginFragment();
         }else {
             return new SignUpFragment();

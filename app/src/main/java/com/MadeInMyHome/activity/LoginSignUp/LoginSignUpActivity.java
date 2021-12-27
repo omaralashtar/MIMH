@@ -2,10 +2,11 @@ package com.MadeInMyHome.activity.LoginSignUp;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.MadeInMyHome.databinding.ActivityLoginSignUpBinding;
 import com.google.android.material.tabs.TabLayout;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginSignUpActivity extends AppCompatActivity {
 
@@ -23,6 +24,11 @@ public class LoginSignUpActivity extends AppCompatActivity {
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
 
+        if (getIntent().getExtras().getString("name").equals("login")) {
+            viewPager.setCurrentItem(0);
+        } else {
+            viewPager.setCurrentItem(1);
+        }
         //viewPager.setCurrentItem(0);
 
         TabLayout tabs = binding.tabs;
