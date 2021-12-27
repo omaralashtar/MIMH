@@ -3,6 +3,7 @@ package com.MadeInMyHome.WebService;
 
 import com.MadeInMyHome.Response.CategoryArrayListResponse;
 import com.MadeInMyHome.Response.CourseArrayListResponse;
+import com.MadeInMyHome.Response.ImageArrayListResponse;
 import com.MadeInMyHome.Response.ProductArrayListResponse;
 import com.MadeInMyHome.Response.RateArrayListResponse;
 import com.MadeInMyHome.Response.ResultResponse;
@@ -105,7 +106,7 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_MULTI_IMAGE)
-    Call<CategoryArrayListResponse> getMultiImagesProduct(@Field("id") String id);
+    Call<ImageArrayListResponse> getMultiImagesProduct(@Field("id") String id);
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.UPDATE)

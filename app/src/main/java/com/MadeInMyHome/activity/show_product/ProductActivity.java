@@ -12,8 +12,11 @@ import com.MadeInMyHome.activity.show_course.CourseViewModel;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.databinding.ActivityProductBinding;
 import com.MadeInMyHome.model.Course;
+import com.MadeInMyHome.model.Images;
 import com.MadeInMyHome.model.Product;
 import com.MadeInMyHome.utilities.constants;
+
+import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -42,5 +45,11 @@ public class ProductActivity extends AppCompatActivity {
                     }
                 });
 
+        productViewModel.getProductMultiImage(this,getIntent().getExtras().getString("id")).observe(this, new Observer<ArrayList<Images>>() {
+            @Override
+            public void onChanged(ArrayList<Images> images) {
+
+            }
+        });
     }
 }
