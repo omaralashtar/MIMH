@@ -11,6 +11,7 @@ import android.os.Handler;
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.introduction.IntroductionActivity;
 import com.MadeInMyHome.activity.ui.MainActivity;
+import com.MadeInMyHome.activity.user.LoginSignUpActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -22,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashActivity.this, IntroductionActivity.class);
+                Intent i = new Intent(SplashActivity.this, LoginSignUpActivity.class);
                 startActivity(i);
                 finish();
             }

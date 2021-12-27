@@ -9,7 +9,7 @@
     android:layout_marginTop="@dimen/margin"
     android:layout_marginEnd="@dimen/margin"
     android:orientation="horizontal"
-    tools:context=".activity.LoginSignUp.SignUpFragment">
+    tools:context=".activity.user.register.SignUpFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

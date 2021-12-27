@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.LoginSignUp;
+package com.MadeInMyHome.activity.user.register;
 
 import static com.MadeInMyHome.utilities.General.addToSharedPreference;
 

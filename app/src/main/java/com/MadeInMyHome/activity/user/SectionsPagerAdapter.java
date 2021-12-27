@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.LoginSignUp;
+package com.MadeInMyHome.activity.user;
 
 import android.content.Context;
 
@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.user.login.LoginFragment;
+import com.MadeInMyHome.activity.user.register.SignUpFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

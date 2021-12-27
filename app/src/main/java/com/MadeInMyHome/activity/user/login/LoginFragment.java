@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.LoginSignUp;
+package com.MadeInMyHome.activity.user.login;
 
 import static com.MadeInMyHome.utilities.General.addToSharedPreference;
 
@@ -46,4 +46,10 @@ public class LoginFragment extends Fragment {
 
         return root;
     }
+
+
+
+
+
+
 }
