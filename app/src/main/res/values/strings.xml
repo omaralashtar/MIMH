@@ -22,6 +22,14 @@
         <item>077</item>
     </string-array>
 
+    <string-array name="unitList">
+        <item>قطعة</item>
+        <item>غرام</item>
+        <item>كيلو غرام</item>
+        <item>متر</item>
+        <item>سانتيمتر</item>
+    </string-array>
+
     <string name="title_activity_main">MainActivity</string>
     <string name="title_products">products</string>
     <string name="title_courses">courses</string>
