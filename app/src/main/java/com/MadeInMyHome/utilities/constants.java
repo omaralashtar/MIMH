@@ -24,6 +24,7 @@ public class constants {
     public static final String GET_MY_PRODUCT = "GetMy.php";
     public static final String GET_ALL = "GetAll.php";
     public static final String GET_CATEGORY = "GetCategory.php";
+    public static final String GET_CATEGORY_ID = "GetCategoryIdByName.php";
     public static final String GET_PRODUCT_BY_CATEGORY = "GetCategoryWith.php";
     public static final String GET_MULTI_IMAGE = "GetMultiImages.php";
 

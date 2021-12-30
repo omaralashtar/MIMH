@@ -1,6 +1,8 @@
 package com.MadeInMyHome.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.model.Images;
 import com.MadeInMyHome.model.Video;
 
 import java.util.ArrayList;
@@ -20,11 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecycleAdapterImages extends RecyclerView.Adapter<RecycleAdapterImages.viewitem> {
 
 
-    ArrayList<Images> items;
+    ArrayList<Bitmap> items;
     Context context;
 
 
-    public RecycleAdapterImages(Context c, ArrayList<Images> item, WebView View) {
+    public RecycleAdapterImages(Context c, ArrayList<Bitmap> item) {
         items = item;
         context = c;
     }
@@ -39,6 +40,7 @@ public class RecycleAdapterImages extends RecyclerView.Adapter<RecycleAdapterIma
 
     @Override
     public void onBindViewHolder(final viewitem holder, int position) {
+        holder.image.setImageBitmap(items.get(position));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

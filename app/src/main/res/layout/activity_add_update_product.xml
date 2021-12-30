@@ -33,7 +33,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/first_name"
+            android:hint="@string/name"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +54,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/first_name"
+            android:hint="@string/price"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +63,6 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/betweenTowInput"
         app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
         app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
         app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
@@ -75,19 +74,20 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/first_name"
+            android:hint="@string/size"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/unit"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
         app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
         app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
         app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/size"
         app:layout_constraintTop_toBottomOf="@id/price">
@@ -96,18 +96,37 @@
             android:id="@+id/unit_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/gender"
+            android:hint="@string/unit"
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/multiImageRecyclerView"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/image"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/image" />
+    <FrameLayout
+        android:id="@+id/multiImageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image">
 
+        <ImageView
+            android:id="@+id/multiImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image"
+            android:visibility="visible"
+            android:src="@drawable/ic_menu_gallery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/multiImageRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image" />
+    </FrameLayout>
     <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/description"
     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -120,12 +139,12 @@
     app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/multiImageRecyclerView">
+    app:layout_constraintTop_toBottomOf="@id/multiImageLayout">
 
         <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/first_name"
+        android:hint="@string/description"
         android:inputType="text"
         android:singleLine="false" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -148,7 +167,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/first_name"
+            android:hint="@string/discount"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -168,7 +187,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/last_name"
+            android:hint="@string/discount_date"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -190,7 +209,7 @@
             android:id="@+id/category_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/gender"
+            android:hint="@string/category"
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -200,7 +219,7 @@
         android:layout_height="wrap_content"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="Button"
+        android:text="@string/add"
         app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

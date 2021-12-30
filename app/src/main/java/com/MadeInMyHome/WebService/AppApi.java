@@ -99,6 +99,9 @@ public interface AppApi {
     @POST(constants.PRODUCT + constants.GET_CATEGORY)
     Call<CategoryArrayListResponse> getCategoryProduct(@Field("filter") String filter);
 
+    @FormUrlEncoded
+    @POST(constants.PRODUCT + constants.GET_CATEGORY)
+    Call<CategoryArrayListResponse> getCategoryIdByName(@Field("name") String name);
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_PRODUCT_BY_CATEGORY)
