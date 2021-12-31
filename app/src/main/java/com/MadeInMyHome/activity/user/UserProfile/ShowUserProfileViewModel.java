@@ -95,15 +95,15 @@ public class ShowUserProfileViewModel extends ViewModel {
                                               String id, String image) {
         final MutableLiveData<String> userMutableLiveData = new MutableLiveData<>();
 
-        Call<ResultImageResponse> call = RestClient.getService().updateUserImage(id, image);
+        Call<ResultResponse> call = RestClient.getService().updateUserImage(id, image);
 
-        call.enqueue(new Callback<ResultImageResponse>() {
+        call.enqueue(new Callback<ResultResponse>() {
             @Override
-            public void onResponse(Call<ResultImageResponse> call, Response<ResultImageResponse> response) {
-                ResultImageResponse data = response.body();
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                ResultResponse data = response.body();
                 if (data != null) {
                     if (data.getResult().equals("1")) {
-                        String id = data.getResult();
+                       // String id = data.getResult();
                         userMutableLiveData.setValue(id);
 
                     } else {
@@ -113,7 +113,7 @@ public class ShowUserProfileViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<ResultImageResponse> call, Throwable t) {
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

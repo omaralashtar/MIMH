@@ -10,7 +10,6 @@
     <string name="phone">Phone</string>
     <string name="gender">Gender</string>
     <string name="date">Date</string>
-    <string name="description">Description</string>
     <string name="location">Location</string>
 
     <string name="name">Name</string>
@@ -60,11 +59,9 @@
     <string name="title_categoryByProducts">ProductBycategory</string>
 
     //test mohammad introduction
-
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="finish">GOT IT</string>
-
     <string name="slide_1_title">أختر منتجك بنفسك!</string>
     <string name="slide_1_desc">أسهل طريقة لطلب المنتج من متجرك المفضل!</string>
 
