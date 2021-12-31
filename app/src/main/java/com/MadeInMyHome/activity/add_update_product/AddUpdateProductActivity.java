@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.ui.category_product.CategoryProductViewModel;
@@ -51,7 +52,7 @@ public class AddUpdateProductActivity extends AppCompatActivity {
             public void onChanged(ArrayList<Category> categories) {
 
                 categoryArrayAdapter =
-                        new ArrayAdapterCategory(AddUpdateProductActivity.this, categories);
+                        new ArrayAdapterCategory(AddUpdateProductActivity.this,R.layout.dropdown_menu_popup_item, categories);
 
                 binding.categoryDropdown.setAdapter(categoryArrayAdapter);
             }
@@ -67,9 +68,11 @@ public class AddUpdateProductActivity extends AppCompatActivity {
         binding.multiImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new PickImage(AddUpdateProductActivity.this, binding.multiImage);
-                bitmapArrayList.add(((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap());
-
+                PickImage pickImage=new PickImage(AddUpdateProductActivity.this, binding.multiImage);
+                if(pickImage.end) {
+                    bitmapArrayList.add(((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap());
+                    Toast.makeText(AddUpdateProductActivity.this, bitmapArrayList.get(0)+"", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

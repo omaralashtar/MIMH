@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,8 +22,8 @@ public class ArrayAdapterCategory extends ArrayAdapter<Category> {
     ArrayList<Category> categories;
     Context context;
 
-    public ArrayAdapterCategory(Context context, ArrayList<Category> categories) {
-        super(context, 0, categories);
+    public ArrayAdapterCategory(Context context,int res, ArrayList<Category> categories) {
+        super(context, res, categories);
         this.categories = categories;
         this.context = context;
     }
@@ -30,16 +31,11 @@ public class ArrayAdapterCategory extends ArrayAdapter<Category> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = convertView;
-        if (view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.dropdown_menu_popup_item, parent, false);
-        }
-        TextView name = view.findViewById(R.id.text);
-        name.setText(categories.get(position).getName());
+        ((TextView)super.getView(position, convertView, parent)).setText(categories.get(position).getName());
         return super.getView(position, convertView, parent);
     }
 
-    public String getId(String item) {
+    public String getIdView(String item) {
         for (Category category : categories) {
             if (category.getName().equals(item))
                 return category.getId();
