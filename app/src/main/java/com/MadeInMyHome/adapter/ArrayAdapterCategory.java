@@ -22,8 +22,8 @@ public class ArrayAdapterCategory extends ArrayAdapter<Category> {
     ArrayList<Category> categories;
     Context context;
 
-    public ArrayAdapterCategory(Context context,int res, ArrayList<Category> categories) {
-        super(context, res, categories);
+    public ArrayAdapterCategory(Context context, ArrayList<Category> categories) {
+        super(context, 0, categories);
         this.categories = categories;
         this.context = context;
     }
@@ -31,9 +31,18 @@ public class ArrayAdapterCategory extends ArrayAdapter<Category> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        ((TextView)super.getView(position, convertView, parent)).setText(categories.get(position).getName());
-        return super.getView(position, convertView, parent);
+        View currentItemView = convertView;
+
+        if (currentItemView == null) {
+            currentItemView = LayoutInflater.from(getContext()).inflate(R.layout.dropdown_menu_popup_item, parent, false);
+        }
+
+        TextView textView=currentItemView.findViewById(R.id.data);
+        textView.setText(categories.get(position).getName());
+
+        return currentItemView;
     }
+
 
     public String getIdView(String item) {
         for (Category category : categories) {

@@ -52,7 +52,7 @@ public class AddUpdateProductActivity extends AppCompatActivity {
             public void onChanged(ArrayList<Category> categories) {
 
                 categoryArrayAdapter =
-                        new ArrayAdapterCategory(AddUpdateProductActivity.this,R.layout.dropdown_menu_popup_item, categories);
+                        new ArrayAdapterCategory(AddUpdateProductActivity.this, categories);
 
                 binding.categoryDropdown.setAdapter(categoryArrayAdapter);
             }
