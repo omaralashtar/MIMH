@@ -67,19 +67,19 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.ADD)
-    Call<ResultResponse> addProduct(@Field("name") String name,
-                                    @Field("description") String description,
-                                    @Field("image") String image,
-                                    @Field("price") String price,
-                                    @Field("size") String size,
-                                    @Field("unit") String unit,
-                                    @Field("discount") String discount,
-                                    @Field("discount_date") String discount_date,
-                                    @Field("status") String status,
-                                    @Field("product_date") String product_date,
-                                    @Field("Category") String Category,
-                                    @Field("id_user") String id_user,
-                                    @Field("images") ArrayList<String> images);
+    Call<ResultImageResponse> addProduct(@Field("name") String name,
+                                         @Field("description") String description,
+                                         @Field("image") String image,
+                                         @Field("price") float price,
+                                         @Field("size") int size,
+                                         @Field("unit") String unit,
+                                         @Field("discount") float discount,
+                                         @Field("discount_date") String discount_date,
+                                         @Field("status") Boolean status,
+                                         @Field("product_date") String product_date,
+                                         @Field("Category") int Category,
+                                         @Field("id_user") String id_user,
+                                         @Field("images") ArrayList<String> images);
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_MY_PRODUCT)
@@ -97,6 +97,9 @@ public interface AppApi {
     @POST(constants.PRODUCT + constants.GET_CATEGORY)
     Call<CategoryArrayListResponse> getCategoryProduct(@Field("filter") String filter);
 
+    @FormUrlEncoded
+    @POST(constants.PRODUCT + constants.GET_CATEGORY)
+    Call<CategoryArrayListResponse> getCategoryIdByName(@Field("name") String name);
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_PRODUCT_BY_CATEGORY)
@@ -112,13 +115,13 @@ public interface AppApi {
     Call<ResultResponse> updateProduct(@Field("id") String id,
                                        @Field("name") String name,
                                        @Field("description") String description,
-                                       @Field("price") String price,
-                                       @Field("size") String size,
+                                       @Field("price") float price,
+                                       @Field("size") int size,
                                        @Field("unit") String unit,
-                                       @Field("discount") String discount,
+                                       @Field("discount") float discount,
                                        @Field("discount_date") String discount_date,
-                                       @Field("status") String status,
-                                       @Field("Category") String Category);
+                                       @Field("status") boolean status,
+                                       @Field("Category") int Category);
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.UPDATE_IMAGE)

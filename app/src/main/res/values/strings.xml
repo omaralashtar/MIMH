@@ -13,6 +13,18 @@
     <string name="description">Description</string>
     <string name="location">Location</string>
 
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="size">Size</string>
+    <string name="unit">unit</string>
+    <string name="description">Description</string>
+    <string name="discount_date">Discount Date</string>
+    <string name="discount">Discount</string>
+    <string name="category">Category</string>
+
+    <string name="add">Add</string>
+    <string name="update">Update</string>
+
     <string-array name="genderList">
         <item>ذكر</item>
         <item>أنثى</item>
@@ -22,6 +34,14 @@
         <item>079</item>
         <item>078</item>
         <item>077</item>
+    </string-array>
+
+    <string-array name="unitList">
+        <item>قطعة</item>
+        <item>غرام</item>
+        <item>كيلو غرام</item>
+        <item>متر</item>
+        <item>سانتيمتر</item>
     </string-array>
 
     <string name="title_activity_main">MainActivity</string>

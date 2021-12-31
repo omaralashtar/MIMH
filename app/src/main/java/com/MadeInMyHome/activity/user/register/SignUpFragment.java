@@ -29,7 +29,6 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
 
     DatePickerDialog picker;
     String encodedImage;
-    PickImage pickImage;
     SignUpViewModel signUpViewModel;
     private FragmentSignUpBinding binding;
 
@@ -54,8 +53,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
         binding.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pickImage = new PickImage(getActivity(), binding.image);
-
+                new PickImage(getActivity(), binding.image);
             }
         });
         binding.datetext.setOnClickListener(this);
