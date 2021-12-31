@@ -36,6 +36,12 @@ public class User implements Serializable {
     @SerializedName("location")
     private String location;
 
+
+    @SerializedName("phone")
+    private String phone;
+
+
+
     @SerializedName("deleted_at")
     private String deleted_at;
 
@@ -94,4 +100,15 @@ public class User implements Serializable {
     public String getCreate_date() {
         return create_date;
     }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+
+
 }

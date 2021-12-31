@@ -43,9 +43,9 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.MadeInMyHome.activity.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:name="com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileFragment"
+        android:label="@string/menu_showProfile"
+        tools:layout="@layout/fragment_show_profile_user" />
 
     <fragment
         android:id="@+id/navigation_myCourse"
@@ -61,7 +61,7 @@
 
     <fragment
         android:id="@+id/navigation_myProduct"
-        android:name="com.MadeInMyHome.activity.ui.category_course.categoryCourseFragment"
-        android:label="@string/title_categoryCourse"
+        android:name="com.MadeInMyHome.activity.ui.my_products.myProductFragment"
+        android:label="@string/title_myProducts"
         tools:layout="@layout/fragment_my_product" />
 </navigation>

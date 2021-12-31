@@ -6,6 +6,7 @@ import com.MadeInMyHome.Response.CourseArrayListResponse;
 import com.MadeInMyHome.Response.ImageArrayListResponse;
 import com.MadeInMyHome.Response.ProductArrayListResponse;
 import com.MadeInMyHome.Response.RateArrayListResponse;
+import com.MadeInMyHome.Response.ResultImageResponse;
 import com.MadeInMyHome.Response.ResultResponse;
 import com.MadeInMyHome.Response.ResultUserResponse;
 import com.MadeInMyHome.Response.UserArrayListResponse;
@@ -44,19 +45,17 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE)
-    Call<ResultResponse> updateUser(@Field("id") String id,
+    Call<ResultUserResponse> updateUser(@Field("id") String id,
                                     @Field("f_name") String f_name,
                                     @Field("l_name") String l_name,
                                     @Field("description") String description,
                                     @Field("date") String date,
-                                    @Field("gender") String gender,
-                                    @Field("phone") String phone,
                                     @Field("location") String location);
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE_IMAGE)
-    Call<ResultResponse> updateUserImage(@Field("id") String id,
-                                         @Field("image") String image);
+    Call<ResultImageResponse> updateUserImage(@Field("id") String id,
+                                              @Field("image") String image);
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE_PASSWORD)

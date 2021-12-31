@@ -10,6 +10,8 @@
     <string name="phone">Phone</string>
     <string name="gender">Gender</string>
     <string name="date">Date</string>
+    <string name="description">Description</string>
+    <string name="location">Location</string>
 
     <string-array name="genderList">
         <item>ذكر</item>
@@ -70,7 +72,12 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_showProfile">show Profile</string>
+
+
+
+
+
 
 
 
@@ -82,6 +89,21 @@
     <string name="dialog_cancel">إلغاء</string>
     <string name="dialog_Title">عزيزي المستخدم</string>
     <string name="dialog_msg">هل تريد الخروج من التطبيق ؟</string>
+
+
+
+
+
+
+    //profile arabic
+    <string name="first_name_Ar">الإسم الأول</string>
+    <string name="last_name_Ar">الإسم الأخير</string>
+    <string name="email_Ar">الإيميل</string>
+    <string name="phone_Ar">رقم الهاتف</string>
+    <string name="gender_Ar">نوع المستخدم</string>
+    <string name="date_Ar">تاريخ الميلاد</string>
+    <string name="description_Ar">الوصف</string>
+    <string name="location_Ar">الموقع</string>
 
 
 
