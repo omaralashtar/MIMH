@@ -1,6 +1,7 @@
 package com.MadeInMyHome.component;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -16,13 +17,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class PickImage {
 
-    boolean end=false;
+    public boolean end=false;
     public PickImage(final Context context, final ImageView imageView) {
         PickImageDialog.build(new PickSetup())
                 .setOnPickResult(new IPickResult() {
                     @Override
                     public void onPickResult(PickResult r) {
                         //TODO: do what you have to...
+
                         imageView.setImageBitmap(r.getBitmap());
                         end = true;
 

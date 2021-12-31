@@ -11,23 +11,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.MadeInMyHome.activity.ui.MainActivity;
-import com.MadeInMyHome.component.PickImage;
+import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.component.convertToString;
 import com.MadeInMyHome.databinding.FragmentShowProfileUserBinding;
 import com.MadeInMyHome.model.User;
+import com.MadeInMyHome.utilities.constants;
+import com.vansuita.pickimage.bean.PickResult;
+import com.vansuita.pickimage.bundle.PickSetup;
+import com.vansuita.pickimage.dialog.PickImageDialog;
+import com.vansuita.pickimage.listeners.IPickResult;
+
 import java.util.Calendar;
+
 public class ShowUserProfileFragment extends Fragment implements View.OnClickListener, View.OnFocusChangeListener {
-    private ShowUserProfileViewModel showUserProfileViewModel;
-    private FragmentShowProfileUserBinding binding;
+
     DatePickerDialog picker;
     String encodedImage;
-    PickImage pickImage;
-    String id="1";
+    String id = "1";
+
+    private ShowUserProfileViewModel showUserProfileViewModel;
+    private FragmentShowProfileUserBinding binding;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         showUserProfileViewModel =
@@ -38,38 +49,31 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
         binding.dateUser.setOnClickListener(this);
         binding.dateUser.setOnFocusChangeListener(this);
 
-
-      binding.imgUserProfile.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-
-              Toast.makeText(getActivity(), "done", Toast.LENGTH_SHORT).show();
-              pickImage = new PickImage(getActivity(), binding.imgUserProfile);
-
-              encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.imgUserProfile.getDrawable()).getBitmap());
-              showUserProfileViewModel.updateImageUser(getActivity(),
-                      id,encodedImage)
-                      .observe(getViewLifecycleOwner(), new Observer<String>() {
-
-                          @Override
-                          public void onChanged(String s) {
-                              Toast.makeText(getActivity(), encodedImage, Toast.LENGTH_SHORT).show();
-
-                          }
-                      });
-
-
-          }
-      });
-
-
-
-
+        binding.imgUserProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PickImageDialog.build(new PickSetup())
+                        .setOnPickResult(new IPickResult() {
+                            @Override
+                            public void onPickResult(PickResult r) {
+                                binding.imgUserProfile.setImageBitmap(r.getBitmap());
+                                encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.imgUserProfile.getDrawable()).getBitmap());
+                                showUserProfileViewModel.updateImageUser(getActivity(),
+                                        id, encodedImage)
+                                        .observe(getViewLifecycleOwner(), new Observer<String>() {
+                                            @Override
+                                            public void onChanged(String s) {
+                                                Toast.makeText(getActivity(), encodedImage, Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+                        }).show(getActivity());
+            }
+        });
 
         showUserProfileViewModel.getUserProfile(getActivity(), id).observe(getActivity(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
-                Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
                 binding.GetFirstName.setText(user.getL_name());
                 binding.GetLastName.setText(user.getF_name());
                 binding.GetEmailUser.setText(user.getEmail());
@@ -78,19 +82,13 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
                 binding.GetPhoneUser.setText(user.getPhone());
                 binding.GetLocationUser.setText(user.getLocation());
                 binding.GetdateUser.setText(user.getDate());
-
+                new GlideImage(getActivity(), constants.BASE_HOST + constants.IMAGE_USER + user.getImage(), binding.imgUserProfile);
             }
         });
-
 
         binding.btnUpdateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
-
-
                 encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.imgUserProfile.getDrawable()).getBitmap());
                 showUserProfileViewModel.updateUser(getActivity(),
                         id,
@@ -108,14 +106,8 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
                                 getActivity().finish();
                             }
                         });
-
-
             }
         });
-
-
-
-
 
         return root;
     }
@@ -137,7 +129,7 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
             setDate();
     }
 
-    public void setDate(){
+    public void setDate() {
         final Calendar cldr = Calendar.getInstance();
         int day = cldr.get(Calendar.DAY_OF_MONTH);
         int month = cldr.get(Calendar.MONTH);
