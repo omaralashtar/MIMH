@@ -1,5 +1,6 @@
 package com.MadeInMyHome.activity.ui.my_products;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.MadeInMyHome.activity.add_update_product.AddUpdateProductActivity;
 import com.MadeInMyHome.adapter.RecycleAdapterProduct;
 import com.MadeInMyHome.databinding.FragmentMyProductBinding;
 import com.MadeInMyHome.model.Product;
@@ -25,12 +27,6 @@ public class myProductFragment extends Fragment {
     MyProductViewModel myProductViewModel;
     RecycleAdapterProduct myProductsAdapter;
     final int id = 1;
-    //final int id = 1;
-    //final int id = 1;
-
-    public static myProductFragment newInstance() {
-        return new myProductFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -44,6 +40,15 @@ public class myProductFragment extends Fragment {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+
+        binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Intent i=new Intent(getActivity(), AddUpdateProductActivity.class);
+            i.putExtra("name","add");
+            startActivity(i);
+            }
+        });
 
         binding.myProductsRecycle.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 

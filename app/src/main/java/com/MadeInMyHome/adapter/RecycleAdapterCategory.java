@@ -1,6 +1,5 @@
 package com.MadeInMyHome.adapter;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -48,10 +47,8 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-               Intent i = new Intent(context, ProductByCategoryActivity.class);
-                Category category = items.get(holder.getAdapterPosition());
-                i.putExtra("cat_id", category.getId());
+                Intent i = new Intent(context, ProductByCategoryActivity.class);
+                i.putExtra("cat_id", String.valueOf(items.get(holder.getAdapterPosition()).getId()));
                 context.startActivity(i);
             }
         });

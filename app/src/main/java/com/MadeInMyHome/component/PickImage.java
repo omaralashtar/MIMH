@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class PickImage {
 
+    boolean end=false;
     public PickImage(final Context context, final ImageView imageView) {
         PickImageDialog.build(new PickSetup())
                 .setOnPickResult(new IPickResult() {
@@ -23,6 +24,7 @@ public class PickImage {
                     public void onPickResult(PickResult r) {
                         //TODO: do what you have to...
                         imageView.setImageBitmap(r.getBitmap());
+                        end = true;
 
                     }
                 })

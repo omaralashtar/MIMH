@@ -8,17 +8,14 @@ import java.io.Serializable;
 public class Category implements Serializable
 {
     @SerializedName("id")
-    private int id;
+    private String id;
     @SerializedName("name")
     private String name;
     @SerializedName("image")
     private String image;
 
-    public int getId() {
+    public String getId() {
         return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

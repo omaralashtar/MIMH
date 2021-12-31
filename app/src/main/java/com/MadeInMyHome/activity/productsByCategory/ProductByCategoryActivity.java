@@ -35,8 +35,6 @@ public class ProductByCategoryActivity extends AppCompatActivity {
                 .observe(this, new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                Toast.makeText(ProductByCategoryActivity.this, "getString(cat_id)".toString(), Toast.LENGTH_SHORT).show();
-
                 recycleAdapterProduct = new RecycleAdapterProduct(ProductByCategoryActivity.this, products);
                 binding.recycleProductByCategory.setAdapter(recycleAdapterProduct);
             }
