@@ -17,7 +17,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+        <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgUserProfile"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -58,6 +59,7 @@
                     android:text="@string/first_name_Ar"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/FirstName"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -70,13 +72,13 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/GetFirstName"
-
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/first_name"
                         android:inputType="text" />
+
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,9 +88,9 @@
                     android:text="@string/last_name_Ar"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LastName"
-
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -98,10 +100,7 @@
                     app:boxCornerRadiusTopStart="@dimen/boxCornerRadius">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/GetLastName"
-
                         android:layout_width="match_parent"
-
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:inputType="text" />
@@ -126,12 +125,9 @@
                     app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
                     app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    >
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/GetEmailUser"
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/email"
@@ -158,14 +154,10 @@
                     app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
                     app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
                     app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
-
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                  >
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/GetDescription_User"
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/description"
@@ -181,6 +173,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:text="@string/gender_Ar" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/genderUser"
 
@@ -195,8 +188,6 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/GetgenderUser"
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/gender"
@@ -229,8 +220,6 @@
                    >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/GetdateUser"
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/date" />
@@ -261,7 +250,6 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/GetPhone_User"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/phone"
@@ -293,18 +281,12 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/GetLocation_User"
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/location"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -324,7 +306,6 @@
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
-
                 <Button
                     android:id="@+id/btn_update_user"
                     android:layout_width="match_parent"
@@ -334,11 +315,7 @@
                     android:text="UPDATE PROFILE"
                     android:textAllCaps="false"
                     android:textSize="24sp"
-
-                    android:textStyle="bold|italic"
-
-
-                    />
+                    android:textStyle="bold|italic" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

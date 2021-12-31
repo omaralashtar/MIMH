@@ -74,14 +74,14 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
         showUserProfileViewModel.getUserProfile(getActivity(), id).observe(getActivity(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
-                binding.GetFirstName.setText(user.getL_name());
-                binding.GetLastName.setText(user.getF_name());
-                binding.GetEmailUser.setText(user.getEmail());
-                binding.GetDescriptionUser.setText(user.getDescription());
-                binding.GetgenderUser.setText(user.getGender());
-                binding.GetPhoneUser.setText(user.getPhone());
-                binding.GetLocationUser.setText(user.getLocation());
-                binding.GetdateUser.setText(user.getDate());
+                binding.FirstName.getEditText().setText(user.getL_name());
+                binding.LastName.getEditText().setText(user.getF_name());
+                binding.EmailUser.getEditText().setText(user.getEmail());
+                binding.DescriptionUser.getEditText().setText(user.getDescription());
+                binding.genderUser.getEditText().setText(user.getGender());
+                binding.PhoneUser.getEditText().setText(user.getPhone());
+                binding.LocationUser.getEditText().setText(user.getLocation());
+                binding.dateUser.getEditText().setText(user.getDate());
                 new GlideImage(getActivity(), constants.BASE_HOST + constants.IMAGE_USER + user.getImage(), binding.imgUserProfile);
             }
         });
