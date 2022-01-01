@@ -65,6 +65,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <Button
+            android:id="@+id/signUp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            app:backgroundTint="@color/colorPrimaryEditor"
+            app:cornerRadius="@dimen/boxCornerRadius"
+            app:layout_constraintBottom_toTopOf="@+id/login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

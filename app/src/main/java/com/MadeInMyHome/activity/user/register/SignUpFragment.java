@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.ViewModel.SignUpViewModel;
 import com.MadeInMyHome.activity.ui.MainActivity;
+import com.MadeInMyHome.activity.user.LoginSignUpActivity;
 import com.MadeInMyHome.component.PickImage;
 import com.MadeInMyHome.component.convertToString;
 import com.MadeInMyHome.databinding.FragmentSignUpBinding;
@@ -50,12 +51,20 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
 
         binding.startPhoneDropdown.setAdapter(phoneAdapter);
 
+        binding.login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginSignUpActivity.binding.viewPager.setCurrentItem(0);
+            }
+        });
+
         binding.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new PickImage(getActivity(), binding.image);
             }
         });
+
         binding.datetext.setOnClickListener(this);
         binding.datetext.setOnFocusChangeListener(this);
 

@@ -10,7 +10,8 @@ import com.google.android.material.tabs.TabLayout;
 
 public class LoginSignUpActivity extends AppCompatActivity {
 
-    private ActivityLoginSignUpBinding binding;
+    public static ActivityLoginSignUpBinding binding;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class LoginSignUpActivity extends AppCompatActivity {
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
 
-        ViewPager viewPager = binding.viewPager;
+        viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
 
         if (getIntent().getExtras().getString("name").equals("login")) {
@@ -31,8 +32,6 @@ public class LoginSignUpActivity extends AppCompatActivity {
         }
         //viewPager.setCurrentItem(0);
 
-        TabLayout tabs = binding.tabs;
-        tabs.setupWithViewPager(viewPager);
     }
 
     @Override

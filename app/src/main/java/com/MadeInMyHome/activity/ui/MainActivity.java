@@ -33,12 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding.drawerLayout.addDrawerListener(
                 new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close));
-//nav
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-        ).build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
 
         drawerAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_myCourse,
@@ -54,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
         NavController navControllerDrawer = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, drawerAppBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(this, navControllerDrawer, drawerAppBarConfiguration);
         NavigationUI.setupWithNavController(binding.navViewDrawer, navControllerDrawer);
     }
 

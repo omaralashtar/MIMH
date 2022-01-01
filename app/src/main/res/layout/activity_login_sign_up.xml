@@ -6,22 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.user.LoginSignUpActivity">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginTop="@dimen/margin"
-        android:layout_marginEnd="@dimen/margin"
-        android:background="@color/colorAccentEditor"
-        app:layout_constraintBottom_toTopOf="@+id/view_pager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="@color/white"
-        app:tabTextColor="@color/white"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
@@ -29,10 +13,9 @@
         android:layout_marginStart="@dimen/margin"
         android:layout_marginEnd="@dimen/margin"
         android:layout_marginBottom="@dimen/margin"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabs"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

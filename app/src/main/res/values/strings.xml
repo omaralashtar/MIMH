@@ -121,7 +121,7 @@
     <string name="date_Ar">تاريخ الميلاد</string>
     <string name="description_Ar">الوصف</string>
     <string name="location_Ar">الموقع</string>
-
+    <string name="login_in_signup">have account , login</string>
 
 
 </resources>

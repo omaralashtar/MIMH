@@ -6,98 +6,116 @@
     android:layout_height="match_parent"
     tools:context=".activity.add_update_product.AddUpdateProductActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:src="@drawable/ic_menu_camera"
-        android:id="@+id/image"
-        android:layout_width="@dimen/image"
-        android:layout_height="@dimen/image"
-        app:layout_constraintEnd_toStartOf="@+id/name"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/name"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/betweenTowInput"
-        app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
-        app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
-        app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
-        app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toTopOf="parent">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
+            android:layout_marginStart="@dimen/betweenTowInput"
+            android:src="@drawable/ic_menu_camera"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/name"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginEnd="@dimen/betweenTowInput"
+            app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
+            app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+            app:layout_constraintBottom_toTopOf="@+id/price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/price"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/betweenTowInput"
-        app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
-        app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
-        app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
-        app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@+id/name">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/price"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/price"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginEnd="@dimen/betweenTowInput"
+            app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
+            app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+            app:layout_constraintBottom_toTopOf="@+id/size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toBottomOf="@+id/name">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/size"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
-        app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
-        app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
-        app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
-        app:layout_constraintEnd_toStartOf="@+id/unit"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@id/price">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/price"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/size"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/size"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
+            app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/unit"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toBottomOf="@id/price">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/unit"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
-        app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
-        app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
-        app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/size"
-        app:layout_constraintTop_toBottomOf="@id/price">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/size"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <AutoCompleteTextView
-            android:id="@+id/unit_dropdown"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/unit"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/unit"
-            android:inputType="none" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginEnd="@dimen/betweenTowInput"
+            android:orientation="horizontal"
+            app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
+            app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/size"
+            app:layout_constraintTop_toBottomOf="@id/price">
+
+            <AutoCompleteTextView
+                android:id="@+id/unit_dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/unit"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/multiImageLayout"
@@ -105,7 +123,7 @@
         android:layout_height="@dimen/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image">
+        app:layout_constraintTop_toBottomOf="@+id/layout">
 
         <ImageView
             android:id="@+id/multiImage"
@@ -141,6 +159,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/betweenTowInput"
         android:layout_marginEnd="@dimen/betweenTowInput"
         app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
         app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
@@ -164,6 +183,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/betweenTowInput"
         android:layout_marginEnd="@dimen/betweenTowInput"
         app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
         app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
@@ -185,6 +205,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/betweenTowInput"
         app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
         app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
         app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
@@ -205,6 +226,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/betweenTowInput"
+        android:layout_marginEnd="@dimen/betweenTowInput"
         android:orientation="horizontal"
         app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
         app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"

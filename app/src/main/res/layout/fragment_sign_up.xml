@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/sc_for" />
+            android:src="@drawable/images" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/f_name"
@@ -168,7 +168,7 @@
             app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
-            app:layout_constraintBottom_toTopOf="@+id/signup"
+            app:layout_constraintBottom_toTopOf="@+id/layout"
             app:layout_constraintEnd_toStartOf="@id/phone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/gender">
@@ -190,10 +190,11 @@
             app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
-            app:layout_constraintBottom_toTopOf="@+id/signup"
+            app:layout_constraintBottom_toTopOf="@+id/layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/start_phone"
-            app:layout_constraintTop_toBottomOf="@id/gender">
+            app:layout_constraintTop_toBottomOf="@id/gender"
+            app:layout_constraintVertical_bias="1.0">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -203,17 +204,33 @@
                 android:maxLength="7" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/signup"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_up"
-            app:backgroundTint="@color/colorPrimaryEditor"
-            app:cornerRadius="@dimen/boxCornerRadius"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone" />
+            app:layout_constraintTop_toBottomOf="@+id/phone">
 
+            <Button
+                android:id="@+id/signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:backgroundTint="@color/colorPrimaryEditor"
+                app:cornerRadius="@dimen/boxCornerRadius" />
+
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/login_in_signup"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

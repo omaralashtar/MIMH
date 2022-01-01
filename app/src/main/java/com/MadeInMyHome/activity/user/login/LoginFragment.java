@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.MadeInMyHome.ViewModel.LoginViewModel;
 import com.MadeInMyHome.activity.ui.MainActivity;
+import com.MadeInMyHome.activity.user.LoginSignUpActivity;
 import com.MadeInMyHome.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends Fragment {
@@ -24,9 +25,17 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        binding.signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginSignUpActivity.binding.viewPager.setCurrentItem(1);
+            }
+        });
 
         binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
