@@ -21,13 +21,13 @@ import retrofit2.Response;
 public class AddUpdateProductViewModel extends ViewModel {
 
     public MutableLiveData<String> addProduct(final Context context, String name, String description,
-                                              String image, float price, int size, String unit, float discount, String discount_date, boolean status,
+                                              String image, float price, int size, String unit, float discount, String discount_date,
                                               String product_date, int category, String id_user, ArrayList<String> images) {
 
         final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
 
         Call<ResultImageResponse> call = RestClient.getService().addProduct(name, description, image, price, size, unit, discount, discount_date,
-                status, product_date, category, id_user, images);
+                 product_date, category, id_user, images);
         call.enqueue(new Callback<ResultImageResponse>() {
             @Override
             public void onResponse(Call<ResultImageResponse> call, Response<ResultImageResponse> response) {

@@ -54,7 +54,7 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE_IMAGE)
-    Call<ResultResponse> updateUserImage(@Field("id") String id,
+    Call<ResultImageResponse> updateUserImage(@Field("id") String id,
                                               @Field("image") String image);
 
     @FormUrlEncoded
@@ -75,7 +75,6 @@ public interface AppApi {
                                          @Field("unit") String unit,
                                          @Field("discount") float discount,
                                          @Field("discount_date") String discount_date,
-                                         @Field("status") Boolean status,
                                          @Field("product_date") String product_date,
                                          @Field("Category") int Category,
                                          @Field("id_user") String id_user,
