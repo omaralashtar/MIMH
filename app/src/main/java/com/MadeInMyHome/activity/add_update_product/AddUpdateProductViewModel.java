@@ -21,13 +21,13 @@ import retrofit2.Response;
 public class AddUpdateProductViewModel extends ViewModel {
 
     public MutableLiveData<String> addProduct(final Context context, String name, String description,
-                                              String image, float price, int size, String unit, float discount, String discount_date, boolean status,
-                                              String product_date, int category, String id_user, ArrayList<String> images) {
+                                              String image, String price, String size, String unit, String discount, String discount_date,
+                                              String product_date, String category, String id_user, ArrayList<String> images) {
 
         final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
 
         Call<ResultImageResponse> call = RestClient.getService().addProduct(name, description, image, price, size, unit, discount, discount_date,
-                status, product_date, category, id_user, images);
+                product_date, category, id_user, images);
         call.enqueue(new Callback<ResultImageResponse>() {
             @Override
             public void onResponse(Call<ResultImageResponse> call, Response<ResultImageResponse> response) {
@@ -56,12 +56,12 @@ public class AddUpdateProductViewModel extends ViewModel {
     }
 
     public MutableLiveData<String> updateProduct(final Context context, String id, String name, String description,
-                                                 String image, float price, int size, String unit, float discount, String discount_date, boolean status, int category) {
+                                                 String image, String price, String size, String unit, String discount, String discount_date, String category) {
 
         final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
 
-        Call<ResultResponse> call = RestClient.getService().updateProduct(id, name, description, price, size, unit, discount, discount_date,
-                status, category);
+        Call<ResultResponse> call = RestClient.getService().updateProduct(id, name, description, price, size, unit,
+                discount, discount_date, category);
         call.enqueue(new Callback<ResultResponse>() {
             @Override
             public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
