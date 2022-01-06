@@ -104,11 +104,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/imagesRecyclerView"
+
+    <LinearLayout
+        android:id="@+id/multiImageLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/images" />
+        app:layout_constraintTop_toBottomOf="@+id/images">
+
+        <ImageView
+            android:id="@+id/multiImage"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
+            android:padding="@dimen/margin"
+            android:scaleType="centerInside"
+            android:visibility="visible"
+            app:srcCompat="@drawable/defult_product" />
+
+        <ImageView
+            android:id="@+id/multiImage1"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
+            android:padding="@dimen/margin"
+            android:scaleType="centerInside"
+            android:visibility="visible"
+            app:srcCompat="@drawable/defult_product" />
+
+        <ImageView
+            android:id="@+id/multiImage2"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
+            android:padding="@dimen/margin"
+            android:scaleType="centerInside"
+            android:visibility="visible"
+            app:srcCompat="@drawable/defult_product" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

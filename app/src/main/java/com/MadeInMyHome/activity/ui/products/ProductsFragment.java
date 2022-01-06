@@ -57,7 +57,7 @@ public class ProductsFragment extends Fragment {
         productsViewModel.getProducts(getActivity(),String.valueOf(next)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                recycleAdapterProduct =new RecycleAdapterProduct(getActivity(),products);
+                recycleAdapterProduct =new RecycleAdapterProduct(getActivity(),products,"product");
                 binding.productsRecycle.setAdapter(recycleAdapterProduct);
             }
         });

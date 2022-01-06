@@ -19,7 +19,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".activity.add_update_product.AddUpdateProductActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar.Bridge"/>
         <activity
             android:name=".activity.show_course.CourseActivity"
             android:exported="false" />
@@ -28,8 +29,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.video.VideoActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+            android:exported="false" />
         <activity
             android:name=".activity.productsByCategory.ProductByCategoryActivity"
             android:exported="false" />

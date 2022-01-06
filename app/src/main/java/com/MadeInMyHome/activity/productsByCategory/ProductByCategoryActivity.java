@@ -35,7 +35,7 @@ public class ProductByCategoryActivity extends AppCompatActivity {
                 .observe(this, new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                recycleAdapterProduct = new RecycleAdapterProduct(ProductByCategoryActivity.this, products);
+                recycleAdapterProduct = new RecycleAdapterProduct(ProductByCategoryActivity.this, products,"product");
                 binding.recycleProductByCategory.setAdapter(recycleAdapterProduct);
             }
         });

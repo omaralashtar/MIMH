@@ -1,6 +1,7 @@
 package com.MadeInMyHome.activity.add_update_product;
 
 import android.content.Context;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
@@ -22,7 +23,8 @@ public class AddUpdateProductViewModel extends ViewModel {
 
     public MutableLiveData<String> addProduct(final Context context, String name, String description,
                                               String image, String price, String size, String unit, String discount, String discount_date,
-                                              String product_date, String category, String id_user, ArrayList<String> images) {
+                                              String product_date, String category, String id_user,
+                                              ArrayList<String> images, Button add) {
 
         final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
 
@@ -40,15 +42,18 @@ public class AddUpdateProductViewModel extends ViewModel {
                     }
                     if (image.equals("0")) {
                         Toast.makeText(context, "upload image failed", Toast.LENGTH_SHORT).show();
+                        add.setClickable(true);
                     }
                 } else {
                     Toast.makeText(context, "failed get items", Toast.LENGTH_SHORT).show();
+                    add.setClickable(true);
                 }
             }
 
             @Override
             public void onFailure(Call<ResultImageResponse> call, Throwable t) {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                add.setClickable(true);
             }
         });
 
@@ -56,7 +61,8 @@ public class AddUpdateProductViewModel extends ViewModel {
     }
 
     public MutableLiveData<String> updateProduct(final Context context, String id, String name, String description,
-                                                 String image, String price, String size, String unit, String discount, String discount_date, String category) {
+                                                 String price, String size, String unit, String discount,
+                                                 String discount_date, String category,Button update) {
 
         final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
 
@@ -73,12 +79,14 @@ public class AddUpdateProductViewModel extends ViewModel {
                     }
                 } else {
                     Toast.makeText(context, "Field_get_items", Toast.LENGTH_SHORT).show();
+                    update.setClickable(true);
                 }
             }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                update.setClickable(true);
             }
         });
 
@@ -134,34 +142,6 @@ public class AddUpdateProductViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        return arrayListMutableLiveData;
-    }
-
-    public MutableLiveData<String> getCategoryId(final Context context, String name) {
-
-        final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
-
-        Call<CategoryArrayListResponse> call = RestClient.getService().getCategoryIdByName(name);
-        call.enqueue(new Callback<CategoryArrayListResponse>() {
-            @Override
-            public void onResponse(Call<CategoryArrayListResponse> call, Response<CategoryArrayListResponse> response) {
-                CategoryArrayListResponse categoryArrayListResponse = response.body();
-                if (categoryArrayListResponse != null) {
-                    ArrayList<Category> categoryArrayList = categoryArrayListResponse.getArrayList();
-                    if (categoryArrayList.size() > 0) {
-                        arrayListMutableLiveData.setValue(String.valueOf(categoryArrayList.get(0).getId()));
-                    }
-                } else {
-                    Toast.makeText(context, "Field_get_items", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CategoryArrayListResponse> call, Throwable t) {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

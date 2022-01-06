@@ -76,7 +76,7 @@ public interface AppApi {
                                          @Field("discount") String discount,
                                          @Field("discount_date") String discount_date,
                                          @Field("product_date") String product_date,
-                                         @Field("Category") String Category,
+                                         @Field("category") String Category,
                                          @Field("id_user") String id_user,
                                          @Field("images") ArrayList<String> images);
 
@@ -97,10 +97,6 @@ public interface AppApi {
     Call<CategoryArrayListResponse> getCategoryProduct(@Field("filter") String filter);
 
     @FormUrlEncoded
-    @POST(constants.PRODUCT + constants.GET_CATEGORY)
-    Call<CategoryArrayListResponse> getCategoryIdByName(@Field("name") String name);
-
-    @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_PRODUCT_BY_CATEGORY)
     Call<ProductArrayListResponse> getProductByCategory(@Field("id") String id);
 
@@ -119,7 +115,7 @@ public interface AppApi {
                                        @Field("unit") String unit,
                                        @Field("discount") String discount,
                                        @Field("discount_date") String discount_date,
-                                       @Field("Category") String Category);
+                                       @Field("category") String Category);
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.UPDATE_IMAGE)

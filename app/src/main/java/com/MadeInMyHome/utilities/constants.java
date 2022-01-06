@@ -1,18 +1,19 @@
 package com.MadeInMyHome.utilities;
 
 public class constants {
-    public static final String BASE_HOST = "https://madeinmyhome.000webhostapp.com/API/";
-    public static final String USER = "user/";
-    public static final String COURSE = "course/";
-    public static final String ENROLL = "enroll/";
-    public static final String VIDEO = "video/";
-    public static final String PRODUCT = " product/";
-    public static final String FAVORITE = "favorite/";
-    public static final String RATE = "rate/";
+    public static final String BASE_HOST = "https://madeinmyhome.000webhostapp.com/";
+    public static final String USER = "API/user/";
+    public static final String COURSE = "API/course/";
+    public static final String ENROLL = "API/enroll/";
+    public static final String VIDEO = "API/video/";
+    public static final String PRODUCT = " API/product/";
+    public static final String FAVORITE = "API/favorite/";
+    public static final String RATE = "API/rate/";
 
-    public static final String IMAGE_USER = " images_user/";
-    public static final String IMAGE_COURSE = " image_course/";
-    public static final String IMAGE_PRODUCT = " image_product/";
+    public static final String IMAGE_USER = "image/user/";
+    public static final String IMAGE_COURSE = "image/course/";
+    public static final String IMAGE_PRODUCT = "image/product/";
+    public static final String IMAGE_CATEGORY = "image/category/";
 
 
 
