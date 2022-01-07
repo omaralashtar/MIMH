@@ -1,51 +1,57 @@
-package com.MadeInMyHome.activity.ui.favorite;
+package com.MadeInMyHome.activity.ui.products;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.MadeInMyHome.R;
 import com.MadeInMyHome.adapter.RecycleAdapterProduct;
-import com.MadeInMyHome.databinding.FragmentFavoriteBinding;
+import com.MadeInMyHome.databinding.FragmentProductsHorizontalBinding;
 import com.MadeInMyHome.model.Product;
 
 import java.util.ArrayList;
 
-public class FavoriteFragment extends Fragment {
 
+public class ProductsFragment_horizontal extends Fragment {
 
     RecycleAdapterProduct recycleAdapterProduct;
-    FavoriteViewModel favoriteViewModel;
-    private FragmentFavoriteBinding binding;
+    ProductsViewModel productsViewModel;
+    private FragmentProductsHorizontalBinding binding;
 
     int next=0;
-    String id="1";
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        favoriteViewModel= ViewModelProviders.of(this).get(FavoriteViewModel.class);
-        binding = FragmentFavoriteBinding.inflate(inflater, container, false);
+        productsViewModel= ViewModelProviders.of(this).get(ProductsViewModel.class);
+        binding = FragmentProductsHorizontalBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        
 
-        binding.favoriteRecycle.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.recycle.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         setAdapter();
+
+       
 
         return root;
     }
 
     public void setAdapter(){
-        favoriteViewModel.getProducts(getActivity(),id,String.valueOf(next)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
+        productsViewModel.getProducts(getActivity(),String.valueOf(next)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
                 recycleAdapterProduct =new RecycleAdapterProduct(getActivity(),products);
-                binding.favoriteRecycle.setAdapter(recycleAdapterProduct);
+                binding.recycle.setAdapter(recycleAdapterProduct);
             }
         });
     }

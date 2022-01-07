@@ -8,7 +8,6 @@ public class Rate implements Serializable
 {
     @SerializedName("id_user")
     private String id_user;
-
     @SerializedName("rating")
     private String rating;
 
@@ -26,4 +25,6 @@ public class Rate implements Serializable
     public String getComment() {
         return comment;
     }
+
+
 }

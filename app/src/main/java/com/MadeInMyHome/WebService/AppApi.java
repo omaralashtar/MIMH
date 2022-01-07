@@ -54,7 +54,7 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE_IMAGE)
-    Call<ResultImageResponse> updateUserImage(@Field("id") String id,
+    Call<ResultResponse> updateUserImage(@Field("id") String id,
                                               @Field("image") String image);
 
     @FormUrlEncoded

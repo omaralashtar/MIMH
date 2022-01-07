@@ -42,20 +42,18 @@
         <item>متر</item>
         <item>سانتيمتر</item>
     </string-array>
-
+    //drawer
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home Activity</string>
     <string name="title_products">products</string>
     <string name="title_courses">courses</string>
     <string name="title_favorite">favorite</string>
     <string name="title_myProducts">my products</string>
     <string name="title_categoryProducts">category products</string>
     <string name="title_LogOut">Logout</string>
-
     <string name="title_myCourse">my Course</string>
     <string name="title_categoryCourse">category Course</string>
-
     <string name="profile">profile</string>
-
     <string name="title_categoryByProducts">ProductBycategory</string>
 
     //test mohammad introduction
@@ -92,24 +90,12 @@
     <string name="menu_showProfile">show Profile</string>
 
 
-
-
-
-
-
-
-
-
     //show dialog
     <string name="dialog_No">لا</string>
     <string name="dialog_yes">نعم</string>
     <string name="dialog_cancel">إلغاء</string>
     <string name="dialog_Title">عزيزي المستخدم</string>
     <string name="dialog_msg">هل تريد الخروج من التطبيق ؟</string>
-
-
-
-
 
 
     //profile arabic
@@ -124,4 +110,11 @@
     <string name="login_in_signup">have account , login</string>
 
 
+
+
+
+    //add comment
+    <string name="btn_addComment">أضف تعليق</string>
+    <string name="title_addComment">يمكنك إضافة تعليقا لأي منتج تريده</string>
+    <string name="description_addComment">أضف تعليقًا</string>
 </resources>
