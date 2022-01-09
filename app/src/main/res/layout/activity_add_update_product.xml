@@ -19,7 +19,7 @@
             android:layout_width="@dimen/image"
             android:layout_height="@dimen/image"
             android:layout_marginStart="@dimen/betweenTowInput"
-            android:src="@drawable/ic_menu_camera"
+            android:src="@drawable/defult_product"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/name"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +35,7 @@
             app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+            app:errorIconTintMode="src_in"
             app:layout_constraintBottom_toTopOf="@+id/price"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image"
@@ -57,6 +58,7 @@
             app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+            app:errorIconTintMode="src_in"
             app:layout_constraintBottom_toTopOf="@+id/size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/image"
@@ -78,6 +80,7 @@
             app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+            app:errorIconTintMode="src_in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/unit"
             app:layout_constraintStart_toEndOf="@id/image"
@@ -101,6 +104,7 @@
             app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
             app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+            app:errorIconTintMode="src_in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/size"
@@ -114,8 +118,29 @@
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:text="Photo"
+        app:layout_constraintEnd_toStartOf="@id/photoDesc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout" />
+
+    <TextView
+        android:id="@+id/photoDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin"
+        android:text="Photo"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/photo"
+        app:layout_constraintTop_toBottomOf="@id/layout" />
 
     <LinearLayout
         android:id="@+id/multiImageLayout"
@@ -123,34 +148,34 @@
         android:layout_height="@dimen/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout">
+        app:layout_constraintTop_toBottomOf="@+id/photo">
 
         <ImageView
             android:id="@+id/multiImage"
             android:layout_width="@dimen/image"
             android:layout_height="@dimen/image"
             android:padding="@dimen/margin"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_baseline_photo_size_select_actual_24"
-            android:visibility="visible" />
+            android:scaleType="centerInside"
+            android:visibility="visible"
+            app:srcCompat="@drawable/defult_product" />
 
         <ImageView
             android:id="@+id/multiImage1"
             android:layout_width="@dimen/image"
             android:layout_height="@dimen/image"
             android:padding="@dimen/margin"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_baseline_photo_size_select_actual_24"
-            android:visibility="visible" />
+            android:scaleType="centerInside"
+            android:visibility="visible"
+            app:srcCompat="@drawable/defult_product" />
 
         <ImageView
             android:id="@+id/multiImage2"
             android:layout_width="@dimen/image"
             android:layout_height="@dimen/image"
             android:padding="@dimen/margin"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_baseline_photo_size_select_actual_24"
-            android:visibility="visible" />
+            android:scaleType="centerInside"
+            android:visibility="visible"
+            app:srcCompat="@drawable/defult_product" />
 
     </LinearLayout>
 
@@ -165,6 +190,7 @@
         app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
         app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
         app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+        app:errorIconTintMode="src_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/multiImageLayout">
@@ -233,6 +259,7 @@
         app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
         app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
         app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+        app:errorIconTintMode="src_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/discount">
@@ -246,12 +273,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/add"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="@string/add"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/update"
+        android:visibility="gone"
         app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

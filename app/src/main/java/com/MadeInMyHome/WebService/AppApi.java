@@ -13,8 +13,6 @@ import com.MadeInMyHome.Response.UserArrayListResponse;
 import com.MadeInMyHome.Response.VideoArrayListResponse;
 import com.MadeInMyHome.utilities.constants;
 
-import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -41,11 +39,11 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.USER + constants.GET)
-    Call<UserArrayListResponse> getUser(@Field("token") String id);
+    Call<UserArrayListResponse> getUser(@Field("token") String token);
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE)
-    Call<ResultUserResponse> updateUser(@Field("id") String id,
+    Call<ResultUserResponse> updateUser(@Field("token") String token,
                                     @Field("f_name") String f_name,
                                     @Field("l_name") String l_name,
                                     @Field("description") String description,
@@ -54,12 +52,12 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE_IMAGE)
-    Call<ResultResponse> updateUserImage(@Field("id") String id,
+    Call<ResultResponse> updateUserImage(@Field("token") String token,
                                               @Field("image") String image);
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE_PASSWORD)
-    Call<ResultResponse> updateUserPassword(@Field("id") String id,
+    Call<ResultResponse> updateUserPassword(@Field("token") String token,
                                             @Field("password") String password,
                                             @Field("newpassword") String newpassword);
 
@@ -70,15 +68,22 @@ public interface AppApi {
     Call<ResultImageResponse> addProduct(@Field("name") String name,
                                          @Field("description") String description,
                                          @Field("image") String image,
-                                         @Field("price") float price,
-                                         @Field("size") int size,
+                                         @Field("price") String price,
+                                         @Field("size") String size,
                                          @Field("unit") String unit,
-                                         @Field("discount") float discount,
+                                         @Field("discount") String discount,
                                          @Field("discount_date") String discount_date,
                                          @Field("product_date") String product_date,
-                                         @Field("Category") int Category,
+                                         @Field("category") String Category,
                                          @Field("id_user") String id_user,
-                                         @Field("images") ArrayList<String> images);
+                                         @Field("image1") String image1,
+                                         @Field("image2") String image2,
+                                         @Field("image3") String image3);
+
+    @FormUrlEncoded
+    @POST(constants.PRODUCT + constants.ADD_MULTI_IMAGE)
+    Call<ResultUserResponse> addMultiImage(@Field("id") String id,
+                                       @Field("image") String image);
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_MY_PRODUCT)
@@ -97,10 +102,6 @@ public interface AppApi {
     Call<CategoryArrayListResponse> getCategoryProduct(@Field("filter") String filter);
 
     @FormUrlEncoded
-    @POST(constants.PRODUCT + constants.GET_CATEGORY)
-    Call<CategoryArrayListResponse> getCategoryIdByName(@Field("name") String name);
-
-    @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_PRODUCT_BY_CATEGORY)
     Call<ProductArrayListResponse> getProductByCategory(@Field("id") String id);
 
@@ -114,13 +115,12 @@ public interface AppApi {
     Call<ResultResponse> updateProduct(@Field("id") String id,
                                        @Field("name") String name,
                                        @Field("description") String description,
-                                       @Field("price") float price,
-                                       @Field("size") int size,
+                                       @Field("price") String price,
+                                       @Field("size") String size,
                                        @Field("unit") String unit,
-                                       @Field("discount") float discount,
+                                       @Field("discount") String discount,
                                        @Field("discount_date") String discount_date,
-                                       @Field("status") boolean status,
-                                       @Field("Category") int Category);
+                                       @Field("category") String Category);
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.UPDATE_IMAGE)
@@ -140,7 +140,8 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.COURSE + constants.GET_ALL)
-    Call<CourseArrayListResponse> getAllCourse(@Field("next") String next);
+    Call<CourseArrayListResponse> getAllCourse(@Field("filter") String filter,
+                                               @Field("next") String next);
 
     @FormUrlEncoded
     @POST(constants.COURSE + constants.GET_CATEGORY)
@@ -151,8 +152,12 @@ public interface AppApi {
     @FormUrlEncoded
     @POST(constants.ENROLL + constants.ADD)
     Call<ResultResponse> addEnroll(@Field("id_user") String id_user,
-                                   @Field("id_product") String id_product,
-                                   @Field("enroll_date") String enroll_date);
+                                   @Field("id_course") String id_product);
+
+    @FormUrlEncoded
+    @POST(constants.ENROLL + constants.GET)
+    Call<ResultResponse> getEnroll(@Field("id_user") String id_user,
+                                   @Field("id_course") String id_product);
 
     @FormUrlEncoded
     @POST(constants.ENROLL + constants.GET_ALL)

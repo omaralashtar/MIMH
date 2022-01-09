@@ -19,15 +19,15 @@ import retrofit2.Response;
 public class categoryCourseViewModel extends ViewModel {
 
 
-    public MutableLiveData<ArrayList<Category>> showCategoryProduct(final Context context) {
-        return showCategoryProduct("", context);
+    public MutableLiveData<ArrayList<Category>> showCategoryCourse(final Context context) {
+        return showCategoryCourse("", context);
     }
 
-    public MutableLiveData<ArrayList<Category>> showCategoryProduct(String str, final Context context) {
+    public MutableLiveData<ArrayList<Category>> showCategoryCourse(String str, final Context context) {
 
         final MutableLiveData<ArrayList<Category>> arrayListMutableLiveData = new MutableLiveData<>();
 
-        Call<CategoryArrayListResponse> call = RestClient.getService().getCategoryProduct(str);
+        Call<CategoryArrayListResponse> call = RestClient.getService().getCategoryCourse(str);
         call.enqueue(new Callback<CategoryArrayListResponse>() {
             @Override
             public void onResponse(Call<CategoryArrayListResponse> call, Response<CategoryArrayListResponse> response) {

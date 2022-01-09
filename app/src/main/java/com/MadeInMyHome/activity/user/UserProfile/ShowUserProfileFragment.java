@@ -1,6 +1,7 @@
 package com.MadeInMyHome.activity.user.UserProfile;
 
 import static com.MadeInMyHome.utilities.General.addToSharedPreference;
+import static com.MadeInMyHome.utilities.General.getSharedPreference;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -34,7 +35,7 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
 
     DatePickerDialog picker;
     String encodedImage;
-    String id = "1";
+    String token;
 
     private ShowUserProfileViewModel showUserProfileViewModel;
     private FragmentShowProfileUserBinding binding;
@@ -46,6 +47,9 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
 
         binding = FragmentShowProfileUserBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        token=getSharedPreference(getActivity(),"token");
+
         binding.dateUser.setOnClickListener(this);
         binding.dateUser.setOnFocusChangeListener(this);
 
@@ -59,7 +63,7 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
                                 binding.imgUserProfile.setImageBitmap(r.getBitmap());
                                 encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.imgUserProfile.getDrawable()).getBitmap());
                                 showUserProfileViewModel.updateImageUser(getActivity(),
-                                        id, encodedImage)
+                                        token, encodedImage)
                                         .observe(getViewLifecycleOwner(), new Observer<String>() {
                                             @Override
                                             public void onChanged(String s) {
@@ -71,7 +75,7 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
             }
         });
 
-        showUserProfileViewModel.getUserProfile(getActivity(), "033e852c5da3c055f0a3937bcd9112f7").observe(getActivity(), new Observer<User>() {
+        showUserProfileViewModel.getUserProfile(getActivity(), token).observe(getActivity(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
                 binding.FirstName.getEditText().setText(user.getL_name());
@@ -91,7 +95,7 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
             public void onClick(View view) {
                 encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.imgUserProfile.getDrawable()).getBitmap());
                 showUserProfileViewModel.updateUser(getActivity(),
-                        id,
+                        token,
                         binding.FirstName.getEditText(),
                         binding.LastName.getEditText(),
                         binding.DescriptionUser.getEditText(),

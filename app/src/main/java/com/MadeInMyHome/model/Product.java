@@ -20,16 +20,16 @@ public class Product implements Serializable {
     private String image;
 
     @SerializedName("price")
-    private float price;
+    private String price;
 
     @SerializedName("size")
-    private int size;
+    private String size;
 
     @SerializedName("unit")
     private String unit;
 
     @SerializedName("discount")
-    private float discount;
+    private String discount;
 
     @SerializedName("discount_date")
     private String discount_date;
@@ -66,11 +66,11 @@ public class Product implements Serializable {
         this.image = image;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public int getSize() {
+    public String getSize() {
         return size;
     }
 
@@ -78,7 +78,7 @@ public class Product implements Serializable {
         return unit;
     }
 
-    public float getDiscount() {
+    public String getDiscount() {
         return discount;
     }
 

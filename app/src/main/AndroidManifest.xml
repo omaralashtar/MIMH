@@ -18,11 +18,6 @@
         android:theme="@style/Theme.MIMH"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.user.showProfileToUser.showProfileToUser"
-            android:exported="false"
-            android:label="@string/title_activity_show_profile_to_user"
-            android:theme="@style/Theme.MIMH.NoActionBar" />
-        <activity
             android:name=".activity.add_update_product.AddUpdateProductActivity"
             android:exported="false" />
         <activity

@@ -12,9 +12,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.activity.productsByCategory.ProductByCategoryActivity;
+import com.MadeInMyHome.activity.add_update_product.AddUpdateProductActivity;
 import com.MadeInMyHome.activity.show_product.ProductActivity;
-import com.MadeInMyHome.activity.video.VideoActivity;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.model.Product;
 import com.MadeInMyHome.utilities.constants;
@@ -24,17 +23,14 @@ import java.util.ArrayList;
 
 public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterProduct.viewitem> {
 
-
-    //    OrderViewModel orderViewModel;
     ArrayList<Product> items;
     Context context;
+    String product;
 
-
-    public RecycleAdapterProduct(Context c, ArrayList<Product> item/*, OrderViewModel */) {
-
+    public RecycleAdapterProduct(Context c, ArrayList<Product> item, String name) {
         items = item;
         context = c;
-        //orderViewModel = o;
+        product = name;
     }
 
     @Override
@@ -61,8 +57,14 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
             @Override
             public void onClick(View view) {
                 String id = items.get(holder.getAdapterPosition()).getId();
-                Intent i = new Intent(context, ProductActivity.class);
-                i.putExtra("id", id);
+                Intent i;
+                if (product.equals("product")) {
+                    i = new Intent(context, ProductActivity.class);
+                } else {
+                    i = new Intent(context, AddUpdateProductActivity.class);
+                    i.putExtra("name", "update");
+                }
+                i.putExtra("id_product", id);
                 context.startActivity(i);
             }
         });

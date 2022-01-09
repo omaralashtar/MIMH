@@ -17,6 +17,8 @@ import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.activity.user.LoginSignUpActivity;
 import com.MadeInMyHome.databinding.FragmentLoginBinding;
 
+import io.getstream.chat.android.client.ChatClient;
+
 public class LoginFragment extends Fragment {
 
     LoginViewModel loginViewModel;
@@ -45,7 +47,7 @@ public class LoginFragment extends Fragment {
                             @Override
                             public void onChanged(String s) {
                                 Intent i = new Intent(getActivity(), MainActivity.class);
-                                addToSharedPreference(getActivity(), "id", s);
+                                addToSharedPreference(getActivity(), "token", s);
                                 startActivity(i);
                                 getActivity().finish();
                             }

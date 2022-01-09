@@ -59,7 +59,7 @@ public class ProductsFragment extends Fragment {
                 new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                recycleAdapterProduct =new RecycleAdapterProduct(getActivity(),products);
+                recycleAdapterProduct =new RecycleAdapterProduct(getActivity(),products,"product");
                 binding.productsRecycle.setAdapter(recycleAdapterProduct);
             }
         });

@@ -80,7 +80,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
                             @Override
                             public void onChanged(String s) {
                                 Intent i = new Intent(getActivity(), MainActivity.class);
-                                addToSharedPreference(getActivity(), "id", s);
+                                addToSharedPreference(getActivity(), "token", s);
                                 startActivity(i);
                                 getActivity().finish();
                             }
@@ -114,7 +114,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
         picker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                binding.date.getEditText().setText(year + "-" + month + "-" + day);
+                binding.date.getEditText().setText(year + "-" + month+1 + "-" + day);
             }
         }, year, month, day);
         picker.show();

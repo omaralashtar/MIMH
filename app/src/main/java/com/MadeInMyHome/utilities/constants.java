@@ -1,22 +1,24 @@
 package com.MadeInMyHome.utilities;
 
 public class constants {
-    public static final String BASE_HOST = "https://madeinmyhome.000webhostapp.com/API/";
-    public static final String USER = "user/";
-    public static final String COURSE = "course/";
-    public static final String ENROLL = "enroll/";
-    public static final String VIDEO = "video/";
-    public static final String PRODUCT = " product/";
-    public static final String FAVORITE = "favorite/";
-    public static final String RATE = "rate/";
+    public static final String BASE_HOST = "http://192.168.1.122/API2022/";
+    public static final String USER = "API/user/";
+    public static final String COURSE = "API/course/";
+    public static final String ENROLL = "API/enroll/";
+    public static final String VIDEO = "API/video/";
+    public static final String PRODUCT = " API/product/";
+    public static final String FAVORITE = "API/favorite/";
+    public static final String RATE = "API/rate/";
 
-    public static final String IMAGE_USER = " images_user/";
-    public static final String IMAGE_COURSE = " image_course/";
-    public static final String IMAGE_PRODUCT = " image_product/";
+    public static final String IMAGE_USER = "image/user/";
+    public static final String IMAGE_COURSE = "image/course/";
+    public static final String IMAGE_PRODUCT = "image/product/";
+    public static final String IMAGE_CATEGORY = "image/category/";
 
 
 
     public static final String ADD = "Add.php";
+    public static final String ADD_MULTI_IMAGE = "AddMultiImage.php";
 
     public static final String DELETE = "Delete.php";
 
@@ -33,7 +35,7 @@ public class constants {
 
     public static final String UPDATE = "Update.php";
     public static final String UPDATE_IMAGE = "UpdateImage.php";
-    public static final String UPDATE_MULTI_IMAGE = "UpdateImage.php";
+    public static final String UPDATE_MULTI_IMAGE = "UpdateMultiImage.php";
     public static final String UPDATE_PASSWORD = "UpdatePassword.php";
 
     public static final String REPORT = "Report.php";
@@ -41,6 +43,7 @@ public class constants {
 
     public static final int SPLASH_TIMER=1000;
 
+    public final static String CID_KEY = "key:cid";
 
 
 }
