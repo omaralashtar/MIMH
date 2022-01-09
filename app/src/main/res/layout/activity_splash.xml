@@ -12,15 +12,18 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:adjustViewBounds="true"
+        android:background="@color/bg_screen1"
         android:cropToPadding="true"
         android:padding="@dimen/margin"
-        android:scaleType="centerInside"
+        android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/splash_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

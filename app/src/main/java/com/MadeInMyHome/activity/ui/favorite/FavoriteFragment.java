@@ -25,7 +25,7 @@ public class FavoriteFragment extends Fragment {
     private FragmentFavoriteBinding binding;
 
     int next=0;
-
+    String id="1";
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -41,7 +41,7 @@ public class FavoriteFragment extends Fragment {
     }
 
     public void setAdapter(){
-        favoriteViewModel.getProducts(getActivity(),"3",String.valueOf(next)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
+        favoriteViewModel.getProducts(getActivity(),id,String.valueOf(next)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
                 recycleAdapterProduct =new RecycleAdapterProduct(getActivity(),products,"product");

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <LinearLayout
+        android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dip"
+        android:padding="3dip" >
+        <TextView
+            android:id="@+id/txt_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="5dip"
+            android:textColor="#343434"
+            android:textSize="15dip" />
+        <ImageView
+            android:id="@+id/image"
+            android:contentDescription="@string/app_name"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="60dip"
+            android:layout_height="60dip"
+
+            android:src="@drawable/ic_baseline_face_24" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:contentDescription="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_dashboard_black_24dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/nameUser"
+
+        android:layout_toLeftOf="@+id/imageView1"
+
+        android:rating="3" />
+
+    <TextView
+        android:id="@+id/nameUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="75dip"
+        android:paddingBottom="10dip"
+        android:text="strCity"
+        android:textColor="#040404"
+        android:textSize="25dip"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/commentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameUser"
+        android:layout_alignLeft="@+id/nameUser"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="5dip"
+        android:text="strWeather"
+        android:textColor="#343434"
+        android:textSize="15dip" />
+
+</RelativeLayout>

@@ -4,13 +4,18 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Rate implements Serializable
-{
+public class Rate implements Serializable {
     @SerializedName("id_user")
     private String id_user;
 
+    @SerializedName("f_name")
+    private String f_name;
+
+    @SerializedName("l_name")
+    private String l_name;
+
     @SerializedName("rating")
-    private String rating;
+    private float rating;
 
     @SerializedName("comment")
     private String comment;
@@ -19,11 +24,19 @@ public class Rate implements Serializable
         return id_user;
     }
 
-    public String getRating() {
+    public float getRating() {
         return rating;
     }
 
     public String getComment() {
         return comment;
+    }
+
+    public String getF_name() {
+        return f_name;
+    }
+
+    public String getL_name() {
+        return l_name;
     }
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_products">
+    app:startDestination="@+id/nav_home">
     <fragment
         android:id="@+id/navigation_products"
         android:name="com.MadeInMyHome.activity.ui.products.ProductsFragment"
@@ -70,4 +70,9 @@
         android:name="com.MadeInMyHome.activity.ui.my_products.myProductFragment"
         android:label="@string/title_myProducts"
         tools:layout="@layout/fragment_my_product" />
+
+
+
+
+
 </navigation>

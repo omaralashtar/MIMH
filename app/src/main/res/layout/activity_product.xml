@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sc_for" />
+        app:srcCompat="@drawable/sc_for"
+        android:contentDescription="TODO" />
 
     <com.github.siyamed.shapeimageview.CircularImageView
         android:id="@+id/favorate"
@@ -105,41 +106,42 @@
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
 
-    <LinearLayout
-        android:id="@+id/multiImageLayout"
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_47ssp"
+            android:text="@string/btn_addComment"
+            app:icon="@drawable/ic_baseline_add_24"
+            android:layout_marginBottom="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:layout_marginLeft="@dimen/_24ssp"
+            android:layout_marginRight="@dimen/_24ssp"
+            app:layout_constraintHorizontal_bias="0.0"
+
+            app:layout_constraintTop_toBottomOf="@+id/images" />
+
+
+    <Button
+        android:id="@+id/deleteRate"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/image"
+        android:layout_height="@dimen/_47ssp"
+        android:text="@string/btn_deleteComment"
+        app:icon="@drawable/ic_baseline_delete_24"
+        android:layout_marginBottom="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_13sdp"
+        android:layout_marginLeft="@dimen/_24ssp"
+        android:layout_marginRight="@dimen/_24ssp"
+        app:layout_constraintHorizontal_bias="0.0"
+         android:background="@color/color_red"
+        app:layout_constraintTop_toBottomOf="@+id/commentsRecyclerView" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/commentsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/images">
+        app:layout_constraintTop_toBottomOf="@+id/add" />
 
-        <ImageView
-            android:id="@+id/multiImage"
-            android:layout_width="@dimen/image"
-            android:layout_height="@dimen/image"
-            android:padding="@dimen/margin"
-            android:scaleType="centerInside"
-            android:visibility="visible"
-            app:srcCompat="@drawable/defult_product" />
-
-        <ImageView
-            android:id="@+id/multiImage1"
-            android:layout_width="@dimen/image"
-            android:layout_height="@dimen/image"
-            android:padding="@dimen/margin"
-            android:scaleType="centerInside"
-            android:visibility="visible"
-            app:srcCompat="@drawable/defult_product" />
-
-        <ImageView
-            android:id="@+id/multiImage2"
-            android:layout_width="@dimen/image"
-            android:layout_height="@dimen/image"
-            android:padding="@dimen/margin"
-            android:scaleType="centerInside"
-            android:visibility="visible"
-            app:srcCompat="@drawable/defult_product" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

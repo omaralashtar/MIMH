@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -39,7 +40,7 @@ public class ProductsFragment extends Fragment {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        binding.productsRecycle.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.productsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         setAdapter();
 
@@ -54,7 +55,8 @@ public class ProductsFragment extends Fragment {
     }
 
     public void setAdapter(){
-        productsViewModel.getProducts(getActivity(),String.valueOf(next)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
+        productsViewModel.getProducts(getActivity(),String.valueOf(next)).observe(getViewLifecycleOwner(),
+                new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
                 recycleAdapterProduct =new RecycleAdapterProduct(getActivity(),products,"product");
