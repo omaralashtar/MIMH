@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,9 +40,10 @@ public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.
 
     @Override
     public void onBindViewHolder(final viewitem holder, int position) {
-        holder.name.setText(items.get(position).getComment());
+        holder.name.setText(items.get(position).getF_name()+items.get(position).getL_name());
         holder.comment.setText(items.get(position).getComment());
-        //holder.rate.setText(items.get(position).getRating());
+        holder.rate.setText(items.get(position).getRating()+"");
+        holder.ratingBar.setRating(items.get(position).getRating());
         //holder.rate.setText(items.get(position).getRating());
 
     }
@@ -52,7 +54,7 @@ public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-
+        RatingBar ratingBar;
         TextView name, rate, comment;
         ImageView image;
 
@@ -60,9 +62,14 @@ public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.
             super(itemView);
             image=itemView.findViewById(R.id.image);
             name = itemView.findViewById(R.id.nameUser);
-            //rate = itemView.findViewById(R.id.rate);
+            rate = itemView.findViewById(R.id.txt_rate);
             comment = itemView.findViewById(R.id.commentName);
            // remove = itemView.findViewById(R.id.remove);
+            ratingBar=itemView.findViewById(R.id.ratingBar);
+
+
+
+            ratingBar.setRating(3);
         }
     }
 }

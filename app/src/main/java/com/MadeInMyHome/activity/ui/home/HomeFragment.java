@@ -1,5 +1,6 @@
 package com.MadeInMyHome.activity.ui.home;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +15,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.introduction.IntroductionActivity;
+import com.MadeInMyHome.activity.productsByCategory.ProductByCategoryActivity;
+import com.MadeInMyHome.activity.user.showProfileToUser.showProfileToUser;
+import com.MadeInMyHome.activity.welcom.WelcomeActivity;
 import com.MadeInMyHome.databinding.FragmentHomeBinding;
+import com.google.android.material.snackbar.Snackbar;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -101,6 +107,23 @@ private FragmentHomeBinding binding;
                 Log.i("GGG", "onIndicatorClicked: " + binding.imageSlider.getCurrentPagePosition());
             }
         });
+
+
+
+
+
+
+
+        binding.fabProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), showProfileToUser.class);
+                i.putExtra("id", "d3799829ab212a47a3b8b60734d243ab");
+                getActivity().startActivity(i);
+
+            }
+        });
+
 
 
 

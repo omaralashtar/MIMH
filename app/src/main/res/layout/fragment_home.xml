@@ -53,29 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cv_slider_mainActivity"
                 android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/addNewItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add An Item" />
-
-                <Button
-                    android:id="@+id/removeLastItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="removeLastItem"
-                    android:text="Rmove Last Item" />
-
-                <Button
-                    android:id="@+id/renewItems"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="renewItems"
-                    android:text="Renew Items" />
-
-            </LinearLayout>
+                android:orientation="vertical"/>
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragmentContainerView"
                 android:name="com.MadeInMyHome.activity.ui.category_product.category_product_horizontal"
@@ -96,6 +74,14 @@
                 android:name="com.MadeInMyHome.activity.ui.products.ProductsFragment_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/ic_baseline_add_24" />
+
         </LinearLayout>
     </ScrollView>
 

@@ -105,20 +105,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
+
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_47ssp"
+            android:text="@string/btn_addComment"
+            app:icon="@drawable/ic_baseline_add_24"
+            android:layout_marginBottom="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:layout_marginLeft="@dimen/_24ssp"
+            android:layout_marginRight="@dimen/_24ssp"
+            app:layout_constraintHorizontal_bias="0.0"
+
+            app:layout_constraintTop_toBottomOf="@+id/images" />
+
+
     <Button
-        android:id="@+id/add"
+        android:id="@+id/deleteRate"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_47ssp"
-        android:text="@string/btn_addComment"
-        app:icon="@drawable/ic_baseline_add_24"
+        android:text="@string/btn_deleteComment"
+        app:icon="@drawable/ic_baseline_delete_24"
         android:layout_marginBottom="@dimen/_13sdp"
         android:layout_marginTop="@dimen/_13sdp"
         android:layout_marginLeft="@dimen/_24ssp"
         android:layout_marginRight="@dimen/_24ssp"
         app:layout_constraintHorizontal_bias="0.0"
-
-        app:layout_constraintTop_toBottomOf="@+id/images" />
-
+         android:background="@color/color_red"
+        app:layout_constraintTop_toBottomOf="@+id/commentsRecyclerView" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/commentsRecyclerView"
         android:layout_width="match_parent"
@@ -126,4 +142,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

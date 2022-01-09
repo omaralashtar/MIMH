@@ -41,7 +41,7 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.USER + constants.GET)
-    Call<UserArrayListResponse> getUser(@Field("id") String id);
+    Call<UserArrayListResponse> getUser(@Field("token") String id);
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE)
