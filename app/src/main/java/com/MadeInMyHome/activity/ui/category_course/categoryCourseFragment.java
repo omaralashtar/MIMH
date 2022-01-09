@@ -53,10 +53,10 @@ public class categoryCourseFragment extends Fragment {
     }
 
     public void setAdapter() {
-        categoryCourseViewModel.showCategoryProduct(getActivity()).observe(getActivity(), new Observer<ArrayList<Category>>() {
+        categoryCourseViewModel.showCategoryCourse(getActivity()).observe(getActivity(), new Observer<ArrayList<Category>>() {
             @Override
             public void onChanged(ArrayList<Category> categories) {
-                CategoryCourseRecycleAdapter = new RecycleAdapterCategory(getActivity(), categories);
+                CategoryCourseRecycleAdapter = new RecycleAdapterCategory(getActivity(), categories,"course");
                 binding.courseProductRecycle.setAdapter(CategoryCourseRecycleAdapter);
             }
         });

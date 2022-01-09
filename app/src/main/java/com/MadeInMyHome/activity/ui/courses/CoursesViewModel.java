@@ -18,11 +18,14 @@ import retrofit2.Response;
 
 public class CoursesViewModel extends ViewModel {
 
-    public MutableLiveData<ArrayList<Course>> getCourses(final Context context, String next) {
+    public MutableLiveData<ArrayList<Course>> getCourses(final Context context, String next){
+        return getCourses(context,"",next);
+    }
+    public MutableLiveData<ArrayList<Course>> getCourses(final Context context, String filter, String next) {
 
         final MutableLiveData<ArrayList<Course>> arrayListMutableLiveData = new MutableLiveData<>();
 
-        Call<CourseArrayListResponse> call = RestClient.getService().getAllCourse(next);
+        Call<CourseArrayListResponse> call = RestClient.getService().getAllCourse(filter,next);
         call.enqueue(new Callback<CourseArrayListResponse>() {
             @Override
             public void onResponse(Call<CourseArrayListResponse> call, Response<CourseArrayListResponse> response) {

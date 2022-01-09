@@ -72,7 +72,7 @@
         android:id="@+id/enroll"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="enroll"
         app:cornerRadius="@dimen/boxCornerRadius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

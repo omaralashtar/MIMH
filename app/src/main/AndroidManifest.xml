@@ -18,9 +18,12 @@
         android:theme="@style/Theme.MIMH"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.show_channel.ShowChannelActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.add_update_product.AddUpdateProductActivity"
             android:exported="false"
-            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar.Bridge"/>
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
         <activity
             android:name=".activity.show_course.CourseActivity"
             android:exported="false" />

@@ -24,10 +24,12 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
 
     ArrayList<Category> items;
     Context context;
+    String name;
 
-    public RecycleAdapterCategory(Context c, ArrayList<Category> item) {
+    public RecycleAdapterCategory(Context c, ArrayList<Category> item,String n) {
         items = item;
         context = c;
+        name=n;
     }
 
     @Override
@@ -48,7 +50,8 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, ProductByCategoryActivity.class);
-                i.putExtra("cat_id", String.valueOf(items.get(holder.getAdapterPosition()).getId()));
+                i.putExtra("category", name);
+                i.putExtra("category_id", String.valueOf(items.get(holder.getAdapterPosition()).getId()));
                 context.startActivity(i);
             }
         });

@@ -15,7 +15,7 @@ public class GlideImage {
                 .apply(new RequestOptions()
                         .skipMemoryCache(true)
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .placeholder(R.mipmap.camera_colored))
+                        .placeholder(R.drawable.defult_product))
                 .into(image);
     }
 }

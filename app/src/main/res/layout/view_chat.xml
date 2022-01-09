@@ -30,14 +30,14 @@
                 app:srcCompat="@color/design_default_color_error" />
 
             <ImageView
-                android:id="@+id/favorite"
+                android:id="@+id/message"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_64sdp"
                 android:layout_gravity="bottom|end"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_favorite_border_24"
+                app:srcCompat="@drawable/ic_notifications_black_24dp"
                 tools:ignore="VectorDrawableCompat" />
 
             <TextView
@@ -46,56 +46,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
                 android:text="TextView"
-                app:layout_constraintEnd_toStartOf="@+id/discount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/message"
                 app:layout_constraintStart_toEndOf="@id/image"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
-                android:layout_marginStart="@dimen/margin"
-                android:text="TextView"
-                app:layout_constraintEnd_toStartOf="@+id/discount"
-                app:layout_constraintStart_toEndOf="@+id/image"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
-
-            <TextView
-                android:id="@+id/discount"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|top"
-                android:layout_marginStart="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/name"
-                app:layout_constraintEnd_toStartOf="@+id/favorite"
-                app:layout_constraintStart_toEndOf="@+id/name"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/discount_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|end"
-                android:text="TextView"
-                app:layout_constraintEnd_toStartOf="@+id/favorite"
-                app:layout_constraintStart_toEndOf="@+id/price"
-                app:layout_constraintTop_toBottomOf="@+id/discount" />
-
-            <TextView
-                android:id="@+id/category"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|end"
-                android:layout_marginStart="@dimen/margin"
-                android:text="TextView"
-                app:layout_constraintEnd_toStartOf="@+id/discount"
-                app:layout_constraintStart_toEndOf="@+id/image"
-                app:layout_constraintTop_toBottomOf="@+id/price" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

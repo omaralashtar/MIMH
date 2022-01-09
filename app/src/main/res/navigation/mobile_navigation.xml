@@ -42,6 +42,12 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
+        android:id="@+id/nav_chat"
+        android:name="com.MadeInMyHome.activity.ui.chat.chatFragment"
+        android:label="@string/stream_ui_channel_list_you"
+        tools:layout="@layout/fragment_chat" />
+
+    <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileFragment"
         android:label="@string/menu_showProfile"

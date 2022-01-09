@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MIMH</string>
+    <string name="apikey">d5jrhkq7n52q</string>
     <string name="login">Login</string>
     <string name="sign_up">Sign Up</string>
 
@@ -93,24 +94,12 @@
     <string name="menu_showProfile">show Profile</string>
 
 
-
-
-
-
-
-
-
-
     //show dialog
     <string name="dialog_No">لا</string>
     <string name="dialog_yes">نعم</string>
     <string name="dialog_cancel">إلغاء</string>
     <string name="dialog_Title">عزيزي المستخدم</string>
     <string name="dialog_msg">هل تريد الخروج من التطبيق ؟</string>
-
-
-
-
 
 
     //profile arabic

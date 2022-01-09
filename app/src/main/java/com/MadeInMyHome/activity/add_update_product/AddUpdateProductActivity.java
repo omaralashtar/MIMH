@@ -1,12 +1,17 @@
 package com.MadeInMyHome.activity.add_update_product;
 
+import static com.MadeInMyHome.utilities.General.getSharedPreference;
+
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -18,6 +23,7 @@ import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.show_product.ProductViewModel;
 import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.activity.ui.category_product.CategoryProductViewModel;
+import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.component.PickImage;
 import com.MadeInMyHome.component.convertToString;
@@ -25,6 +31,7 @@ import com.MadeInMyHome.databinding.ActivityAddUpdateProductBinding;
 import com.MadeInMyHome.model.Category;
 import com.MadeInMyHome.model.Images;
 import com.MadeInMyHome.model.Product;
+import com.MadeInMyHome.model.User;
 import com.MadeInMyHome.utilities.constants;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
@@ -33,24 +40,26 @@ import com.vansuita.pickimage.listeners.IPickResult;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
-public class AddUpdateProductActivity extends AppCompatActivity {
+public class AddUpdateProductActivity extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
     ActivityAddUpdateProductBinding binding;
     CategoryProductViewModel categoryProductViewModel;
     AddUpdateProductViewModel addUpdateProductViewModel;
+    ShowUserProfileViewModel showUserProfileViewModel;
     ProductViewModel productViewModel;
 
     ArrayList<String> categoryName = new ArrayList<>();
     ArrayList<Category> categoryArrayList;
-    ArrayList<String> addMultiImagesArrayList = new ArrayList<>();
     ArrayList<ImageView> imageViewArrayList = new ArrayList<>();
-    ArrayList<Images> updateImagesViewArrayList = null;
+    ArrayList<Images> updateImagesViewArrayList = new ArrayList<>();
 
+    DatePickerDialog picker;
     Bitmap drawable, main;
     String name, price, size, unit, description, discount, discountDate, category, encodedImage;
-    String id_user = "1";
+    String encodedImage1, encodedImage2, encodedImage3, token;
     String id_product;
 
     @Override
@@ -62,9 +71,14 @@ public class AddUpdateProductActivity extends AppCompatActivity {
 
         categoryProductViewModel = ViewModelProviders.of(this).get(CategoryProductViewModel.class);
         addUpdateProductViewModel = ViewModelProviders.of(this).get(AddUpdateProductViewModel.class);
+        showUserProfileViewModel = ViewModelProviders.of(this).get(ShowUserProfileViewModel.class);
         productViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
 
         drawable = ((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap();
+        token = getSharedPreference(this, "token");
+
+        binding.discountDate.setOnClickListener(this);
+        binding.discountDate.setOnFocusChangeListener(this);
 
         ArrayAdapter<String> unitAdapter =
                 new ArrayAdapter<>(this, R.layout.dropdown_menu_popup_item, getResources().getStringArray(R.array.unitList));
@@ -126,24 +140,30 @@ public class AddUpdateProductActivity extends AppCompatActivity {
                     if (validate() && !(main == ((BitmapDrawable) binding.image.getDrawable()).getBitmap())) {
                         encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.image.getDrawable()).getBitmap());
 
-                        for (int i = 0; i < 3; i++) {
-                            if (!(drawable == ((BitmapDrawable) imageViewArrayList.get(i).getDrawable()).getBitmap())) {
-                                addMultiImagesArrayList.add(new convertToString().convertToString(((BitmapDrawable) imageViewArrayList.get(i).getDrawable()).getBitmap()));
-                            }
-                        }
+                        encodedImage1 = !(drawable == ((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap()) ? new convertToString().convertToString(((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap()) : null;
+                        encodedImage2 = !(drawable == ((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap()) ? new convertToString().convertToString(((BitmapDrawable) binding.multiImage1.getDrawable()).getBitmap()) : null;
+                        encodedImage3 = !(drawable == ((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap()) ? new convertToString().convertToString(((BitmapDrawable) binding.multiImage2.getDrawable()).getBitmap()) : null;
 
-                        addUpdateProductViewModel
-                                .addProduct(AddUpdateProductActivity.this, name,
-                                        description.equals("") ? null : description, encodedImage, price, size, unit,
-                                        discount.equals("") ? null : discount, discountDate.equals("") ? null : discountDate,
-                                        new SimpleDateFormat("yyyy-MM-dd").format(new Date()),
-                                        getCategoryId(category), id_user, addMultiImagesArrayList, binding.add).observe(AddUpdateProductActivity.this, new Observer<String>() {
-                            @Override
-                            public void onChanged(String s) {
-                                Intent i = new Intent(AddUpdateProductActivity.this, MainActivity.class);
-                                startActivity(i);
-                            }
-                        });
+                        showUserProfileViewModel.getUserProfile(AddUpdateProductActivity.this, token)
+                                .observe(AddUpdateProductActivity.this, new Observer<User>() {
+                                    @Override
+                                    public void onChanged(User user) {
+                                        addUpdateProductViewModel
+                                                .addProduct(AddUpdateProductActivity.this, name,
+                                                        description.equals("") ? null : description, encodedImage, price, size, unit,
+                                                        discount.equals("") ? null : discount, discountDate.equals("") ? null : discountDate,
+                                                        new SimpleDateFormat("yyyy-MM-dd").format(new Date()),
+                                                        getCategoryId(category), user.getId(),
+                                                        encodedImage1, encodedImage2, encodedImage3, binding.add)
+                                                .observe(AddUpdateProductActivity.this, new Observer<String>() {
+                                                    @Override
+                                                    public void onChanged(String s) {
+                                                        Intent i = new Intent(AddUpdateProductActivity.this, MainActivity.class);
+                                                        startActivity(i);
+                                                    }
+                                                });
+                                    }
+                                });
                     } else {
                         if (main == ((BitmapDrawable) binding.image.getDrawable()).getBitmap())
                             binding.image.setAnimation(AnimationUtils.loadAnimation(AddUpdateProductActivity.this, R.anim.shake));
@@ -196,14 +216,13 @@ public class AddUpdateProductActivity extends AppCompatActivity {
             productViewModel.getProductMultiImage(this, id_product).observe(this, new Observer<ArrayList<Images>>() {
                 @Override
                 public void onChanged(ArrayList<Images> images) {
-                    updateImagesViewArrayList = new ArrayList<>();
                     updateImagesViewArrayList = images;
 
-                    if (images.size() == 1)
+                    if (images.size() > 0)
                         new GlideImage(AddUpdateProductActivity.this, constants.BASE_HOST + constants.IMAGE_PRODUCT + images.get(0).getImage(), binding.multiImage);
-                    if (images.size() == 2)
+                    if (images.size() > 1)
                         new GlideImage(AddUpdateProductActivity.this, constants.BASE_HOST + constants.IMAGE_PRODUCT + images.get(1).getImage(), binding.multiImage1);
-                    if (images.size() == 3)
+                    if (images.size() > 2)
                         new GlideImage(AddUpdateProductActivity.this, constants.BASE_HOST + constants.IMAGE_PRODUCT + images.get(2).getImage(), binding.multiImage2);
                 }
             });
@@ -211,6 +230,7 @@ public class AddUpdateProductActivity extends AppCompatActivity {
             binding.update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    binding.update.setClickable(false);
                     if (validate()) {
                         addUpdateProductViewModel.updateProduct(AddUpdateProductActivity.this, id_product, name,
                                 description.equals("") ? null : description, price, size, unit,
@@ -235,7 +255,7 @@ public class AddUpdateProductActivity extends AppCompatActivity {
                                 @Override
                                 public void onPickResult(PickResult r) {
                                     //TODO: do what you have to...
-                                    encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.image.getDrawable()).getBitmap());
+                                    encodedImage = new convertToString().convertToString(r.getBitmap());
                                     addUpdateProductViewModel.updateProductImage(AddUpdateProductActivity.this, id_product, encodedImage)
                                             .observe(AddUpdateProductActivity.this, new Observer<String>() {
                                                 @Override
@@ -284,7 +304,7 @@ public class AddUpdateProductActivity extends AppCompatActivity {
         setMultiImage(view, null);
     }
 
-    public void setMultiImage(View view, ArrayList<Images> imageViewArrayList) {
+    public void setMultiImage(View view,ArrayList<Images> imageViewArrayList) {
         Toast.makeText(this, "" + (((BitmapDrawable) ((ImageView) view).getDrawable()).getBitmap() == drawable), Toast.LENGTH_SHORT).show();
         if (drawable == ((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap()) {
             PickImageDialog.build(new PickSetup())
@@ -293,7 +313,7 @@ public class AddUpdateProductActivity extends AppCompatActivity {
                         public void onPickResult(PickResult r) {
                             //TODO: do what you have to...
                             if (imageViewArrayList != null) {
-                                updateImage(view, imageViewArrayList.get(0).getId(), r);
+                                addImage(binding.multiImage, id_product, r);
                             } else {
                                 binding.multiImage.setImageBitmap(r.getBitmap());
                             }
@@ -307,7 +327,7 @@ public class AddUpdateProductActivity extends AppCompatActivity {
                         public void onPickResult(PickResult r) {
                             //TODO: do what you have to...
                             if (imageViewArrayList != null) {
-                                updateImage(view, imageViewArrayList.get(1).getId(), r);
+                                addImage(binding.multiImage1, id_product, r);
                             } else {
                                 binding.multiImage1.setImageBitmap(r.getBitmap());
                             }
@@ -321,7 +341,7 @@ public class AddUpdateProductActivity extends AppCompatActivity {
                         public void onPickResult(PickResult r) {
                             //TODO: do what you have to...
                             if (imageViewArrayList != null) {
-                                updateImage(view, imageViewArrayList.get(2).getId(), r);
+                                addImage(binding.multiImage2, id_product, r);
                             } else {
                                 binding.multiImage2.setImageBitmap(r.getBitmap());
                             }
@@ -335,11 +355,11 @@ public class AddUpdateProductActivity extends AppCompatActivity {
                             //TODO: do what you have to...
                             if (imageViewArrayList != null) {
                                 if (view.getId() == R.id.multiImage) {
-                                    updateImage(view, imageViewArrayList.get(0).getId(), r);
+                                    updateImage(view, updateImagesViewArrayList.get(0).getId(), r);
                                 } else if (view.getId() == R.id.multiImage1) {
-                                    updateImage(view, imageViewArrayList.get(1).getId(), r);
+                                    updateImage(view, updateImagesViewArrayList.get(1).getId(), r);
                                 } else {
-                                    updateImage(view, imageViewArrayList.get(2).getId(), r);
+                                    updateImage(view, updateImagesViewArrayList.get(2).getId(), r);
                                 }
                             } else {
                                 ((ImageView) view).setImageBitmap(r.getBitmap());
@@ -350,7 +370,7 @@ public class AddUpdateProductActivity extends AppCompatActivity {
     }
 
     public void updateImage(View view, String id_product_image, PickResult r) {
-        encodedImage = new convertToString().convertToString(((BitmapDrawable) ((ImageView) view).getDrawable()).getBitmap());
+        encodedImage = new convertToString().convertToString(r.getBitmap());
         addUpdateProductViewModel.updateProductMultiImage(AddUpdateProductActivity.this, id_product_image, encodedImage)
                 .observe(AddUpdateProductActivity.this, new Observer<String>() {
                     @Override
@@ -359,6 +379,20 @@ public class AddUpdateProductActivity extends AppCompatActivity {
                     }
                 });
     }
+    public void addImage(View view, String id_product, PickResult r) {
+        encodedImage = new convertToString().convertToString(r.getBitmap());
+        addUpdateProductViewModel.addMultiImage(AddUpdateProductActivity.this, id_product, encodedImage)
+                .observe(AddUpdateProductActivity.this, new Observer<String>() {
+                    @Override
+                    public void onChanged(String s) {
+                        ((ImageView) view).setImageBitmap(r.getBitmap());
+                        Images i=new Images();
+                        i.setId(s);
+                        updateImagesViewArrayList.add(i);
+                    }
+                });
+
+    }
 
     public String getCategoryId(String name) {
         for (Category category : categoryArrayList) {
@@ -366,5 +400,30 @@ public class AddUpdateProductActivity extends AppCompatActivity {
                 return category.getId();
         }
         return "0";
+    }
+
+    @Override
+    public void onClick(View v) {
+        setDate();
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean b) {
+        if (b)
+            setDate();
+    }
+
+    public void setDate() {
+        final Calendar cldr = Calendar.getInstance();
+        int day = cldr.get(Calendar.DAY_OF_MONTH);
+        int month = cldr.get(Calendar.MONTH);
+        int year = cldr.get(Calendar.YEAR);
+        picker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                binding.discountDate.getEditText().setText(year + "-" + month + 1 + "-" + day);
+            }
+        }, year, month, day);
+        picker.show();
     }
 }

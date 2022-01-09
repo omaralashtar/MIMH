@@ -15,6 +15,17 @@ public class Images implements Serializable
     @SerializedName("image")
     private String image;
 
+    public Images() {
+        id=null;
+        id_product=null;
+        image=null;
+
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }

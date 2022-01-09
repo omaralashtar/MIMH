@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close));
 
         drawerAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_chat,
                 R.id.navigation_myCourse,
                 R.id.navigation_categoryCourse,
                 R.id.nav_slideshow,
