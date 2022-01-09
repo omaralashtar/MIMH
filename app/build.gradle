@@ -7,10 +7,11 @@ android {
 
     defaultConfig {
         applicationId "com.MadeInMyHome"
-        minSdk 19
+        minSdk 21
         targetSdk 31
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,6 +32,15 @@ android {
 }
 
 dependencies {
+    implementation "io.coil-kt:coil:1.4.0"
+    implementation "io.getstream:stream-chat-android-ui-components:4.23.0"
+
+
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.3'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
+    implementation 'com.balysv:material-ripple:1.0.2'
+
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.siyamed:android-shape-imageview:0.9'
