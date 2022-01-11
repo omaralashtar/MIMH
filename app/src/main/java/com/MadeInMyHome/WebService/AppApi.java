@@ -13,6 +13,7 @@ import com.MadeInMyHome.Response.UserArrayListResponse;
 import com.MadeInMyHome.Response.VideoArrayListResponse;
 import com.MadeInMyHome.utilities.constants;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -223,5 +224,12 @@ public interface AppApi {
     @POST(constants.FAVORITE + constants.GET)
     Call<ProductArrayListResponse> getFavorite(@Field("id") String id,
                                                @Field("next") String next);
+
+    @FormUrlEncoded
+    @POST(constants.BASE_HOST_EMAIL)
+    Call<ResponseBody> sendEmail(@Field("from") String from,
+                                 @Field("to") String to,
+                                 @Field("subject") String subject,
+                                 @Field("text") String text);
 
 }

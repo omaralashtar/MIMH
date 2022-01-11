@@ -67,7 +67,7 @@ public class category_product_horizontal extends Fragment {
         categoryProductsViewModel.showCategoryProduct(getActivity()).observe(getActivity(), new Observer<ArrayList<Category>>() {
             @Override
             public void onChanged(ArrayList<Category> categories) {
-                CategoryProductsRecycleAdapter = new RecycleAdapterCategory(getActivity(), categories);
+                CategoryProductsRecycleAdapter = new RecycleAdapterCategory(getActivity(), categories,"product");
                 binding.recycle.setAdapter(CategoryProductsRecycleAdapter);
             }
         });
