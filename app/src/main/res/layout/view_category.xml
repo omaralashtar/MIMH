@@ -15,8 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
         <com.github.siyamed.shapeimageview.CircularImageView
             android:id="@+id/image"
             android:layout_width="@dimen/image"
@@ -27,14 +25,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.github.siyamed.shapeimageview.CircularImageView
+            android:translationZ="1dp"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
+            android:cropToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="#80000000"/>
+
         <TextView
             android:id="@+id/name"
-            android:translationZ="1dp"
+            android:translationZ="2dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="TextView"
+            android:text="@string/category"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

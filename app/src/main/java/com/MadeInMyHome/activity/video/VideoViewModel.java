@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.MadeInMyHome.Response.CategoryArrayListResponse;
+import com.MadeInMyHome.Response.ResultResponse;
 import com.MadeInMyHome.Response.VideoArrayListResponse;
 import com.MadeInMyHome.WebService.RestClient;
 import com.MadeInMyHome.model.Category;
@@ -47,7 +48,32 @@ public class VideoViewModel extends ViewModel {
 
         return arrayListMutableLiveData;
     }
+    public MutableLiveData<String> reportVideos(final Context context,String id_user,String id_video,String message) {
 
+        final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
 
+        Call<ResultResponse> call = RestClient.getService().addReport(id_user,id_video,message);
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                ResultResponse resultResponse = response.body();
+                if (resultResponse != null) {
+                   String result = resultResponse.getResult();
+                    if (result.equals("1")) {
+                        arrayListMutableLiveData.setValue(result);
+                    }
+                } else {
+                    Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return arrayListMutableLiveData;
+    }
 
 }

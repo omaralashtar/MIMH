@@ -175,4 +175,32 @@ public class AddUpdateProductViewModel extends ViewModel {
         return arrayListMutableLiveData;
     }
 
+    public MutableLiveData<String> deleteProduct(final Context context, String id_product) {
+
+        final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
+
+        Call<ResultResponse> call = RestClient.getService().deleteProduct(id_product);
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                ResultResponse resultResponse = response.body();
+                if (resultResponse != null) {
+                    String result = resultResponse.getResult();
+                    if (result.equals("1")) {
+                        arrayListMutableLiveData.setValue(result);
+                    }
+                } else {
+                    Toast.makeText(context, "Field_get_items", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return arrayListMutableLiveData;
+    }
+
 }

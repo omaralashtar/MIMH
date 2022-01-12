@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.MadeInMyHome.adapter.RecycleAdapterVideo;
@@ -26,7 +26,7 @@ public class VideoActivity extends AppCompatActivity {
         binding = ActivityVideoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        videoViewModel = ViewModelProviders.of(this).get(VideoViewModel.class);
+        videoViewModel = new ViewModelProvider(this).get(VideoViewModel.class);
 
         binding.videoRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 

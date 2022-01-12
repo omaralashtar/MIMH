@@ -2,6 +2,7 @@ package com.MadeInMyHome.activity.user.UserProfile;
 
 import static com.MadeInMyHome.utilities.General.addToSharedPreference;
 import static com.MadeInMyHome.utilities.General.getSharedPreference;
+import static com.MadeInMyHome.utilities.General.getToken;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -35,7 +36,6 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
 
     DatePickerDialog picker;
     String encodedImage;
-    String token;
 
     private ShowUserProfileViewModel showUserProfileViewModel;
     private FragmentShowProfileUserBinding binding;
@@ -48,8 +48,6 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
         binding = FragmentShowProfileUserBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        token=getSharedPreference(getActivity(),"token");
-
         binding.dateUser.setOnClickListener(this);
         binding.dateUser.setOnFocusChangeListener(this);
 
@@ -60,14 +58,13 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
                         .setOnPickResult(new IPickResult() {
                             @Override
                             public void onPickResult(PickResult r) {
-                                binding.imgUserProfile.setImageBitmap(r.getBitmap());
                                 encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.imgUserProfile.getDrawable()).getBitmap());
                                 showUserProfileViewModel.updateImageUser(getActivity(),
-                                        token, encodedImage)
+                                        getToken(getActivity()), encodedImage)
                                         .observe(getViewLifecycleOwner(), new Observer<String>() {
                                             @Override
                                             public void onChanged(String s) {
-                                                Toast.makeText(getActivity(), encodedImage, Toast.LENGTH_SHORT).show();
+                                                binding.imgUserProfile.setImageBitmap(r.getBitmap());
                                             }
                                         });
                             }
@@ -75,7 +72,7 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
             }
         });
 
-        showUserProfileViewModel.getUserProfile(getActivity(), token).observe(getActivity(), new Observer<User>() {
+        showUserProfileViewModel.getUserProfile(getActivity(), getToken(getActivity())).observe(getActivity(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
                 binding.FirstName.getEditText().setText(user.getL_name());
@@ -95,7 +92,7 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
             public void onClick(View view) {
                 encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.imgUserProfile.getDrawable()).getBitmap());
                 showUserProfileViewModel.updateUser(getActivity(),
-                        token,
+                        getToken(getActivity()),
                         binding.FirstName.getEditText(),
                         binding.LastName.getEditText(),
                         binding.DescriptionUser.getEditText(),
@@ -105,7 +102,6 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
                             @Override
                             public void onChanged(String s) {
                                 Intent i = new Intent(getActivity(), MainActivity.class);
-                                addToSharedPreference(getActivity(), "id", s);
                                 startActivity(i);
                                 getActivity().finish();
                             }
@@ -141,7 +137,7 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
         picker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                binding.dateUser.getEditText().setText(year + "-" + month + "-" + day);
+                binding.dateUser.getEditText().setText(year + "-" + month+1 + "-" + day);
             }
         }, year, month, day);
         picker.show();

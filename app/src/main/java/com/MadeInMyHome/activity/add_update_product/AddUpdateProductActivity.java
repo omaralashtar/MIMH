@@ -1,12 +1,11 @@
 package com.MadeInMyHome.activity.add_update_product;
 
-import static com.MadeInMyHome.utilities.General.getSharedPreference;
+import static com.MadeInMyHome.utilities.General.getToken;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -15,13 +14,13 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.show_product.ProductViewModel;
-import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.activity.ui.category_product.CategoryProductViewModel;
 import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.component.GlideImage;
@@ -59,7 +58,7 @@ public class AddUpdateProductActivity extends AppCompatActivity implements View.
     DatePickerDialog picker;
     Bitmap drawable, main;
     String name, price, size, unit, description, discount, discountDate, category, encodedImage;
-    String encodedImage1, encodedImage2, encodedImage3, token;
+    String encodedImage1, encodedImage2, encodedImage3;
     String id_product;
 
     @Override
@@ -69,13 +68,12 @@ public class AddUpdateProductActivity extends AppCompatActivity implements View.
         binding = ActivityAddUpdateProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        categoryProductViewModel = ViewModelProviders.of(this).get(CategoryProductViewModel.class);
-        addUpdateProductViewModel = ViewModelProviders.of(this).get(AddUpdateProductViewModel.class);
-        showUserProfileViewModel = ViewModelProviders.of(this).get(ShowUserProfileViewModel.class);
-        productViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
+        categoryProductViewModel = new ViewModelProvider(this).get(CategoryProductViewModel.class);
+        addUpdateProductViewModel = new ViewModelProvider(this).get(AddUpdateProductViewModel.class);
+        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
+        productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
 
         drawable = ((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap();
-        token = getSharedPreference(this, "token");
 
         binding.discountDate.setOnClickListener(this);
         binding.discountDate.setOnFocusChangeListener(this);
@@ -144,7 +142,7 @@ public class AddUpdateProductActivity extends AppCompatActivity implements View.
                         encodedImage2 = !(drawable == ((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap()) ? new convertToString().convertToString(((BitmapDrawable) binding.multiImage1.getDrawable()).getBitmap()) : null;
                         encodedImage3 = !(drawable == ((BitmapDrawable) binding.multiImage.getDrawable()).getBitmap()) ? new convertToString().convertToString(((BitmapDrawable) binding.multiImage2.getDrawable()).getBitmap()) : null;
 
-                        showUserProfileViewModel.getUserProfile(AddUpdateProductActivity.this, token)
+                        showUserProfileViewModel.getUserProfile(AddUpdateProductActivity.this, getToken(AddUpdateProductActivity.this))
                                 .observe(AddUpdateProductActivity.this, new Observer<User>() {
                                     @Override
                                     public void onChanged(User user) {
@@ -158,8 +156,7 @@ public class AddUpdateProductActivity extends AppCompatActivity implements View.
                                                 .observe(AddUpdateProductActivity.this, new Observer<String>() {
                                                     @Override
                                                     public void onChanged(String s) {
-                                                        Intent i = new Intent(AddUpdateProductActivity.this, MainActivity.class);
-                                                        startActivity(i);
+                                                        onBackPressed();
                                                     }
                                                 });
                                     }
@@ -176,6 +173,7 @@ public class AddUpdateProductActivity extends AppCompatActivity implements View.
 
             binding.add.setVisibility(View.GONE);
             binding.update.setVisibility(View.VISIBLE);
+            binding.delete.setVisibility(View.VISIBLE);
             binding.photoDesc.setVisibility(View.VISIBLE);
 
             binding.multiImage.setOnClickListener(new View.OnClickListener() {
@@ -238,13 +236,36 @@ public class AddUpdateProductActivity extends AppCompatActivity implements View.
                                 getCategoryId(category), binding.update).observe(AddUpdateProductActivity.this, new Observer<String>() {
                             @Override
                             public void onChanged(String s) {
-                                Intent i = new Intent(AddUpdateProductActivity.this, MainActivity.class);
-                                startActivity(i);
+                                onBackPressed();
                             }
                         });
                     } else {
                         binding.update.setClickable(true);
                     }
+                }
+            });
+            binding.delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(AddUpdateProductActivity.this);
+                    builder.setTitle(getString(R.string.dialog_Title));
+                    builder.setMessage(getString(R.string.dialog_msg));
+
+                    builder.setPositiveButton(getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            addUpdateProductViewModel.deleteProduct(AddUpdateProductActivity.this,id_product)
+                                    .observe(AddUpdateProductActivity.this, new Observer<String>() {
+                                        @Override
+                                        public void onChanged(String s) {
+                                            onBackPressed();
+                                        }
+                                    });
+                        }
+                    });
+                    builder.setNegativeButton(getString(R.string.dialog_No),null);
+
+                    builder.show();
                 }
             });
             binding.image.setOnClickListener(new View.OnClickListener() {

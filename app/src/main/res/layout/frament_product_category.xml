@@ -5,7 +5,6 @@
     android:id="@+id/swipeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent1"
     tools:context=".activity.ui.category_product.categoryProductFrament">
 
     <androidx.recyclerview.widget.RecyclerView

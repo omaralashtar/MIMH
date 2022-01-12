@@ -20,14 +20,12 @@ import java.util.ArrayList;
 public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.viewitem> {
 
 
-    //    OrderViewModel orderViewModel;
     ArrayList<Rate> items;
     Context context;
 
     public RecycleAdapterRate(Context c, ArrayList<Rate> item) {
         items = item;
         context = c;
-//        orderViewModel = o;
     }
 
     @Override
@@ -44,7 +42,6 @@ public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.
         holder.comment.setText(items.get(position).getComment());
         holder.rate.setText(items.get(position).getRating()+"");
         holder.ratingBar.setRating(items.get(position).getRating());
-        //holder.rate.setText(items.get(position).getRating());
 
     }
 
@@ -64,12 +61,8 @@ public class RecycleAdapterRate extends RecyclerView.Adapter<RecycleAdapterRate.
             name = itemView.findViewById(R.id.nameUser);
             rate = itemView.findViewById(R.id.txt_rate);
             comment = itemView.findViewById(R.id.commentName);
-           // remove = itemView.findViewById(R.id.remove);
             ratingBar=itemView.findViewById(R.id.ratingBar);
 
-
-
-            ratingBar.setRating(3);
         }
     }
 }

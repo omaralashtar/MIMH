@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SendMessage extends ViewModel
+public class sendMessage extends ViewModel
 {
     public MutableLiveData<String> sendMessage(final Context context, EditText email, EditText pass) {
 

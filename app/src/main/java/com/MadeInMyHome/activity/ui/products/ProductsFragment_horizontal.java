@@ -7,13 +7,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.MadeInMyHome.R;
 import com.MadeInMyHome.adapter.RecycleAdapterProduct;
 import com.MadeInMyHome.databinding.FragmentProductsHorizontalBinding;
 import com.MadeInMyHome.model.Product;
