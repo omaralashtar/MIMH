@@ -61,13 +61,17 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onChanged(Product product) {
 
-                id_product = product.getId();
                 binding.name.setText(product.getName());
-                binding.price.setText(String.valueOf(product.getPrice()));
+                binding.price.setText(String.valueOf(product.getPrice())+"jd");
                 binding.size.setText(String.valueOf(product.getSize()));
                 binding.unit.setText(product.getUnit());
                 binding.category.setText(product.getCategory());
+                if (!product.getDescription().equals("")){
                 binding.description.setText(product.getDescription());
+                }else{
+                    binding.desc.setVisibility(View.GONE);
+                    binding.description.setVisibility(View.GONE);
+                }
                 new GlideImage(ProductActivity.this, constants.BASE_HOST + constants.IMAGE_PRODUCT + product.getImage(), binding.image);
 
             }

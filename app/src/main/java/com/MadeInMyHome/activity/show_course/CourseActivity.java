@@ -32,6 +32,7 @@ public class CourseActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         courseViewModel = new ViewModelProvider(this).get(CourseViewModel.class);
+        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
 
         id_course = getIntent().getExtras().getString("id");
 

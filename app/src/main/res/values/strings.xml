@@ -22,6 +22,7 @@
     <string name="discount_date">Discount Date(optional)</string>
     <string name="discount">Discount(optional)</string>
     <string name="category">Category</string>
+    <string name="presenter">Presenter</string>
 
     <string name="add">Add</string>
     <string name="update">Update</string>

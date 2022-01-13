@@ -10,8 +10,8 @@
         android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="@dimen/image"
-        android:cropToPadding="true"
-        android:scaleType="fitCenter"
+        android:cropToPadding="false"
+        android:scaleType="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -77,10 +77,8 @@
         android:layout_height="wrap_content"
         android:text="@string/category"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/size" />
 
     <TextView
         android:id="@+id/desc"
@@ -90,7 +88,7 @@
         android:layout_marginTop="@dimen/margin"
         android:layout_marginEnd="@dimen/margin"
         android:text="@string/description"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +114,7 @@
         android:layout_marginTop="@dimen/margin"
         android:layout_marginEnd="@dimen/margin"
         android:text="Images"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description" />

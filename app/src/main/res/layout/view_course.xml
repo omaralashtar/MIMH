@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:layout_margin="@dimen/margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/boxCornerRadius"
@@ -18,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.github.siyamed.shapeimageview.DiamondImageView
                 android:id="@+id/image"
                 android:layout_width="@dimen/_64sdp"
                 android:layout_height="@dimen/_64sdp"
@@ -27,7 +28,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@color/design_default_color_error" />
+                android:src="@drawable/defult_product" />
 
 
             <TextView
@@ -37,7 +38,8 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin"
                 android:layout_marginTop="@dimen/margin"
-                android:text="TextView"
+                android:text="@string/name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/image"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
                 android:layout_marginStart="@dimen/margin"
-                android:text="TextView"
+                android:text="@string/presenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/name" />
@@ -59,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
                 android:layout_marginStart="@dimen/margin"
-                android:text="TextView"
+                android:text="@string/category"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/image"
