@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +19,10 @@ import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.model.Product;
 import com.MadeInMyHome.utilities.constants;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterProduct.viewitem> {
@@ -44,9 +48,27 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
     @Override
     public void onBindViewHolder(final viewitem holder, int position) {
         holder.name.setText(items.get(position).getName());
-        holder.price.setText(String.valueOf(items.get(position).getPrice()));
-        holder.discount_date.setText(items.get(position).getDiscount_date());
-       holder.discount.setText(items.get(position).getDiscount());
+        holder.price.setText(String.valueOf(items.get(position).getPrice()) + "jd");
+        holder.category.setText(items.get(position).getCategory());
+        try {
+            if (items.get(position).getDiscount_date() != null) {
+                if (!items.get(position).getDiscount_date().equals("")) {
+                    if (new SimpleDateFormat("yyyy-MM-dd")
+                            .parse(items.get(position).getDiscount_date()).after(new Date())) {
+                        holder.discount.setText(items.get(position).getDiscount());
+                    }else{
+                        holder.discount.setVisibility(View.GONE);
+                    }
+                }
+            } else {
+                holder.discount.setVisibility(View.GONE);
+
+            }
+        } catch (ParseException e) {
+            holder.discount.setVisibility(View.GONE);
+            Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
+        }
+//        holder.discount.setText(items.get(position).getDiscount());
 //        if(items.get(position).getImage().equals("images_product/defult_product.png"))
         new GlideImage(context, constants.BASE_HOST + constants.IMAGE_PRODUCT + items.get(position).getImage(), holder.image);
 
@@ -74,7 +96,7 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-        TextView name, price, discount, discount_date;
+        TextView name, price, discount, discount_date, category;
         ImageButton favorite;
         ImageView image;
 
@@ -85,6 +107,8 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
             image = itemView.findViewById(R.id.image);
             discount = itemView.findViewById(R.id.discount);
             discount_date = itemView.findViewById(R.id.discount_date);
+            category = itemView.findViewById(R.id.category);
+            //favorite = itemView.findViewById(R.id.favorite);
         }
     }
 }

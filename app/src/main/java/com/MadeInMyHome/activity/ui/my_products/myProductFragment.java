@@ -1,5 +1,7 @@
 package com.MadeInMyHome.activity.ui.my_products;
 
+import static com.MadeInMyHome.utilities.General.getToken;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,29 +12,35 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.MadeInMyHome.activity.add_update_product.AddUpdateProductActivity;
+import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterProduct;
 import com.MadeInMyHome.databinding.FragmentMyProductBinding;
 import com.MadeInMyHome.model.Product;
+import com.MadeInMyHome.model.User;
 
 import java.util.ArrayList;
 
 public class myProductFragment extends Fragment {
 
-    private FragmentMyProductBinding binding;
     MyProductViewModel myProductViewModel;
-    RecycleAdapterProduct recycleAdapterProduct;
-    final int id = 1;
+    ShowUserProfileViewModel showUserProfileViewModel;
+
+    RecycleAdapterProduct myProductsAdapter;
+    private FragmentMyProductBinding binding;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        myProductViewModel = ViewModelProviders.of(this).get(MyProductViewModel.class);
+        myProductViewModel = new ViewModelProvider(this).get(MyProductViewModel.class);
+        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
+
         binding = FragmentMyProductBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -44,9 +52,9 @@ public class myProductFragment extends Fragment {
         binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent i=new Intent(getActivity(), AddUpdateProductActivity.class);
-            i.putExtra("name","add");
-            startActivity(i);
+                Intent i = new Intent(getActivity(), AddUpdateProductActivity.class);
+                i.putExtra("name", "add");
+                startActivity(i);
             }
         });
 
@@ -65,11 +73,16 @@ public class myProductFragment extends Fragment {
     }
 
     public void setAdapter() {
-        myProductViewModel.getMyProducts(getActivity(), String.valueOf(id)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
+        showUserProfileViewModel.getUserProfile(getActivity(), getToken(getActivity())).observe(getActivity(), new Observer<User>() {
             @Override
-            public void onChanged(ArrayList<Product> myProducts) {
-                recycleAdapterProduct = new RecycleAdapterProduct(getActivity(), myProducts,"my");
-                binding.myProductsRecycle.setAdapter(recycleAdapterProduct);
+            public void onChanged(User user) {
+                myProductViewModel.getMyProducts(getActivity(), user.getId()).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
+                    @Override
+                    public void onChanged(ArrayList<Product> myProducts) {
+                        myProductsAdapter = new RecycleAdapterProduct(getActivity(), myProducts, "my");
+                        binding.myProductsRecycle.setAdapter(myProductsAdapter);
+                    }
+                });
             }
         });
     }

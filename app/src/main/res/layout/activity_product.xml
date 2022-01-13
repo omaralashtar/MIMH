@@ -10,16 +10,15 @@
         android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="@dimen/image"
-        android:cropToPadding="true"
-        android:scaleType="centerCrop"
+        android:cropToPadding="false"
+        android:scaleType="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sc_for"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/defult_product" />
 
     <com.github.siyamed.shapeimageview.CircularImageView
-        android:id="@+id/favorate"
+        android:id="@+id/favorite"
         android:layout_width="@android:dimen/app_icon_size"
         android:layout_height="@android:dimen/app_icon_size"
         android:background="@drawable/ic_baseline_circle_24"
@@ -35,17 +34,19 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toStartOf="@+id/price"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favorate" />
+        app:layout_constraintTop_toBottomOf="@+id/favorite" />
 
     <TextView
         android:id="@+id/size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/size"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -53,7 +54,9 @@
         android:id="@+id/unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginStart="@dimen/margin"
+        android:text="@string/unit"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toEndOf="@+id/size"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -61,27 +64,31 @@
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/price"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toTopOf="@+id/name" />
 
     <TextView
         android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
+        android:text="@string/category"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/size" />
 
     <TextView
         android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:text="@string/description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +98,10 @@
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:text="@string/description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/desc" />
@@ -100,48 +110,91 @@
         android:id="@+id/images"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
         android:text="Images"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
 
-
-        <Button
-            android:id="@+id/add"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_47ssp"
-            android:text="@string/btn_addComment"
-            app:icon="@drawable/ic_baseline_add_24"
-            android:layout_marginBottom="@dimen/_13sdp"
-            android:layout_marginTop="@dimen/_13sdp"
-            android:layout_marginLeft="@dimen/_24ssp"
-            android:layout_marginRight="@dimen/_24ssp"
-            app:layout_constraintHorizontal_bias="0.0"
-
-            app:layout_constraintTop_toBottomOf="@+id/images" />
-
-
-    <Button
-        android:id="@+id/deleteRate"
+    <LinearLayout
+        android:id="@+id/multiImageLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_47ssp"
-        android:text="@string/btn_deleteComment"
-        app:icon="@drawable/ic_baseline_delete_24"
-        android:layout_marginBottom="@dimen/_13sdp"
-        android:layout_marginTop="@dimen/_13sdp"
-        android:layout_marginLeft="@dimen/_24ssp"
-        android:layout_marginRight="@dimen/_24ssp"
-        app:layout_constraintHorizontal_bias="0.0"
-         android:background="@color/color_red"
-        app:layout_constraintTop_toBottomOf="@+id/commentsRecyclerView" />
+        android:layout_height="@dimen/image"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/images">
+
+        <ImageView
+            android:id="@+id/multiImage"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
+            android:padding="@dimen/margin"
+            android:scaleType="centerInside"
+            android:visibility="visible"
+            app:srcCompat="@drawable/defult_product" />
+
+        <ImageView
+            android:id="@+id/multiImage1"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
+            android:padding="@dimen/margin"
+            android:scaleType="centerInside"
+            android:visibility="visible"
+            app:srcCompat="@drawable/defult_product" />
+
+        <ImageView
+            android:id="@+id/multiImage2"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
+            android:padding="@dimen/margin"
+            android:scaleType="centerInside"
+            android:visibility="visible"
+            app:srcCompat="@drawable/defult_product" />
+
+    </LinearLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/commentsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add" />
+        app:layout_constraintTop_toBottomOf="@+id/multiImageLayout" />
 
+    <Button
+        android:id="@+id/add"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:text="@string/btn_addComment"
+        app:icon="@drawable/ic_baseline_add_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/deleteRate"
+        app:layout_constraintTop_toBottomOf="@id/commentsRecyclerView" />
+
+
+    <Button
+        android:id="@+id/deleteRate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:text="@string/btn_deleteComment"
+        app:icon="@drawable/ic_baseline_delete_24"
+        app:layout_constraintEnd_toStartOf="@+id/add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentsRecyclerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

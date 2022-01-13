@@ -1,11 +1,10 @@
 package com.MadeInMyHome.activity.productsByCategory;
 
-
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.MadeInMyHome.activity.ui.courses.CoursesViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterCourse;
@@ -31,8 +30,8 @@ public class ProductByCategoryActivity extends AppCompatActivity {
         binding = ActivityProductsBycategoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        productByCategoryViewModel = ViewModelProviders.of(this).get(ProductByCategoryViewModel.class);
-        coursesViewModel = ViewModelProviders.of(this).get(CoursesViewModel.class);
+        productByCategoryViewModel = new ViewModelProvider(this).get(ProductByCategoryViewModel.class);
+        coursesViewModel = new ViewModelProvider(this).get(CoursesViewModel.class);
 
         binding.recycleProductByCategory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         if (getIntent().getExtras().getString("category").equals("product")) {

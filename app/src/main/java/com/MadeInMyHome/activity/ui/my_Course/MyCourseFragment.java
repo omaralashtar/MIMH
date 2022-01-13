@@ -1,5 +1,8 @@
 package com.MadeInMyHome.activity.ui.my_Course;
 
+import static com.MadeInMyHome.utilities.General.getSharedPreference;
+import static com.MadeInMyHome.utilities.General.getToken;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,30 +12,35 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.MadeInMyHome.adapter.RecycleAdapterCategory;
+import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterCourse;
 import com.MadeInMyHome.databinding.FragmentMyCoursesBinding;
-import com.MadeInMyHome.databinding.FramentProductCategoryBinding;
-import com.MadeInMyHome.model.Category;
 import com.MadeInMyHome.model.Course;
+import com.MadeInMyHome.model.User;
 
 import java.util.ArrayList;
 
 public class MyCourseFragment extends Fragment {
 
     MyCourseViewModel myCourseViewModel;
+    ShowUserProfileViewModel showUserProfileViewModel;
+
     RecycleAdapterCourse courserRecycleAdapter;
     private FragmentMyCoursesBinding binding;
+
+    String next="0";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        myCourseViewModel = ViewModelProviders.of(this).get(MyCourseViewModel.class);
+        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
+        myCourseViewModel = new ViewModelProvider(this).get(MyCourseViewModel.class);
+
         binding = FragmentMyCoursesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -43,26 +51,32 @@ public class MyCourseFragment extends Fragment {
 
         binding.coursesRecycle.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
-        setAdapter("1","0");
+        setAdapter();
 
         binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                setAdapter("1","0");
+                setAdapter();
             }
         });
 
         return root;
     }
 
-    public void setAdapter(String id,String next) {
-        myCourseViewModel.showMyCourse(getActivity(),id,next).observe(getActivity(), new Observer<ArrayList<Course>>() {
+    public void setAdapter() {
+        showUserProfileViewModel.getUserProfile(getActivity(),getToken(getActivity())).observe(getActivity(), new Observer<User>() {
             @Override
-            public void onChanged(ArrayList<Course> courses) {
-                courserRecycleAdapter = new RecycleAdapterCourse(getActivity(), courses,"myCourse");
-                binding.coursesRecycle.setAdapter(courserRecycleAdapter);
+            public void onChanged(User user) {
+                myCourseViewModel.showMyCourse(getActivity(), user.getId(), next).observe(getActivity(), new Observer<ArrayList<Course>>() {
+                    @Override
+                    public void onChanged(ArrayList<Course> courses) {
+                        courserRecycleAdapter = new RecycleAdapterCourse(getActivity(), courses,"myCourse");
+                        binding.coursesRecycle.setAdapter(courserRecycleAdapter);
+                    }
+                });
             }
         });
+
     }
 
     @Override

@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.show_channel.ShowChannelActivity;
@@ -23,15 +22,10 @@ import com.MadeInMyHome.databinding.FragmentChatBinding;
 import com.MadeInMyHome.utilities.constants;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 import io.getstream.chat.android.client.ChatClient;
 import io.getstream.chat.android.client.api.models.FilterObject;
-import io.getstream.chat.android.client.channel.ChannelClient;
 import io.getstream.chat.android.client.logger.ChatLogLevel;
-import io.getstream.chat.android.client.models.Channel;
 import io.getstream.chat.android.client.models.Filters;
 import io.getstream.chat.android.client.models.User;
 import io.getstream.chat.android.livedata.ChatDomain;
@@ -43,14 +37,13 @@ public class chatFragment extends Fragment {
 
     ShowUserProfileViewModel showUserProfileViewModel;
     String myToken;
-    //String token="34spgkfrn47zkqd8dgbzsferz3h4wf7d84wt2w76rvt5zazf7e4bwatbmpsux9qv";
     private FragmentChatBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        showUserProfileViewModel = ViewModelProviders.of(this).get(ShowUserProfileViewModel.class);
+        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
         binding = FragmentChatBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 

@@ -36,7 +36,7 @@ public interface AppApi {
     @FormUrlEncoded
     @POST(constants.USER + constants.LOGIN)
     Call<ResultUserResponse> login(@Field("email") String email,
-                                    @Field("password") String password);
+                                   @Field("password") String password);
 
     @FormUrlEncoded
     @POST(constants.USER + constants.GET)
@@ -45,16 +45,16 @@ public interface AppApi {
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE)
     Call<ResultUserResponse> updateUser(@Field("token") String token,
-                                    @Field("f_name") String f_name,
-                                    @Field("l_name") String l_name,
-                                    @Field("description") String description,
-                                    @Field("date") String date,
-                                    @Field("location") String location);
+                                        @Field("f_name") String f_name,
+                                        @Field("l_name") String l_name,
+                                        @Field("description") String description,
+                                        @Field("date") String date,
+                                        @Field("location") String location);
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE_IMAGE)
     Call<ResultResponse> updateUserImage(@Field("token") String token,
-                                              @Field("image") String image);
+                                         @Field("image") String image);
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE_PASSWORD)
@@ -84,7 +84,7 @@ public interface AppApi {
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.ADD_MULTI_IMAGE)
     Call<ResultUserResponse> addMultiImage(@Field("id") String id,
-                                       @Field("image") String image);
+                                           @Field("image") String image);
 
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.GET_MY_PRODUCT)
@@ -132,6 +132,11 @@ public interface AppApi {
     @POST(constants.PRODUCT + constants.UPDATE_MULTI_IMAGE)
     Call<ResultResponse> updateProductMultiImages(@Field("id") String id,
                                                   @Field("image") String image);
+
+
+    @FormUrlEncoded
+    @POST(constants.PRODUCT + constants.DELETE)
+    Call<ResultResponse> deleteProduct(@Field("id_product") String id_product);
 
     //COURSE
 
@@ -222,8 +227,13 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.FAVORITE + constants.GET)
-    Call<ProductArrayListResponse> getFavorite(@Field("id") String id,
-                                               @Field("next") String next);
+    Call<ResultResponse> getFavorite(@Field("id_user") String id_user,
+                                     @Field("id_product") String id_product);
+
+    @FormUrlEncoded
+    @POST(constants.FAVORITE + constants.GET_ALL)
+    Call<ProductArrayListResponse> getAllFavorite(@Field("id") String id,
+                                                  @Field("next") String next);
 
     @FormUrlEncoded
     @POST(constants.BASE_HOST_EMAIL)

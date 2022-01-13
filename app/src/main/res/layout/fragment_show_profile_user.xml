@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,38 +8,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/layoutPicture"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgUserProfile"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgUserProfile"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:src="@drawable/images" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floAcSignUp"
-                android:layout_width="108dp"
-                android:layout_height="119dp"
-                android:clickable="true"
-                android:onClick="goCamera"
-                app:srcCompat="@mipmap/camera_colored"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-        </RelativeLayout>
+            android:layout_marginTop="@dimen/margin"
+            android:src="@drawable/images" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/layoutName"
+            android:id="@+id/userInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/layoutPicture"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="0dp"
+            android:layout_below="@id/imgUserProfile"
             app:cardElevation="@dimen/cardview_default_elevation">
 
 
@@ -49,16 +30,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/first_name_Ar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/FirstName"
@@ -79,16 +50,6 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/last_name_Ar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LastName"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -106,15 +67,6 @@
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/email_Ar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/EmailUser"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -135,16 +87,6 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/description_Ar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/Description_User"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -164,15 +106,6 @@
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:text="@string/gender_Ar" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/genderUser"
@@ -195,16 +128,6 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/date_Ar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/dateUser"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -216,26 +139,13 @@
                     app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
                     app:layout_constraintBottom_toTopOf="@+id/gender"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                   >
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/date" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/phone_Ar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/Phone_User"
@@ -257,16 +167,6 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/location_Ar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/Location_User"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -277,8 +177,7 @@
                     app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
                     app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    >
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -288,39 +187,17 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/layoutName"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
-            app:cardCornerRadius="0dp"
-            app:cardElevation="@dimen/cardview_default_elevation">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
-
                 <Button
                     android:id="@+id/btn_update_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#DD2C00"
-                    android:padding="17dp"
-                    android:text="UPDATE PROFILE"
-                    android:textAllCaps="false"
-                    android:textSize="24sp"
-                    android:textStyle="bold|italic" />
+                    android:layout_marginTop="@dimen/margin"
+                    android:text="@string/update"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </RelativeLayout>
-
 </androidx.core.widget.NestedScrollView>
 
 

@@ -5,7 +5,6 @@
     android:id="@+id/swipeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccentEditor"
     tools:context=".activity.ui.products.ProductsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout

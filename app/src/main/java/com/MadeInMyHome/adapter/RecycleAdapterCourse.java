@@ -48,7 +48,7 @@ public class RecycleAdapterCourse extends RecyclerView.Adapter<RecycleAdapterCou
         holder.presenter.setText(items.get(position).getPresenter());
         holder.category.setText(items.get(position).getCategory());
 
-        //new GlideImage(context, constants.BASE_HOST + items.get(position).getImage(), holder.image);
+        new GlideImage(context, constants.BASE_HOST+constants.IMAGE_CATEGORY  + items.get(position).getImage(), holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

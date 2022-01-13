@@ -56,7 +56,6 @@
         android:id="@+id/nameUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginLeft="75dip"
         android:paddingBottom="10dip"
         android:text="strCity"

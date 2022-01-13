@@ -22,7 +22,7 @@ public class FavoriteViewModel extends ViewModel {
 
         final MutableLiveData<ArrayList<Product>> arrayListMutableLiveData = new MutableLiveData<>();
 
-        Call<ProductArrayListResponse> call = RestClient.getService().getFavorite(id,next);
+        Call<ProductArrayListResponse> call = RestClient.getService().getAllFavorite(id,next);
         call.enqueue(new Callback<ProductArrayListResponse>() {
             @Override
             public void onResponse(Call<ProductArrayListResponse> call, Response<ProductArrayListResponse> response) {

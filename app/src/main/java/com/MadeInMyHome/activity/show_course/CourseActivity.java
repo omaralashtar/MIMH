@@ -1,13 +1,13 @@
 package com.MadeInMyHome.activity.show_course;
 
-import static com.MadeInMyHome.utilities.General.getSharedPreference;
+import static com.MadeInMyHome.utilities.General.getToken;
 
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.component.GlideImage;
@@ -22,7 +22,7 @@ public class CourseActivity extends AppCompatActivity {
     CourseViewModel courseViewModel;
     ShowUserProfileViewModel showUserProfileViewModel;
 
-    String id_user, id_course, token;
+    String id_course;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +31,16 @@ public class CourseActivity extends AppCompatActivity {
         binding = ActivityCourseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        courseViewModel = ViewModelProviders.of(this).get(CourseViewModel.class);
+        courseViewModel = new ViewModelProvider(this).get(CourseViewModel.class);
+        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
 
-        token = getSharedPreference(this, "token");
         id_course = getIntent().getExtras().getString("id");
 
-        showUserProfileViewModel.getUserProfile(CourseActivity.this, token)
+        showUserProfileViewModel.getUserProfile(CourseActivity.this, getToken(CourseActivity.this))
                 .observe(CourseActivity.this, new Observer<User>() {
                     @Override
                     public void onChanged(User user) {
-                        id_user = user.getId();
-                        courseViewModel.getEnroll(CourseActivity.this, id_user, id_course)
+                        courseViewModel.getEnroll(CourseActivity.this, user.getId(), id_course)
                                 .observe(CourseActivity.this, new Observer<String>() {
                                     @Override
                                     public void onChanged(String s) {
@@ -54,7 +53,7 @@ public class CourseActivity extends AppCompatActivity {
         binding.enroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showUserProfileViewModel.getUserProfile(CourseActivity.this, token)
+                showUserProfileViewModel.getUserProfile(CourseActivity.this, getToken(CourseActivity.this))
                         .observe(CourseActivity.this, new Observer<User>() {
                             @Override
                             public void onChanged(User user) {
