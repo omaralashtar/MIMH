@@ -17,16 +17,16 @@ import retrofit2.Response;
 public class SignUpViewModel extends ViewModel {
 
 
-    public MutableLiveData<String> signUp(final Context context, EditText email, EditText pass,
-                                          EditText f_name, EditText l_name, EditText date,
-                                          EditText gender, String phone, String encodedImage) {
+    public MutableLiveData<String> signUp(final Context context, String email, String pass,
+                                          String f_name, String l_name, String date,
+                                          String gender, String phone, String encodedImage) {
 
         final MutableLiveData<String> userMutableLiveData = new MutableLiveData<>();
 
         Call<ResultUserResponse> call = RestClient.getService()
-                .signUp( email.getText().toString(), pass.getText().toString(),
-                        f_name.getText().toString(), l_name.getText().toString(),
-                        date.getText().toString(), gender.getText().toString(),
+                .signUp( email, pass,
+                        f_name, l_name,
+                        date, gender,
                         phone ,encodedImage);
 
         call.enqueue(new Callback<ResultUserResponse>() {

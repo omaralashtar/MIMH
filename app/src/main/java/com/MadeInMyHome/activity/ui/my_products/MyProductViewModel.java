@@ -19,11 +19,11 @@ import retrofit2.Response;
 
 public class MyProductViewModel extends ViewModel {
 
-    public MutableLiveData<ArrayList<Product>> getMyProducts(final Context context, String next) {
+    public MutableLiveData<ArrayList<Product>> getMyProducts(final Context context, String id) {
 
         final MutableLiveData<ArrayList<Product>> arrayListMutableLiveData = new MutableLiveData<>();
 
-        Call<ProductArrayListResponse> call = RestClient.getService().getMyProduct(next);
+        Call<ProductArrayListResponse> call = RestClient.getService().getMyProduct(id);
         call.enqueue(new Callback<ProductArrayListResponse>() {
             @Override
             public void onResponse(Call<ProductArrayListResponse> call, Response<ProductArrayListResponse> response) {

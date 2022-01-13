@@ -80,7 +80,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:src="@drawable/ic_baseline_add_24" />
+                android:src="@drawable/ic_baseline_add_24"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
     </ScrollView>

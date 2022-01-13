@@ -2,7 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+    <item
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/ic_menu_send"
+        android:title="@string/login_in_signup" />
+    <item
+        android:id="@+id/navigation_myCourse"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="@string/title_myCourse" />
 
 
 

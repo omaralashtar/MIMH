@@ -46,9 +46,7 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
         holder.name.setText(items.get(position).getName());
         holder.price.setText(String.valueOf(items.get(position).getPrice()));
         holder.discount_date.setText(items.get(position).getDiscount_date());
-        holder.category.setText(items.get(position).getCategory());
-
-//        holder.discount.setText(items.get(position).getDiscount());
+       holder.discount.setText(items.get(position).getDiscount());
 //        if(items.get(position).getImage().equals("images_product/defult_product.png"))
         new GlideImage(context, constants.BASE_HOST + constants.IMAGE_PRODUCT + items.get(position).getImage(), holder.image);
 
@@ -76,7 +74,7 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-        TextView name, price, discount, discount_date, category;
+        TextView name, price, discount, discount_date;
         ImageButton favorite;
         ImageView image;
 
@@ -87,8 +85,6 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
             image = itemView.findViewById(R.id.image);
             discount = itemView.findViewById(R.id.discount);
             discount_date = itemView.findViewById(R.id.discount_date);
-            category = itemView.findViewById(R.id.category);
-            //favorite = itemView.findViewById(R.id.favorite);
         }
     }
 }

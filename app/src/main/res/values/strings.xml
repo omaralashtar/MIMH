@@ -125,9 +125,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="zones">Zones</string>
-    <string name="jaxon_clarke">Jaxon Clarke</string>
-    <string name="todo">Jaxon Clarke</string>
+    <string name="name_user">name user</string>
+    <string name="chat">chat</string>
+    <string name="share">share</string>
+    <string name="cart">cart</string>
 
-    <string name="planets">Planets</string>
 </resources>

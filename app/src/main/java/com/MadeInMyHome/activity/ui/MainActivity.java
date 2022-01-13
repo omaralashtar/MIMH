@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close));
 
         drawerAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_chat,
                 R.id.nav_home,
                 R.id.navigation_myCourse,
                 R.id.navigation_categoryCourse,
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 )
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
-        NavController navControllerDrawer = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        NavController navControllerDrawer = Navigation.findNavController(this,
+                R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navControllerDrawer, drawerAppBarConfiguration);
         NavigationUI.setupWithNavController(binding.navViewDrawer, navControllerDrawer);
     }
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder a = new AlertDialog.Builder(this);
         a.setNeutralButton(getResources().getString(R.string.dialog_cancel), null);
         a.setCancelable(false);
-        a.setIcon(R.drawable.ic_launcher_background);
+        a.setIcon(R.drawable.stream_ui_ic_icon_download);
         a.setNegativeButton(getResources().getString(R.string.dialog_No), null);
         a.setPositiveButton(getResources().getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
             @Override

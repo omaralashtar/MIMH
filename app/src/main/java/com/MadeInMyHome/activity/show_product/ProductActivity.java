@@ -1,15 +1,12 @@
 package com.MadeInMyHome.activity.show_product;
 
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -40,7 +37,7 @@ public class ProductActivity extends AppCompatActivity {
     ProductViewModel productViewModel;
     deleteRateViewModel deleteRate_viewModel;
     ActivityProductBinding binding;
-    String id_user = "1";
+    String id_user = "15";
     String id_product;
     String rating_float = "";
     @Override
@@ -58,7 +55,7 @@ public class ProductActivity extends AppCompatActivity {
 
 
         //get product
-        productViewModel.getProduct(this, getIntent().getExtras().getString("id")).observe(this, new Observer<Product>() {
+        productViewModel.getProduct(this, getIntent().getExtras().getString("id_product")).observe(this, new Observer<Product>() {
             @Override
             public void onChanged(Product product) {
 
@@ -82,7 +79,7 @@ binding.deleteRate.setOnClickListener(new View.OnClickListener() {
         AlertDialog.Builder a = new AlertDialog.Builder(ProductActivity.this);
         a.setNeutralButton(getResources().getString(R.string.dialog_cancel), null);
         a.setCancelable(false);
-        a.setIcon(R.drawable.ic_launcher_background);
+        a.setIcon(R.drawable.stream_ui_ic_grid_menu);
         a.setNegativeButton(getResources().getString(R.string.dialog_No), null);
         a.setPositiveButton(getResources().getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
             @Override

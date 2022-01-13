@@ -43,7 +43,7 @@ dependencies {
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation 'com.github.siyamed:android-shape-imageview:0.9'
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.3'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'

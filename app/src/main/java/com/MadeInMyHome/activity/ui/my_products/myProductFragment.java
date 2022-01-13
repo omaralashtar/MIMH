@@ -25,7 +25,7 @@ public class myProductFragment extends Fragment {
 
     private FragmentMyProductBinding binding;
     MyProductViewModel myProductViewModel;
-    RecycleAdapterProduct myProductsAdapter;
+    RecycleAdapterProduct recycleAdapterProduct;
     final int id = 1;
 
     @Override
@@ -68,8 +68,8 @@ public class myProductFragment extends Fragment {
         myProductViewModel.getMyProducts(getActivity(), String.valueOf(id)).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> myProducts) {
-                myProductsAdapter = new RecycleAdapterProduct(getActivity(), myProducts,"my");
-                binding.myProductsRecycle.setAdapter(myProductsAdapter);
+                recycleAdapterProduct = new RecycleAdapterProduct(getActivity(), myProducts,"my");
+                binding.myProductsRecycle.setAdapter(recycleAdapterProduct);
             }
         });
     }

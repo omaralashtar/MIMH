@@ -4,48 +4,72 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.activity.ui.home.HomeViewModel;
+import com.MadeInMyHome.activity.ui.my_products.MyProductViewModel;
 import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
+import com.MadeInMyHome.adapter.RecycleAdapterProduct;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.databinding.FragmentFirstBinding;
+import com.MadeInMyHome.model.Product;
 import com.MadeInMyHome.model.User;
 import com.MadeInMyHome.utilities.constants;
+
+import java.util.ArrayList;
 
 
 public class FirstFragment extends Fragment {
     ShowUserProfileViewModel showUserProfileViewModel;
     private FragmentFirstBinding binding;
-    String id="033e852c5da3c055f0a3937bcd9112f7";
+    MyProductViewModel myProductViewModel;
+    RecycleAdapterProduct recycleAdapterProduct;
+
+    String id = "033e852c5da3c055f0a3937bcd9112f7";
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentFirstBinding.inflate(inflater, container, false);
-        showUserProfileViewModel=new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
+        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
+        myProductViewModel= ViewModelProviders.of(this).get(MyProductViewModel.class);
+
+        View root = binding.getRoot();
 
 
 
-        showUserProfileViewModel.getUserProfile(getActivity(),"033e852c5da3c055f0a3937bcd9112f7").observe(getActivity(), new Observer<User>() {
+
+
+        binding.myProductsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+
+
+        showUserProfileViewModel.getUserProfile(getActivity(), "033e852c5da3c055f0a3937bcd9112f7").observe(getActivity(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
-                binding.name.setText(user.getF_name()+""+user.getL_name());
-                //binding.LastName.getEditText().setText(user.getF_name());
-                //binding.EmailUser.getEditText().setText(user.getEmail());
+                binding.name.setText(user.getF_name() + "" + user.getL_name());
                 binding.description.setText(user.getDescription());
-               // binding.genderUser.getEditText().setText(user.getGender());
-               // binding.PhoneUser.getEditText().setText(user.getPhone());
+                binding.gender.setText(user.getGender());
                 //binding.LocationUser.getEditText().setText(user.getLocation());
-                //binding.dateUser.getEditText().setText(user.getDate());
-               // new GlideImage(getActivity(), constants.BASE_HOST + constants.IMAGE_USER + user.getImage(), binding.image);
+                new GlideImage(getActivity(), constants.BASE_HOST + constants.IMAGE_USER + user.getImage(), binding.image);
 
+            }
+        });
+
+        myProductViewModel.getMyProducts(getActivity(), "1").observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
+            @Override
+            public void onChanged(ArrayList<Product> myProducts) {
+                recycleAdapterProduct = new RecycleAdapterProduct(getActivity(), myProducts,"my");
+                binding.myProductsRecycle.setAdapter(recycleAdapterProduct);
             }
         });
 
@@ -56,29 +80,20 @@ public class FirstFragment extends Fragment {
 
 
 
+binding.cart.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
 
 
-
-
-
-
-
-
-        return binding.getRoot();
+        NavHostFragment.findNavController(FirstFragment.this).
+                navigate(R.id.action_FirstFragment_to_SecondFragment);
+    }
+});
+        return root;
 
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-      /*  binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });*/
-    }
 
     @Override
     public void onDestroyView() {
