@@ -13,6 +13,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -22,16 +23,20 @@ public final class RestClientEmail {
 
     private static final String API_USERNAME = "api";
 
-    private static final String API_PASSWORD = "03a6801fad7a55e6d16cd3d9508e6547-76f111c4-c06f95f0";
+    private static final String API_PASSWORD = "key-8e7c94eb8e0ddd18065d1ef33cf2109c";
 
     private static final String AUTH = "Basic " + Base64.encodeToString((API_USERNAME + ":" + API_PASSWORD).getBytes(), Base64.NO_WRAP);
 
     public static AppApi getService() {
 
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
                 .readTimeout(30, TimeUnit.SECONDS)
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(false)
+                .addInterceptor(httpLoggingInterceptor)
                 .addInterceptor(new Interceptor() {
                     @NonNull
                     @Override

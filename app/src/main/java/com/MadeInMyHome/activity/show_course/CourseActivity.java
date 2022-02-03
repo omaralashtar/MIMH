@@ -3,8 +3,10 @@ package com.MadeInMyHome.activity.show_course;
 import static com.MadeInMyHome.utilities.General.getToken;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -30,6 +32,8 @@ public class CourseActivity extends AppCompatActivity {
 
         binding = ActivityCourseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         courseViewModel = new ViewModelProvider(this).get(CourseViewModel.class);
         showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
@@ -85,5 +89,11 @@ public class CourseActivity extends AppCompatActivity {
     public void enrolled() {
         binding.enroll.setText("Enrolled");
         binding.enroll.setClickable(false);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 }

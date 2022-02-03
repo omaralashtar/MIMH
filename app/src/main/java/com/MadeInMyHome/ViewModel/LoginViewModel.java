@@ -30,9 +30,12 @@ public class LoginViewModel extends ViewModel
                 ResultUserResponse data = response.body();
                 if (data != null) {
                     if (data.getResult().equals("1")) {
-                        String id = data.getId();
-                        userMutableLiveData.setValue(id);
-
+                        String email_validate = data.getEmail_validate();
+                        if(email_validate.equals("1")){
+                            userMutableLiveData.setValue(data.getId());
+                        }else {
+                            userMutableLiveData.setValue(email_validate);
+                        }
                     } else {
                         Toast.makeText(context, "Field_Login_Or_Signup", Toast.LENGTH_SHORT).show();
                     }

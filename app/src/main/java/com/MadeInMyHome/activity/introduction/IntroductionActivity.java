@@ -1,5 +1,7 @@
 package com.MadeInMyHome.activity.introduction;
 
+import static com.MadeInMyHome.utilities.General.addToSharedPreference;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -13,11 +15,12 @@ import android.widget.TextView;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.welcom.WelcomeActivity;
+import com.MadeInMyHome.databinding.ActivityIntroductionBinding;
 
 public class IntroductionActivity extends AppCompatActivity implements View.OnClickListener {
-    private ViewPager viewPager;
-    private LinearLayout dotsLayout;
-    private Button btnNext, btnSkip;
+
+    private ActivityIntroductionBinding binding;
+
     private IntroAdapter introAdapter;
     private TextView[] mDots;
     private int currentItem;
@@ -25,14 +28,13 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_introduction);
+
+        binding=ActivityIntroductionBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         //getSupportActionBar().hide();
-        viewPager = findViewById(R.id.view_pager);
-        dotsLayout = findViewById(R.id.layoutDots);
-        btnNext = findViewById(R.id.btn_next);
-        btnSkip = findViewById(R.id.btn_skip);
-        btnSkip.setOnClickListener(this);
-        btnNext.setOnClickListener(this);
+
+        binding.btnSkip.setOnClickListener(this);
+        binding.btnNext.setOnClickListener(this);
 
         setupViewPager();// setup the viewpager, set adapter and page listener
 
@@ -40,7 +42,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void moveMainActivityFromIntroduction() {
-        // prefManager.setIsFirstLaunch(false);
+        addToSharedPreference(this, "intro", "done");
         startActivity(new Intent(IntroductionActivity.this, WelcomeActivity.class));
         finish();
     }
@@ -48,8 +50,8 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
 
     private void setupViewPager() {
         introAdapter = new IntroAdapter(this);
-        viewPager.setAdapter(introAdapter);
-        viewPager.addOnPageChangeListener(pageChangeListener);
+        binding.viewPager.setAdapter(introAdapter);
+        binding.viewPager.addOnPageChangeListener(pageChangeListener);
     }
 
     public void addDotsIndicator(int position) {
@@ -58,7 +60,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
 
         /* Remove aprvious views when called next time
          if not called then views will keep on adding*/
-        dotsLayout.removeAllViews();
+        binding.layoutDots.removeAllViews();
 
         // Set bullets in each dot text view
         for (int i = 0; i < mDots.length; i++) {
@@ -67,7 +69,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
             mDots[i].setTextSize(35);
             mDots[i].setTextColor(getResources().getColor(R.color.dot_light_screen1));
 
-            dotsLayout.addView(mDots[i]);
+            binding.layoutDots.addView(mDots[i]);
         }
 
         if (mDots.length > 0) {
@@ -88,12 +90,12 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
             // change the next button text to "next" / "finish"
             if (position == introAdapter.getCount() - 1) {
                 // last page, make it "finish" and make the skip button invisible
-                btnNext.setText(getString(R.string.finish));
-                btnSkip.setVisibility(View.INVISIBLE);
+                binding.btnNext.setText(getString(R.string.finish));
+                binding.btnSkip.setVisibility(View.INVISIBLE);
             } else {
                 // not last page, set "next" text and make skip button visible
-                btnNext.setText(getString(R.string.next));
-                btnSkip.setVisibility(View.VISIBLE);
+                binding.btnNext.setText(getString(R.string.next));
+                binding.btnSkip.setVisibility(View.VISIBLE);
             }
         }
 
@@ -114,7 +116,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
             case R.id.btn_next:
                 if (currentItem < introAdapter.getCount() - 1) {
                     ++currentItem; // increase the value by 1
-                    viewPager.setCurrentItem(currentItem); // set the layout at next position
+                    binding.viewPager.setCurrentItem(currentItem); // set the layout at next position
                 } else
                     moveMainActivityFromIntroduction(); // launch main screen on last page
                 break;
@@ -122,8 +124,6 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
             case R.id.btn_skip:
                 moveMainActivityFromIntroduction();
                 break;
-
-
         }
 
     }

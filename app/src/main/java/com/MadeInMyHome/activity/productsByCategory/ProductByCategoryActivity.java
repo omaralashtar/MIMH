@@ -1,7 +1,9 @@
 package com.MadeInMyHome.activity.productsByCategory;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -30,6 +32,8 @@ public class ProductByCategoryActivity extends AppCompatActivity {
         binding = ActivityProductsBycategoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         productByCategoryViewModel = new ViewModelProvider(this).get(ProductByCategoryViewModel.class);
         coursesViewModel = new ViewModelProvider(this).get(CoursesViewModel.class);
 
@@ -53,5 +57,11 @@ public class ProductByCategoryActivity extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 }

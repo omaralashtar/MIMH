@@ -5,10 +5,12 @@ import static com.MadeInMyHome.utilities.General.getToken;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -32,7 +34,7 @@ import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
 
-    RecycleAdapterRate recycleAdapterRate;
+    RecycleAdapterRate recycleAdapterRate,recycleAdapterMyRate;
 
     ProductViewModel productViewModel;
     ShowUserProfileViewModel showUserProfileViewModel;
@@ -49,9 +51,12 @@ public class ProductActivity extends AppCompatActivity {
         binding = ActivityProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         id_product = getIntent().getExtras().getString("id_product");
 
         binding.commentsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        binding.mycommentsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
         productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
@@ -62,13 +67,13 @@ public class ProductActivity extends AppCompatActivity {
             public void onChanged(Product product) {
 
                 binding.name.setText(product.getName());
-                binding.price.setText(String.valueOf(product.getPrice())+"jd");
+                binding.price.setText(String.valueOf(product.getPrice()) + "jd");
                 binding.size.setText(String.valueOf(product.getSize()));
                 binding.unit.setText(product.getUnit());
                 binding.category.setText(product.getCategory());
-                if (!product.getDescription().equals("")){
-                binding.description.setText(product.getDescription());
-                }else{
+                if (product.getDescription()!=null) {
+                    binding.description.setText(product.getDescription());
+                } else {
                     binding.desc.setVisibility(View.GONE);
                     binding.description.setVisibility(View.GONE);
                 }
@@ -110,7 +115,7 @@ public class ProductActivity extends AppCompatActivity {
                                     .observe(ProductActivity.this, new Observer<String>() {
                                         @Override
                                         public void onChanged(String s) {
-                                            isFav=false;
+                                            isFav = false;
                                             binding.favorite.setImageResource(R.drawable.ic_baseline_favorite_border_24);
                                         }
                                     });
@@ -119,7 +124,7 @@ public class ProductActivity extends AppCompatActivity {
                                     .observe(ProductActivity.this, new Observer<String>() {
                                         @Override
                                         public void onChanged(String s) {
-                                            isFav=true;
+                                            isFav = true;
                                             binding.favorite.setImageResource(R.drawable.ic_baseline_favorite_24);
                                         }
                                     });
@@ -127,41 +132,31 @@ public class ProductActivity extends AppCompatActivity {
                     }
                 });
 
-                //delete Rate
-                binding.deleteRate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        AlertDialog.Builder a = new AlertDialog.Builder(ProductActivity.this);
-                        a.setNeutralButton(getResources().getString(R.string.dialog_cancel), null);
-                        a.setCancelable(false);
-                        a.setIcon(R.drawable.ic_launcher_background);
-                        a.setNegativeButton(getResources().getString(R.string.dialog_No), null);
-                        a.setPositiveButton(getResources().getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                productViewModel.DeleteRate(
-                                        ProductActivity.this, user.getId(), id_product)
-                                        .observe(ProductActivity.this,
-                                                new Observer<String>() {
-                                                    @Override
-                                                    public void onChanged(String s) {
-                                                    }
-                                                });
-                            }
-                        });
-                        a.setTitle(R.string.dialog_Title);
-                        a.setMessage(getResources().getString(R.string.dialog_msg));
-                        a.show();
-                    }
-                });
-
-                //Get Rate
-                productViewModel.getRateAll(ProductActivity.this, id_product, "0")
+                //Get MyRate
+                productViewModel.getMyRate(ProductActivity.this,user.getId(), id_product)
                         .observe(ProductActivity.this, new Observer<ArrayList<Rate>>() {
                             @Override
                             public void onChanged(ArrayList<Rate> rate) {
-                                recycleAdapterRate = new RecycleAdapterRate(ProductActivity.this, rate);
+                                recycleAdapterMyRate = new RecycleAdapterRate(ProductActivity.this, rate,productViewModel,id_product);
+                                binding.mycommentsRecyclerView.setAdapter(recycleAdapterMyRate);
+                                binding.add.setVisibility(View.GONE);
+                            }
+                        });
+
+                //Get Rate
+                productViewModel.getRate(ProductActivity.this, id_product)
+                        .observe(ProductActivity.this, new Observer<String>() {
+                            @Override
+                            public void onChanged(String s) {
+                                binding.productRate.setRating(s!=null?Float.parseFloat(s):5);
+                            }
+                        });
+
+                productViewModel.getAllRate(ProductActivity.this, id_product, "0")
+                        .observe(ProductActivity.this, new Observer<ArrayList<Rate>>() {
+                            @Override
+                            public void onChanged(ArrayList<Rate> rate) {
+                                recycleAdapterRate = new RecycleAdapterRate(ProductActivity.this, rate,null,null);
                                 binding.commentsRecyclerView.setAdapter(recycleAdapterRate);
                             }
                         });
@@ -200,7 +195,7 @@ public class ProductActivity extends AppCompatActivity {
                         .observe(ProductActivity.this, new Observer<String>() {
                             @Override
                             public void onChanged(String s) {
-                                Toast.makeText(ProductActivity.this, "add Comment", Toast.LENGTH_LONG).show();
+                                rate(id_user,id_product);
                             }
                         });
                 bt.dismiss();
@@ -208,6 +203,36 @@ public class ProductActivity extends AppCompatActivity {
         });
         bt.setContentView(view);
         bt.show();
+    }
+
+    public void rate(String id_user,String id_product){
+
+        //Get MyRate
+        productViewModel.getMyRate(ProductActivity.this,id_user, id_product)
+                .observe(ProductActivity.this, new Observer<ArrayList<Rate>>() {
+                    @Override
+                    public void onChanged(ArrayList<Rate> rate) {
+                        recycleAdapterMyRate = new RecycleAdapterRate(ProductActivity.this, rate,productViewModel,id_product);
+                        binding.mycommentsRecyclerView.setAdapter(recycleAdapterMyRate);
+                        binding.add.setVisibility(View.GONE);
+                    }
+                });
+
+        //Get Rate
+        productViewModel.getRate(ProductActivity.this, id_product)
+                .observe(ProductActivity.this, new Observer<String>() {
+                    @Override
+                    public void onChanged(String s) {
+                        binding.productRate.setRating(s!=null?Float.parseFloat(s):5);
+                    }
+                });
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 }
 

@@ -49,7 +49,7 @@ public class category_product_horizontal extends Fragment {
 
 
 
-         binding.recycle.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,true));
+         binding.recycle.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
 
 
 

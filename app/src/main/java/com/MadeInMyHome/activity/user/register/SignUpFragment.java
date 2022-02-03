@@ -1,9 +1,11 @@
 package com.MadeInMyHome.activity.user.register;
 
 import static com.MadeInMyHome.utilities.General.addToSharedPreference;
+import static com.MadeInMyHome.utilities.General.emailMessage;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -13,13 +15,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.ViewModel.SendMessageViewModel;
 import com.MadeInMyHome.ViewModel.SignUpViewModel;
 import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.activity.user.LoginSignUpActivity;
@@ -28,12 +35,16 @@ import com.MadeInMyHome.component.convertToString;
 import com.MadeInMyHome.databinding.FragmentSignUpBinding;
 
 import java.util.Calendar;
+import java.util.Random;
 
 public class SignUpFragment extends Fragment implements View.OnClickListener, View.OnFocusChangeListener {
 
     DatePickerDialog picker;
     String encodedImage;
+    EditText code;
     SignUpViewModel signUpViewModel;
+    SendMessageViewModel sendMessageViewModel;
+    private int codeNum;
     private FragmentSignUpBinding binding;
     private ProgressDialog progressDialog;
 
@@ -41,7 +52,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        signUpViewModel = ViewModelProviders.of(this).get(SignUpViewModel.class);
+        signUpViewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
+        sendMessageViewModel =new ViewModelProvider(this).get(SendMessageViewModel.class);
         binding = FragmentSignUpBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         progressDialog = new ProgressDialog(getActivity());
@@ -106,56 +118,46 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
             binding.lName.getEditText().setError("Please Enter lastName");
             binding.lName.getEditText().requestFocus();
             return;
-        }
-
-        else if (TextUtils.isEmpty(email)) {
+        } else if (TextUtils.isEmpty(email)) {
             Toast.makeText(getActivity(), "email empty", Toast.LENGTH_SHORT).show();
             binding.email.getEditText().setError("Please Enter Email");
             binding.email.getEditText().requestFocus();
             return;
-        }
-       else if (!email.matches(emailPattern)) {
+        } else if (!email.matches(emailPattern)) {
             Toast.makeText(getActivity(), "valid email address", Toast.LENGTH_SHORT).show();
             binding.email.getEditText().setError("format in the email not correct");
             binding.email.getEditText().requestFocus();
             return;
 
-        }
-        else if (TextUtils.isEmpty(password)) {
+        } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(getActivity(), "password empty", Toast.LENGTH_SHORT).show();
             binding.password.getEditText().setError("Please Enter Password");
             binding.password.getEditText().requestFocus();
             return;
-        }
-        else if (password.length() < 8) {
-           Toast.makeText(getActivity(), "the password must be lingth 8 or more  ", Toast.LENGTH_SHORT).show();
-         binding.password.getEditText().setError("Please Enter 8 character or more");
-         binding.password.getEditText().requestFocus();
-        }
-        else if (TextUtils.isEmpty(date)) {
+        } else if (password.length() < 8) {
+            Toast.makeText(getActivity(), "the password must be lingth 8 or more  ", Toast.LENGTH_SHORT).show();
+            binding.password.getEditText().setError("Please Enter 8 character or more");
+            binding.password.getEditText().requestFocus();
+        } else if (TextUtils.isEmpty(date)) {
             Toast.makeText(getActivity(), "date  empty", Toast.LENGTH_SHORT).show();
             binding.date.getEditText().setError("Please Enter password");
             binding.date.getEditText().requestFocus();
             return;
-        }
-        else if (TextUtils.isEmpty(gender)) {
+        } else if (TextUtils.isEmpty(gender)) {
             Toast.makeText(getActivity(), "select gender  empty", Toast.LENGTH_SHORT).show();
             binding.gender.getEditText().setError("Please Enter gender");
             binding.gender.getEditText().requestFocus();
             return;
-        }
-        else if (TextUtils.isEmpty(phone)) {
+        } else if (TextUtils.isEmpty(phone)) {
             Toast.makeText(getActivity(), "select phone  empty", Toast.LENGTH_SHORT).show();
             binding.phone.getEditText().setError("Please Enter phone");
             binding.phone.getEditText().requestFocus();
             return;
-        }
-        else if (!(phone.length() == 7) ) {
+        } else if (!(phone.length() == 7)) {
             Toast.makeText(getActivity(), "the phone must be lingth 7 number  ", Toast.LENGTH_SHORT).show();
             binding.phone.getEditText().setError("Please Enter 7 Number Phone ");
             binding.phone.getEditText().requestFocus();
-        }
-        else {
+        } else {
             progressDialog.setTitle("create Account");
             progressDialog.setMessage("create account Now");
             progressDialog.setCanceledOnTouchOutside(true);
@@ -164,19 +166,71 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
             signUpViewModel.signUp(getActivity(),
                     email, password, firstName,
                     lastName, date, gender,
-                    binding.startPhone.getEditText().getText() + "" +phone, encodedImage)
+                    binding.startPhone.getEditText().getText() + "" + phone, encodedImage)
                     .observe(getViewLifecycleOwner(), new Observer<String>() {
                         @Override
                         public void onChanged(String s) {
-                            Intent i = new Intent(getActivity(), MainActivity.class);
-                            addToSharedPreference(getActivity(), "token", s);
-                            startActivity(i);
-                            getActivity().finish();
+                            if (!s.equals("0")) {
+                                Intent i = new Intent(getActivity(), MainActivity.class);
+                                addToSharedPreference(getActivity(), "token", s);
+                                startActivity(i);
+                                getActivity().finish();
+                            } else {
+                                progressDialog.dismiss();
+                                codeNum = new Random().nextInt(899999) + 100000;;
+
+                                sendMessageViewModel.sendMessage(getActivity(),email,emailMessage(email,String.valueOf(codeNum)))
+                                        .observe(getActivity(), new Observer<String>() {
+                                            @Override
+                                            public void onChanged(String s) {
+
+                                            }
+                                        });
+
+                                View promptUserView = getLayoutInflater().inflate(R.layout.dialog_active_email, null);
+                                code = (EditText) promptUserView.findViewById(R.id.code);
+                                TextView message = (TextView)promptUserView.findViewById(R.id.text);
+                                message.setText(message.getText()+" "+email+" with code \nplease put it here");
+
+                                AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+                                        .setCancelable(false)
+                                        .setView(promptUserView)
+                                        .setTitle("validate your email")
+                                        .setPositiveButton("activate", null)
+                                        .setNegativeButton("cancel", null)
+                                        .create();
+
+                                alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                                    @Override
+                                    public void onShow(DialogInterface dialogInterface) {
+                                        alertDialog.getButton(alertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                if (code.getText().toString().equals(codeNum + "")) {
+                                                    code.setError(null);
+                                                    signUpViewModel.active(getActivity(), email).observe(getActivity(), new Observer<String>() {
+                                                        @Override
+                                                        public void onChanged(String s) {
+                                                            Intent i = new Intent(getActivity(), MainActivity.class);
+                                                            addToSharedPreference(getActivity(), "token", s);
+                                                            startActivity(i);
+                                                            getActivity().finish();
+                                                        }
+                                                    });
+                                                } else {
+                                                    code.setError("not correct");
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+
+                                alertDialog.show();
+
+                            }
                         }
                     });
         }
-
-
     }
 
 

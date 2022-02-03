@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ public class ProductsFragment_horizontal extends Fragment {
         View root = binding.getRoot();
         
 
-        binding.recycle.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        binding.recycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         setAdapter();
 

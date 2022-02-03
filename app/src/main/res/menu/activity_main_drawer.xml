@@ -5,54 +5,83 @@
 
     <group android:checkableBehavior="single">
 
-
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/title_home" />
+
         <item
             android:id="@+id/nav_chat"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/login_in_signup" />
-        <item
-            android:id="@+id/navigation_myCourse"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/title_myCourse" />
-        <item
-            android:id="@+id/navigation_categoryCourse"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/title_categoryCourse" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_showProfile" />
-
-        <item
-            android:id="@+id/navigation_products"
-            android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/title_products" />
-
-        <item
-            android:id="@+id/navigation_courses"
-            android:icon="@drawable/ic_dashboard_black_24dp"
-            android:title="@string/title_courses" />
-
-        <item
-            android:id="@+id/navigation_favorite"
-            android:icon="@drawable/ic_notifications_black_24dp"
-            android:title="@string/title_favorite" />
-
-        <item
-            android:id="@+id/navigation_myProduct"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/title_myProducts" />
-
-
-        <item
-            android:id="@+id/navigation_categoryProducts"
-            android:icon="@drawable/ic_baseline_category_24"
-            android:title="@string/title_categoryProducts" />
-
+            android:icon="@drawable/stream_ui_ic_pinned_messages_empty"
+            android:title="@string/chat" />
 
     </group>
+
+    <item android:title="@string/title_products">
+        <menu>
+            <group>
+
+                <item
+                    android:id="@+id/navigation_products"
+                    android:icon="@drawable/ic_baseline_shopping_basket_24"
+                    android:title="@string/title_products" />
+
+                <item
+                    android:id="@+id/navigation_categoryProducts"
+                    android:icon="@drawable/ic_baseline_category_24"
+                    android:title="@string/title_categoryProducts" />
+
+                <item
+                    android:id="@+id/navigation_favorite"
+                    android:icon="@drawable/ic_baseline_favorite_border_24"
+                    android:title="@string/title_favorite" />
+
+                <item
+                    android:id="@+id/navigation_myProduct"
+                    android:icon="@drawable/ic_outline_shopping_basket_24"
+                    android:title="@string/title_myProducts" />
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/title_courses">
+        <menu>
+            <group>
+
+                <item
+                    android:id="@+id/navigation_courses"
+                    android:icon="@drawable/ic_baseline_ondemand_video_24"
+                    android:title="@string/title_courses" />
+
+                <item
+                    android:id="@+id/navigation_categoryCourse"
+                    android:icon="@drawable/ic_baseline_category_24"
+                    android:title="@string/title_categoryCourse" />
+
+                <item
+                    android:id="@+id/navigation_myCourse"
+                    android:icon="@drawable/ic_baseline_play_circle_24"
+                    android:title="@string/title_myCourse" />
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/profile">
+        <menu>
+            <group>
+
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/ic_round_person_24"
+                    android:title="@string/menu_showProfile" />
+                <item
+                    android:id="@+id/navigation_logout"
+                    android:icon="@drawable/logout"
+                    android:title="@string/logout" />
+
+            </group>
+        </menu>
+    </item>
 </menu>

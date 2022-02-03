@@ -147,11 +147,11 @@ public class AddUpdateProductViewModel extends ViewModel {
         return arrayListMutableLiveData;
     }
 
-    public MutableLiveData<String> updateProductMultiImage(final Context context, String id, String image) {
+    public MutableLiveData<String> updateProductMultiImage(final Context context, String id, String id_product, String image) {
 
         final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
 
-        Call<ResultResponse> call = RestClient.getService().updateProductMultiImages(id, image);
+        Call<ResultResponse> call = RestClient.getService().updateProductMultiImages(id,id_product, image);
         call.enqueue(new Callback<ResultResponse>() {
             @Override
             public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {

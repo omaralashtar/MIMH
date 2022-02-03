@@ -48,7 +48,7 @@ public class categoryProductFrament extends Fragment {
                 android.R.color.holo_red_light);
         int mNoOfColumns = Utility.calculateNoOfColumns(getActivity());
 
-        binding.categoryProductRecycle.setLayoutManager(new GridLayoutManager(getActivity(), mNoOfColumns));
+        binding.categoryProductRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         setAdapter();
 

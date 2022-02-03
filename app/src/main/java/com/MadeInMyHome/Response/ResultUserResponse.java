@@ -7,6 +7,9 @@ public class ResultUserResponse
     @SerializedName("result")
     private String result;
 
+    @SerializedName("email_validate")
+    private String email_validate;
+
     @SerializedName("id")
     private String id;
 
@@ -16,5 +19,9 @@ public class ResultUserResponse
 
     public String getId() {
         return id;
+    }
+
+    public String getEmail_validate() {
+        return email_validate;
     }
 }

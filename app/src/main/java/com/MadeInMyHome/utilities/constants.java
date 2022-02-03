@@ -1,8 +1,9 @@
 package com.MadeInMyHome.utilities;
 
 public class constants {
-    public static final String BASE_HOST = "http://192.168.210.159/API2022/";
-    public static final String BASE_HOST_EMAIL = "https://api.mailgun.net/v3/sandbox70d6b319b8eb46e79fc7cb1b990a187c.mailgun.org/messages";
+    public static final String BASE_HOST = "http://192.168.1.122/API2022/";
+    public static final String BASE_HOST_EMAIL = "https://api.mailgun.net/v3/sandbox70d6b319b8eb46e79fc7cb1b990a187c.mailgun.org/";
+    public static final String BASE_HOST_EMAIL_MESSAGE = "messages";
     public static final String USER = "API/user/";
     public static final String COURSE = "API/course/";
     public static final String ENROLL = "API/enroll/";
@@ -24,7 +25,7 @@ public class constants {
     public static final String DELETE = "Delete.php";
 
     public static final String GET = "Get.php";
-    public static final String GET_MY_PRODUCT = "GetMy.php";
+    public static final String GET_MY = "GetMy.php";
     public static final String GET_ALL = "GetAll.php";
     public static final String GET_CATEGORY = "GetCategory.php";
     public static final String GET_CATEGORY_ID = "GetCategoryIdByName.php";
@@ -34,6 +35,8 @@ public class constants {
     public static final String LOGIN = "Login.php";
     public static final String SING_UP = "SignUp.php";
 
+    public static final String ACTIVE = "Active.php";
+    public static final String CHECK = "Check.php";
     public static final String UPDATE = "Update.php";
     public static final String UPDATE_IMAGE = "UpdateImage.php";
     public static final String UPDATE_MULTI_IMAGE = "UpdateMultiImage.php";

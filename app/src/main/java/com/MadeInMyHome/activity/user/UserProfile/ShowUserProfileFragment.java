@@ -75,8 +75,8 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
         showUserProfileViewModel.getUserProfile(getActivity(), getToken(getActivity())).observe(getActivity(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
-                binding.FirstName.getEditText().setText(user.getL_name());
-                binding.LastName.getEditText().setText(user.getF_name());
+                binding.FirstName.getEditText().setText(user.getF_name());
+                binding.LastName.getEditText().setText(user.getL_name());
                 binding.EmailUser.getEditText().setText(user.getEmail());
                 binding.DescriptionUser.getEditText().setText(user.getDescription());
                 binding.genderUser.getEditText().setText(user.getGender());

@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">MIMH</string>
+    <string name="app_name">Made In My Home</string>
     <string name="apikey">d5jrhkq7n52q</string>
     <string name="login">Login</string>
     <string name="sign_up">Sign Up</string>
+    <string name="logout">Logout</string>
 
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -14,14 +15,14 @@
     <string name="location">Location</string>
 
     <string name="name">Name</string>
-    <string name="price">Price</string>
+    <string name="price">Price :</string>
     <string name="size">Size</string>
     <string name="unit">unit</string>
     <string name="description">Description</string>
     <string name="description_optional">Description(optional)</string>
     <string name="discount_date">Discount Date(optional)</string>
     <string name="discount">Discount(optional)</string>
-    <string name="category">Category</string>
+    <string name="category">Category :</string>
     <string name="presenter">Presenter</string>
 
     <string name="add">Add</string>
@@ -30,8 +31,8 @@
     <string name="error">field must be insert</string>
 
     <string-array name="genderList">
-        <item>ذكر</item>
-        <item>أنثى</item>
+        <item>Male</item>
+        <item>Female</item>
     </string-array>
 
     <string-array name="phoneList">
@@ -41,12 +42,28 @@
     </string-array>
 
     <string-array name="unitList">
-        <item>قطعة</item>
-        <item>غرام</item>
-        <item>كيلو غرام</item>
-        <item>متر</item>
-        <item>سانتيمتر</item>
+        <item>item</item>
+        <item>g</item>
+        <item>kg</item>
+        <item>m</item>
+        <item>cm</item>
     </string-array>
+
+    <string-array name="locationList">
+        <item>Amman</item>
+        <item>Ajloun</item>
+        <item>Jerash</item>
+        <item>Mafraq</item>
+        <item>Irbid</item>
+        <item>Zarqa</item>
+        <item>Al-Salt</item>
+        <item>Madaba</item>
+        <item>Al-Karak</item>
+        <item>Aqaba</item>
+        <item>Ma\'an</item>
+        <item>Tafila</item>
+    </string-array>
+
     //drawer
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home Activity</string>
@@ -59,7 +76,7 @@
     <string name="title_myCourse">my Course</string>
     <string name="title_categoryCourse">category Course</string>
     <string name="profile">profile</string>
-    <string name="title_categoryByProducts">ProductBycategory</string>
+    <string name="title_categoryByProducts">category</string>
 
     //test mohammad introduction
     <string name="next">NEXT</string>
@@ -130,7 +147,13 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="name_user">name user</string>
     <string name="chat">chat</string>
+    <string name="since">since :</string>
     <string name="share">share</string>
     <string name="cart">cart</string>
+    <string name="comments">comments</string>
+    <string name="rating">rating :</string>
+    <string name="report">report</string>
+    <string name="write_the_problem">write the problem in the video</string>
+    <string name="report_video">report this video</string>
 
 </resources>

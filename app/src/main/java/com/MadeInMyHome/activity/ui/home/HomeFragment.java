@@ -114,15 +114,15 @@ private FragmentHomeBinding binding;
 
 
 
-        binding.fabProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), showProfileToUser.class);
-                i.putExtra("id", "d3799829ab212a47a3b8b60734d243ab");
-                getActivity().startActivity(i);
-
-            }
-        });
+//        binding.fabProfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getActivity(), showProfileToUser.class);
+//                i.putExtra("id", "d3799829ab212a47a3b8b60734d243ab");
+//                getActivity().startActivity(i);
+//
+//            }
+//        });
 
 
 

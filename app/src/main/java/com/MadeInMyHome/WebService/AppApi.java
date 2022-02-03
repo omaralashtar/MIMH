@@ -34,6 +34,18 @@ public interface AppApi {
                                     @Field("image") String image);
 
     @FormUrlEncoded
+    @POST(constants.USER + constants.ACTIVE)
+    Call<ResultUserResponse> active(@Field("email") String email);
+
+    @FormUrlEncoded
+    @POST(constants.USER + constants.CHECK)
+    Call<ResultResponse> check(@Field("token") String token);
+
+    @FormUrlEncoded
+    @POST(constants.USER + constants.DELETE)
+    Call<ResultResponse> delete(@Field("token") String token);
+
+    @FormUrlEncoded
     @POST(constants.USER + constants.LOGIN)
     Call<ResultUserResponse> login(@Field("email") String email,
                                    @Field("password") String password);
@@ -87,7 +99,7 @@ public interface AppApi {
                                            @Field("image") String image);
 
     @FormUrlEncoded
-    @POST(constants.PRODUCT + constants.GET_MY_PRODUCT)
+    @POST(constants.PRODUCT + constants.GET_MY)
     Call<ProductArrayListResponse> getMyProduct(@Field("id") String id);
 
     @FormUrlEncoded
@@ -131,6 +143,7 @@ public interface AppApi {
     @FormUrlEncoded
     @POST(constants.PRODUCT + constants.UPDATE_MULTI_IMAGE)
     Call<ResultResponse> updateProductMultiImages(@Field("id") String id,
+                                                  @Field("id_product") String id_product,
                                                   @Field("image") String image);
 
 
@@ -190,11 +203,13 @@ public interface AppApi {
                                            @Field("next") String next);
 
     @FormUrlEncoded
-    @POST(constants.RATE + constants.UPDATE)
-    Call<ResultResponse> updateRate(@Field("id_user") String id_user,
-                                    @Field("id_product") String id_product,
-                                    @Field("rating") String rating,
-                                    @Field("comment") String comment);
+    @POST(constants.RATE + constants.GET)
+    Call<ResultResponse> getRate(@Field("id_product") String id_product);
+
+    @FormUrlEncoded
+    @POST(constants.RATE + constants.GET_MY)
+    Call<RateArrayListResponse> getMyRate(@Field("id_user") String id_user,
+                                   @Field("id_product") String id_product);
 
     //VIDEO
 
@@ -236,10 +251,10 @@ public interface AppApi {
                                                   @Field("next") String next);
 
     @FormUrlEncoded
-    @POST(constants.BASE_HOST_EMAIL)
+    @POST(constants.BASE_HOST_EMAIL_MESSAGE)
     Call<ResponseBody> sendEmail(@Field("from") String from,
                                  @Field("to") String to,
                                  @Field("subject") String subject,
-                                 @Field("text") String text);
+                                 @Field("html") String text);
 
 }

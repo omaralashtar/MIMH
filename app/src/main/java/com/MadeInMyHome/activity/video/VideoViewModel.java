@@ -48,7 +48,7 @@ public class VideoViewModel extends ViewModel {
 
         return arrayListMutableLiveData;
     }
-    public MutableLiveData<String> reportVideos(final Context context,String id_user,String id_video,String message) {
+    public MutableLiveData<String> reportVideo(final Context context,String id_user,String id_video,String message) {
 
         final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
 

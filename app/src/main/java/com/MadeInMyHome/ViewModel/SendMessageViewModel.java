@@ -1,17 +1,12 @@
 package com.MadeInMyHome.ViewModel;
 
 import android.content.Context;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.MadeInMyHome.Response.ResultResponse;
-import com.MadeInMyHome.Response.ResultUserResponse;
-import com.MadeInMyHome.WebService.RestClient;
 import com.MadeInMyHome.WebService.RestClientEmail;
-import com.MadeInMyHome.model.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,16 +16,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class sendMessage extends ViewModel
-{
-    public MutableLiveData<String> sendMessage(final Context context, EditText email, EditText pass) {
+public class SendMessageViewModel extends ViewModel {
+    public MutableLiveData<String> sendMessage(final Context context, String toEmail, String message) {
 
 
         final MutableLiveData<String> userMutableLiveData = new MutableLiveData<>();
 
 
-        Call<ResponseBody> call = RestClientEmail.getService().sendEmail("super200055@gmail.com",
-                "ashtrr55@gmail.com","hi","tetetetyyy");
+        Call<ResponseBody> call = RestClientEmail.getService().sendEmail("mailgun@sandbox70d6b319b8eb46e79fc7cb1b990a187c.mailgun.org",
+                toEmail, "Welcome in Made In My Home", message);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -38,17 +32,17 @@ public class sendMessage extends ViewModel
                 if (data != null) {
                     try {
                         JSONObject obj = new JSONObject(data.toString());
-                        if (obj.getString("message").equals("Queued. Thank you.")) {
-                            userMutableLiveData.setValue(obj.getString("message"));
+                        if (obj.get("messages")!=null) {
+                            userMutableLiveData.setValue(obj.getJSONArray("message").get(0)+"");
 
                         } else {
-                            Toast.makeText(context, "Field_Login_Or_Signup", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, obj.toString(), Toast.LENGTH_SHORT).show();
                         }
-                    }catch (JSONException e) {
+                    } catch (JSONException e) {
                         e.printStackTrace();
-                    } {
-                        Toast.makeText(context, "Field_Login_Or_Signup", Toast.LENGTH_SHORT).show();
                     }
+                }else{
+                    Toast.makeText(context,"no data" , Toast.LENGTH_SHORT).show();
                 }
             }
 

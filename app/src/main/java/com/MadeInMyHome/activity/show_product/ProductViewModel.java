@@ -1,13 +1,11 @@
 package com.MadeInMyHome.activity.show_product;
 
 import android.content.Context;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.MadeInMyHome.R;
 import com.MadeInMyHome.Response.ImageArrayListResponse;
 import com.MadeInMyHome.Response.ProductArrayListResponse;
 import com.MadeInMyHome.Response.RateArrayListResponse;
@@ -166,25 +164,26 @@ public class ProductViewModel extends ViewModel {
     }
 
 
-    public MutableLiveData<String> addComment(final Context context, String id_user,String id_product,String rate,String comment) {
+    public MutableLiveData<String> addComment(final Context context, String id_user, String id_product, String rate, String comment) {
 
         final MutableLiveData<String> arrayListMutableLiveData = new MutableLiveData<>();
 
-        Call<ResultResponse> call = RestClient.getService().addRate(id_user, id_product,rate,comment);
+        Call<ResultResponse> call = RestClient.getService().addRate(id_user, id_product, rate, comment);
         call.enqueue(new Callback<ResultResponse>() {
             @Override
             public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
                 ResultResponse data = response.body();
                 if (data != null) {
                     if (data.getResult().equals("1")) {
-                        String res = data.getResult ();
+                        String res = data.getResult();
                         arrayListMutableLiveData.setValue(res);
 
                     } else {
                         Toast.makeText(context, "Field_Add Comment", Toast.LENGTH_SHORT).show();
                     }
 
-                }}
+                }
+            }
 
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
@@ -196,14 +195,11 @@ public class ProductViewModel extends ViewModel {
     }
 
 
-
-
-
-    public MutableLiveData<ArrayList<Rate>> getRateAll(final Context context, String id, String next) {
+    public MutableLiveData<ArrayList<Rate>> getAllRate(final Context context, String id, String next) {
 
         final MutableLiveData<ArrayList<Rate>> MutableLiveData = new MutableLiveData<>();
 
-        Call<RateArrayListResponse> call = RestClient.getService().getAllRate(id,next);
+        Call<RateArrayListResponse> call = RestClient.getService().getAllRate(id, next);
         call.enqueue(new Callback<RateArrayListResponse>() {
             @Override
             public void onResponse(Call<RateArrayListResponse> call, Response<RateArrayListResponse> response) {
@@ -227,10 +223,64 @@ public class ProductViewModel extends ViewModel {
         return MutableLiveData;
     }
 
-    public MutableLiveData<String> DeleteRate(final Context context , String id_user ,String id_product ) {
+    public MutableLiveData<ArrayList<Rate>> getMyRate(final Context context, String id_user, String id_product) {
+
+        final MutableLiveData<ArrayList<Rate>> MutableLiveData = new MutableLiveData<>();
+
+        Call<RateArrayListResponse> call = RestClient.getService().getMyRate(id_user,id_product);
+        call.enqueue(new Callback<RateArrayListResponse>() {
+            @Override
+            public void onResponse(Call<RateArrayListResponse> call, Response<RateArrayListResponse> response) {
+                RateArrayListResponse rateArrayListResponse = response.body();
+                if (rateArrayListResponse != null) {
+                    ArrayList<Rate> rateArrayList = rateArrayListResponse.getArrayList();
+                    if (rateArrayList.size() > 0) {
+                        MutableLiveData.setValue(rateArrayList);
+                    }
+                } else {
+                    Toast.makeText(context, "Field_get_items", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RateArrayListResponse> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        return MutableLiveData;
+    }
+
+    public MutableLiveData<String> getRate(final Context context, String id_product) {
+
+        final MutableLiveData<String> MutableLiveData = new MutableLiveData<>();
+
+        Call<ResultResponse> call = RestClient.getService().getRate(id_product);
+        call.enqueue(new Callback<ResultResponse>() {
+            @Override
+            public void onResponse(Call<ResultResponse> call, Response<ResultResponse> response) {
+                ResultResponse resultResponse = response.body();
+                if (resultResponse != null) {
+                    String result = resultResponse.getResult();
+                    MutableLiveData.setValue(result);
+                } else {
+                    Toast.makeText(context, "Field get rate", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultResponse> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        return MutableLiveData;
+    }
+
+    public MutableLiveData<String> DeleteRate(final Context context, String id_user, String id_product) {
         final MutableLiveData<String> myLiveDataList = new MutableLiveData<>();
 
-        final Call<ResultResponse> call = RestClient.getService().deleteRate(id_user,id_product);
+        final Call<ResultResponse> call = RestClient.getService().deleteRate(id_user, id_product);
 
         call.enqueue(new Callback<ResultResponse>() {
             @Override

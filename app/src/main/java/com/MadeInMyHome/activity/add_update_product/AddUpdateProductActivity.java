@@ -392,7 +392,7 @@ public class AddUpdateProductActivity extends AppCompatActivity implements View.
 
     public void updateImage(View view, String id_product_image, PickResult r) {
         encodedImage = new convertToString().convertToString(r.getBitmap());
-        addUpdateProductViewModel.updateProductMultiImage(AddUpdateProductActivity.this, id_product_image, encodedImage)
+        addUpdateProductViewModel.updateProductMultiImage(AddUpdateProductActivity.this, id_product_image,id_product, encodedImage)
                 .observe(AddUpdateProductActivity.this, new Observer<String>() {
                     @Override
                     public void onChanged(String s) {

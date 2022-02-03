@@ -19,6 +19,7 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
 
 
     ArrayList<Video> items;
+    Video video;
     Context context;
     WebView webView;
 
@@ -32,6 +33,7 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
         webView = View;
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadData(STARTHTML+items.get(0).getUrl()+ENDHTML, "text/html", "utf-8");
+        selectVideo(item.get(0));
     }
 
     @Override
@@ -50,6 +52,7 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
             @Override
             public void onClick(View view) {
                 webView.loadData(STARTHTML+url+ENDHTML, "text/html", "utf-8");
+                selectVideo(items.get(holder.getBindingAdapterPosition()));
             }
         });
     }
@@ -57,6 +60,13 @@ public class RecycleAdapterVideo extends RecyclerView.Adapter<RecycleAdapterVide
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void selectVideo(Video video) {
+         this.video=video;
+    }
+    public Video selectVideo() {
+        return video;
     }
 
     class viewitem extends RecyclerView.ViewHolder {

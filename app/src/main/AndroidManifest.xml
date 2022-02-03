@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,13 +14,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MIMH"
+        android:theme="@style/MIMH"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".activity.user.showProfileToUser.showProfileToUser"
             android:exported="false"
-            android:label="@string/title_activity_show_profile_to_user"
-            android:theme="@style/Theme.MIMH.NoActionBar" />
+            android:label="@string/title_activity_show_profile_to_user" />
         <activity
             android:name=".activity.show_channel.ShowChannelActivity"
             android:exported="false" />
@@ -30,33 +28,44 @@
             android:exported="false" />
         <activity
             android:name=".activity.show_course.CourseActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/title_courses"/>
         <activity
             android:name=".activity.show_product.ProductActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/title_products"/>
         <activity
             android:name=".activity.video.VideoActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+            android:theme="@style/MIMH.NoActionBar" />
         <activity
             android:name=".activity.productsByCategory.ProductByCategoryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/title_categoryByProducts"/>
         <activity
             android:name=".activity.welcom.WelcomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/MIMH.NoActionBar" />
+
         <activity
             android:name=".activity.ui.MainActivity"
             android:exported="false"
-            android:label="@string/title_activity_main" />
+            android:label="@string/title_activity_main"
+            android:theme="@style/MIMH.NoActionBar"/>
         <activity
             android:name=".activity.user.LoginSignUpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/MIMH.NoActionBar" />
+
         <activity
             android:name=".activity.introduction.IntroductionActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/MIMH.NoActionBar" />
+
         <activity
             android:name=".activity.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/MIMH.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

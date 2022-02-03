@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg_screen1"
+    android:background="?android:attr/colorPressedHighlight"
     android:orientation="vertical">
 
     <TextView
@@ -14,8 +14,7 @@
         android:padding="15dp"
         android:text="Rate Product"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary1"
-        android:textStyle="bold" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <View
         android:layout_width="match_parent"
@@ -25,31 +24,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_44sdp"
-            android:orientation="vertical"
-            android:padding="15dp">
             <RatingBar
                 android:id="@+id/ratingBar"
                 style="@style/Widget.AppCompat.RatingBar"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
                 android:rating="4.5" />
 
-        </LinearLayout>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
         android:background="@color/colorPrimaryDark" />
 
     <LinearLayout
@@ -58,21 +50,15 @@
         android:background="?android:selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp">
-
-
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="@dimen/margin"
             android:text="ADD COMMENT TO PRODUCT"
-            android:textColor="#00000F"
-            android:textSize="15sp" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
     </LinearLayout>
 
@@ -81,21 +67,15 @@
         android:layout_height="@dimen/_99ssp"
         android:clickable="true"
         android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp">
+        android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/comment"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/betweenTowInput"
-            android:layout_marginEnd="@dimen/betweenTowInput"
-            app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadius"
-            app:boxCornerRadiusBottomStart="@dimen/boxCornerRadius"
-            app:boxCornerRadiusTopEnd="@dimen/boxCornerRadius"
-            app:boxCornerRadiusTopStart="@dimen/boxCornerRadius"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginEnd="@dimen/margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/multiImageLayout">
@@ -106,29 +86,18 @@
                 android:hint="@string/description_addComment"
                 android:inputType="text"
                 android:singleLine="false"
-                android:background="@color/white"
-                />
+                android:background="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-
     </LinearLayout>
-
 
     <Button
         android:id="@+id/btn_add"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="15dp"
-        android:background="@color/colorAccent1"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
         android:text="Add Rate To Product"
-        android:textColor="@android:color/white"
-        android:textSize="10sp"
-        android:textStyle="bold" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
 
 </LinearLayout>
