@@ -20,7 +20,7 @@ import com.MadeInMyHome.model.Product;
 import com.MadeInMyHome.model.User;
 import com.MadeInMyHome.utilities.constants;
 import java.util.ArrayList;
-public class infoMyAccount extends Fragment {
+public class infoMyAccountFragment extends Fragment {
     ShowUserProfileViewModel showUserProfileViewModel;
     private FragmentInfoMyAccountBinding binding;
     MyProductViewModel myProductViewModel;
@@ -64,7 +64,7 @@ public class infoMyAccount extends Fragment {
             public void onClick(View v) {
 
 
-                NavHostFragment.findNavController(infoMyAccount.this).
+                NavHostFragment.findNavController(infoMyAccountFragment.this).
                         navigate(R.id.nav_updateUserProfile);
             }
         });

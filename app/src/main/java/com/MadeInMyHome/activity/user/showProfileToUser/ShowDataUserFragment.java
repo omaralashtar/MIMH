@@ -51,7 +51,7 @@ public class ShowDataUserFragment extends Fragment {
         binding.myProductsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
 
-        showUserProfileViewModel.getUserProfile(getActivity(), getActivity().getIntent().getExtras().getString("token")).observe(getActivity(), new Observer<User>() {
+        showUserProfileViewModel.getUserProfile(getActivity(), getActivity().getIntent().getExtras().getString("id")).observe(getActivity(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
                 binding.name.setText(user.getF_name() + "" + user.getL_name());

@@ -51,7 +51,6 @@ public class RecycleAdapterUser extends RecyclerView.Adapter<RecycleAdapterUser.
             public void onClick(View v) {
 
                 Intent i = new Intent(context, showProfileToUserActivity.class);
-                i.putExtra("token",  items.get(holder.getAdapterPosition()).getToken());
                 i.putExtra("id",  String.valueOf(items.get(holder.getAdapterPosition()).getId()));
                 context.startActivity(i);
 

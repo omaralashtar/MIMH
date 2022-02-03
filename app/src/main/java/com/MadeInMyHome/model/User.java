@@ -8,10 +8,6 @@ public class User implements Serializable {
 
     @SerializedName("id")
     private String id;
-
-    @SerializedName("token")
-    private String token;
-
     @SerializedName("email")
     private String email;
 
@@ -117,7 +113,5 @@ public class User implements Serializable {
         return code;
     }
 
-    public String getToken() {
-        return token;
-    }
+
 }
