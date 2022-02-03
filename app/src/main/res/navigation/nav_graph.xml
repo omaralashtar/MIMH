@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.MadeInMyHome.activity.user.showProfileToUser.FirstFragment"
+        android:name="com.MadeInMyHome.activity.user.showProfileToUser.ShowDataUserFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_profile_to_user">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -17,9 +17,9 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.MadeInMyHome.activity.user.showProfileToUser.SecondFragment"
+        android:name="com.MadeInMyHome.activity.user.showProfileToUser.AllProductByUserFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_all_product_by_user">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"

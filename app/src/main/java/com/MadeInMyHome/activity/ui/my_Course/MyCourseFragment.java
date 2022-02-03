@@ -1,6 +1,5 @@
 package com.MadeInMyHome.activity.ui.my_Course;
 
-import static com.MadeInMyHome.utilities.General.getSharedPreference;
 import static com.MadeInMyHome.utilities.General.getToken;
 
 import android.os.Bundle;
@@ -16,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterCourse;
 import com.MadeInMyHome.databinding.FragmentMyCoursesBinding;
 import com.MadeInMyHome.model.Course;

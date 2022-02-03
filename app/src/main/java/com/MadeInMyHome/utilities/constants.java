@@ -1,9 +1,10 @@
 package com.MadeInMyHome.utilities;
 
 public class constants {
-    public static final String BASE_HOST = "http://192.168.210.159/API2022/";
+    public static final String BASE_HOST = "http://192.168.1.168/API2022/";
     public static final String BASE_HOST_EMAIL = "https://api.mailgun.net/v3/sandbox70d6b319b8eb46e79fc7cb1b990a187c.mailgun.org/messages";
     public static final String USER = "API/user/";
+    public static final String SEARCH = "API/search/";
     public static final String COURSE = "API/course/";
     public static final String ENROLL = "API/enroll/";
     public static final String VIDEO = "API/video/";
@@ -24,6 +25,7 @@ public class constants {
     public static final String DELETE = "Delete.php";
 
     public static final String GET = "Get.php";
+    public static final String GET_All_code = "userByCode.php";
     public static final String GET_MY_PRODUCT = "GetMy.php";
     public static final String GET_ALL = "GetAll.php";
     public static final String GET_CATEGORY = "GetCategory.php";

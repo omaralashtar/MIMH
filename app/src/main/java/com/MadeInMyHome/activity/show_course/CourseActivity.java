@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.databinding.ActivityCourseBinding;
 import com.MadeInMyHome.model.Course;

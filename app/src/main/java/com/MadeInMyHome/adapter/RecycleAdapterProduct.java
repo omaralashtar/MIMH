@@ -80,7 +80,9 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
                 Intent i;
                 if (product.equals("product")) {
                     i = new Intent(context, ProductActivity.class);
-                } else {
+                }
+
+                else {
                     i = new Intent(context, AddUpdateProductActivity.class);
                     i.putExtra("name", "update");
                 }

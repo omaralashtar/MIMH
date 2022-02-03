@@ -47,11 +47,7 @@
         android:label="@string/stream_ui_channel_list_you"
         tools:layout="@layout/fragment_chat" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileFragment"
-        android:label="@string/menu_showProfile"
-        tools:layout="@layout/fragment_show_profile_user" />
+
 
     <fragment
         android:id="@+id/navigation_myCourse"
@@ -70,9 +66,11 @@
         android:name="com.MadeInMyHome.activity.ui.my_products.myProductFragment"
         android:label="@string/title_myProducts"
         tools:layout="@layout/fragment_my_product" />
-
-
-
+    <activity
+        android:id="@+id/navigation_userActivity"
+        android:name="com.MadeInMyHome.activity.user.userProfile.userActivity"
+        android:label="activity_user"
+        tools:layout="@layout/activity_user" />
 
 
 </navigation>

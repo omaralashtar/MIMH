@@ -1,9 +1,13 @@
 package com.MadeInMyHome.activity.ui;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +17,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.search.SearchAppActivity;
+import com.MadeInMyHome.activity.user.showProfileToUser.showProfileToUserActivity;
 import com.MadeInMyHome.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         binding.toolbarTitle.setText(getString(R.string.app_name));
 
+
+
+
+
+
         binding.drawerLayout.addDrawerListener(
                 new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close));
 
@@ -39,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home,
                 R.id.navigation_myCourse,
                 R.id.navigation_categoryCourse,
-                R.id.nav_slideshow,
+                R.id.navigation_userActivity,
                 R.id.navigation_products,
                 R.id.navigation_courses,
                 R.id.navigation_favorite,
@@ -51,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         NavController navControllerDrawer = Navigation.findNavController(this,
                 R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navControllerDrawer, drawerAppBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(this, navControllerDrawer,
+                drawerAppBarConfiguration);
         NavigationUI.setupWithNavController(binding.navViewDrawer, navControllerDrawer);
     }
 
@@ -65,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
         a.setNegativeButton(getResources().getString(R.string.dialog_No), null);
         a.setPositiveButton(getResources().getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(DialogInterface dialog, int which)
+            {
                 finishAffinity();
             }
         });
@@ -76,7 +89,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
+
+        if(item.getItemId()==R.id.profile)
+        {
+            Intent intent=new Intent(MainActivity.this, SearchAppActivity.class);
+
+            Toast.makeText(this, "Search By Code User", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+
+
+        }
+
+
+
+
+
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

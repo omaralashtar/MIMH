@@ -1,18 +1,22 @@
 package com.MadeInMyHome.activity.user.showProfileToUser;
+
 import android.os.Bundle;
-import com.MadeInMyHome.databinding.ActivityShowProfileToUserBinding;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import com.MadeInMyHome.R;
 
-public class showProfileToUser extends AppCompatActivity {
+import com.MadeInMyHome.R;
+import com.MadeInMyHome.databinding.ActivityShowProfileToUserBinding;
+import com.google.android.material.snackbar.Snackbar;
+
+public class showProfileToUserActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityShowProfileToUserBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,7 @@ public class showProfileToUser extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_show_profile_to_user);

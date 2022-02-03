@@ -9,10 +9,10 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.activity.introduction.IntroductionActivity;
+import com.MadeInMyHome.activity.search.SearchAppActivity;
 import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.activity.user.LoginSignUpActivity;
-import com.MadeInMyHome.activity.user.showProfileToUser.showProfileToUser;
+import com.MadeInMyHome.activity.user.showProfileToUser.showProfileToUserActivity;
 import com.MadeInMyHome.activity.welcom.WelcomeActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashActivity.this, IntroductionActivity.class);
+                Intent i = new Intent(SplashActivity.this, WelcomeActivity.class);
                 startActivity(i);
                 finish();
             }

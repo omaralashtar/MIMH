@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterProduct;
 import com.MadeInMyHome.databinding.FragmentFavoriteBinding;
 import com.MadeInMyHome.model.Product;

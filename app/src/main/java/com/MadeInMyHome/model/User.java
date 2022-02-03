@@ -9,6 +9,9 @@ public class User implements Serializable {
     @SerializedName("id")
     private String id;
 
+    @SerializedName("token")
+    private String token;
+
     @SerializedName("email")
     private String email;
 
@@ -40,7 +43,8 @@ public class User implements Serializable {
     @SerializedName("phone")
     private String phone;
 
-
+    @SerializedName("code")
+    private String code;
 
     @SerializedName("deleted_at")
     private String deleted_at;
@@ -109,6 +113,11 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
+    public String getCode() {
+        return code;
+    }
 
-
+    public String getToken() {
+        return token;
+    }
 }

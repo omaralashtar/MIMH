@@ -16,15 +16,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.ui.my_products.MyProductViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterProduct;
-import com.MadeInMyHome.databinding.FragmentSecondBinding;
+import com.MadeInMyHome.databinding.FragmentAllProductByUserBinding;
 import com.MadeInMyHome.model.Product;
 
 import java.util.ArrayList;
 
 
-public class SecondFragment extends Fragment {
+public class AllProductByUserFragment extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentAllProductByUserBinding binding;
     MyProductViewModel myProductViewModel;
     RecycleAdapterProduct recycleAdapterProduct;
     @Override
@@ -32,7 +32,7 @@ public class SecondFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = FragmentAllProductByUserBinding.inflate(inflater, container, false);
         myProductViewModel=ViewModelProviders.of(this).get(MyProductViewModel.class);
         View root=binding.getRoot();
         binding.myProductsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
@@ -41,10 +41,10 @@ public class SecondFragment extends Fragment {
 
 
 
-        myProductViewModel.getMyProducts(getActivity(), "1").observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
+        myProductViewModel.getMyProducts(getActivity(), getActivity().getIntent().getExtras().getString("id")).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> myProducts) {
-                recycleAdapterProduct = new RecycleAdapterProduct(getActivity(), myProducts,"my");
+                recycleAdapterProduct = new RecycleAdapterProduct(getActivity(), myProducts,"product");
                 binding.myProductsRecycle.setAdapter(recycleAdapterProduct);
             }
         });

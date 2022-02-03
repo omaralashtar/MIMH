@@ -22,7 +22,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.show_product.ProductViewModel;
 import com.MadeInMyHome.activity.ui.category_product.CategoryProductViewModel;
-import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.component.PickImage;
 import com.MadeInMyHome.component.convertToString;

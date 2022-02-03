@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterRate;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.databinding.ActivityProductBinding;
@@ -135,7 +135,7 @@ public class ProductActivity extends AppCompatActivity {
                         AlertDialog.Builder a = new AlertDialog.Builder(ProductActivity.this);
                         a.setNeutralButton(getResources().getString(R.string.dialog_cancel), null);
                         a.setCancelable(false);
-                        a.setIcon(R.drawable.ic_launcher_background);
+                        a.setIcon(R.drawable.stream_ui_ic_icon_eye_off);
                         a.setNegativeButton(getResources().getString(R.string.dialog_No), null);
                         a.setPositiveButton(getResources().getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
                             @Override

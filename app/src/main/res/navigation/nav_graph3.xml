@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph3"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.MadeInMyHome.activity.user.userProfile.infoMyAccount"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_info_my_account">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_nav_updateUserProfile"
+            app:destination="@id/nav_updateUserProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_updateUserProfile"
+        android:name="com.MadeInMyHome.activity.user.userProfile.ShowUserProfileFragment"
+        android:label="@string/menu_showProfile"
+        tools:layout="@layout/fragment_show_profile_user">
+
+    <action
+        android:id="@+id/action_SecondFragment_to_FirstFragment"
+        app:destination="@id/FirstFragment" />
+    </fragment>
+
+</navigation>

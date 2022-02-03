@@ -132,5 +132,12 @@
     <string name="chat">chat</string>
     <string name="share">share</string>
     <string name="cart">cart</string>
+    <string name="update_profile">update profile</string>
+    <string name="title_activity_search_app">SearchAppActivity</string>
+
+
+    //search
+    <string name="code_search">Search Code User</string>
+    <string name="title_activity_user">user</string>
 
 </resources>
