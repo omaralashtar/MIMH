@@ -1,4 +1,4 @@
-package com.MadeInMyHome.activity.user.UserProfile;
+package com.MadeInMyHome.activity.user.userProfile;
 
 import android.content.Context;
 import android.widget.EditText;
@@ -7,7 +7,6 @@ import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.MadeInMyHome.Response.ResultImageResponse;
 import com.MadeInMyHome.Response.ResultResponse;
 import com.MadeInMyHome.Response.ResultUserResponse;
 import com.MadeInMyHome.Response.UserArrayListResponse;

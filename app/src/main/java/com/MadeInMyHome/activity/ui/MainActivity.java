@@ -7,10 +7,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -21,10 +23,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.MadeInMyHome.R;
-import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.activity.welcom.WelcomeActivity;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.databinding.ActivityMainBinding;
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.model.User;
 import com.MadeInMyHome.utilities.constants;
 
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_categoryCourse,
                 R.id.navigation_myCourse,
                 R.id.nav_chat,
-                R.id.nav_profile,
+                R.id.navigation_userActivity,
                 R.id.navigation_logout
         )
                 .setOpenableLayout(binding.drawerLayout)
@@ -135,6 +137,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.appbar_menu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.profile)
+        {
+            Intent intent=new Intent(MainActivity.this, SearchAppActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

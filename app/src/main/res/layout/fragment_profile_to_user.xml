@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activity.user.showProfileToUser.FirstFragment">
+    tools:context=".activity.user.showProfileToUser.ShowDataUserFragment">
 
     <ScrollView
         android:layout_width="match_parent"

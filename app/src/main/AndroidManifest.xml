@@ -17,7 +17,17 @@
         android:theme="@style/MIMH"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.user.showProfileToUser.showProfileToUser"
+            android:name=".activity.user.userProfile.userActivity"
+            android:exported="false"
+            android:label="@string/title_activity_user"
+            android:theme="@style/Theme.MIMH.NoActionBar" />
+        <activity
+            android:name=".activity.search.SearchAppActivity"
+            android:exported="false"
+            android:label="@string/title_activity_search_app"
+            android:theme="@style/Theme.MIMH.NoActionBar" />
+        <activity
+            android:name=".activity.user.showProfileToUser.showProfileToUserActivity"
             android:exported="false"
             android:label="@string/title_activity_show_profile_to_user" />
         <activity

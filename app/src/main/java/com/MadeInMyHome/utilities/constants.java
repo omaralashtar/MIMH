@@ -5,6 +5,7 @@ public class constants {
     public static final String BASE_HOST_EMAIL = "https://api.mailgun.net/v3/sandbox70d6b319b8eb46e79fc7cb1b990a187c.mailgun.org/";
     public static final String BASE_HOST_EMAIL_MESSAGE = "messages";
     public static final String USER = "API/user/";
+    public static final String SEARCH = "API/search/";
     public static final String COURSE = "API/course/";
     public static final String ENROLL = "API/enroll/";
     public static final String VIDEO = "API/video/";

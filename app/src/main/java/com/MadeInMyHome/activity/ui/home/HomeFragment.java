@@ -17,7 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.introduction.IntroductionActivity;
 import com.MadeInMyHome.activity.productsByCategory.ProductByCategoryActivity;
-import com.MadeInMyHome.activity.user.showProfileToUser.showProfileToUser;
+import com.MadeInMyHome.activity.user.showProfileToUser.showProfileToUserActivity;
 import com.MadeInMyHome.activity.welcom.WelcomeActivity;
 import com.MadeInMyHome.databinding.FragmentHomeBinding;
 import com.google.android.material.snackbar.Snackbar;

@@ -1,7 +1,6 @@
-package com.MadeInMyHome.activity.user.UserProfile;
+package com.MadeInMyHome.activity.user.userProfile;
 
 import static com.MadeInMyHome.utilities.General.addToSharedPreference;
-import static com.MadeInMyHome.utilities.General.getSharedPreference;
 import static com.MadeInMyHome.utilities.General.getToken;
 
 import android.app.DatePickerDialog;
@@ -12,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

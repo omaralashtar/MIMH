@@ -156,4 +156,11 @@
     <string name="write_the_problem">write the problem in the video</string>
     <string name="report_video">report this video</string>
 
+    <string name="update_profile">update profile</string>
+    <string name="title_activity_search_app">SearchAppActivity</string>
+    
+    //search
+    <string name="code_search">Search Code User</string>
+    <string name="title_activity_user">user</string>
+
 </resources>

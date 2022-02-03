@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.show_course.CourseViewModel;
-import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterVideo;
 import com.MadeInMyHome.databinding.ActivityVideoBinding;
 import com.MadeInMyHome.model.Course;

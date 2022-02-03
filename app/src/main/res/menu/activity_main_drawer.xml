@@ -71,9 +71,8 @@
     <item android:title="@string/profile">
         <menu>
             <group>
-
                 <item
-                    android:id="@+id/nav_profile"
+                    android:id="@+id/navigation_userActivity"
                     android:icon="@drawable/ic_round_person_24"
                     android:title="@string/menu_showProfile" />
                 <item

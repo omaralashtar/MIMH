@@ -17,7 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.show_channel.ShowChannelActivity;
-import com.MadeInMyHome.activity.user.UserProfile.ShowUserProfileViewModel;
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.databinding.FragmentChatBinding;
 import com.MadeInMyHome.utilities.constants;
 
