@@ -23,6 +23,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.search.SearchAppActivity;
 import com.MadeInMyHome.activity.welcom.WelcomeActivity;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.databinding.ActivityMainBinding;

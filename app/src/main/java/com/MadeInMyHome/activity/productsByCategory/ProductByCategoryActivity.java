@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.MadeInMyHome.activity.ui.courses.CoursesViewModel;
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterCourse;
 import com.MadeInMyHome.adapter.RecycleAdapterProduct;
 import com.MadeInMyHome.databinding.ActivityProductsBycategoryBinding;
@@ -24,7 +25,9 @@ public class ProductByCategoryActivity extends AppCompatActivity {
     RecycleAdapterCourse recycleAdapterCourse;
     ProductByCategoryViewModel productByCategoryViewModel;
     CoursesViewModel coursesViewModel;
+    ShowUserProfileViewModel showUserProfileViewModel;
     private ActivityProductsBycategoryBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,7 @@ public class ProductByCategoryActivity extends AppCompatActivity {
 
         productByCategoryViewModel = new ViewModelProvider(this).get(ProductByCategoryViewModel.class);
         coursesViewModel = new ViewModelProvider(this).get(CoursesViewModel.class);
+        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
 
         binding.recycleProductByCategory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         if (getIntent().getExtras().getString("category").equals("product")) {
@@ -43,7 +47,7 @@ public class ProductByCategoryActivity extends AppCompatActivity {
                     .observe(this, new Observer<ArrayList<Product>>() {
                         @Override
                         public void onChanged(ArrayList<Product> products) {
-                            recycleAdapterProduct = new RecycleAdapterProduct(ProductByCategoryActivity.this, products, "product");
+                            recycleAdapterProduct = new RecycleAdapterProduct(ProductByCategoryActivity.this, products, "product",showUserProfileViewModel);
                             binding.recycleProductByCategory.setAdapter(recycleAdapterProduct);
                         }
                     });

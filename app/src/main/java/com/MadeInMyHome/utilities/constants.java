@@ -12,7 +12,7 @@ public class constants {
     public static final String PRODUCT = " API/product/";
     public static final String FAVORITE = "API/favorite/";
     public static final String RATE = "API/rate/";
-
+    public static final String GET_All_code = "userByCode.php";
     public static final String IMAGE_USER = "image/user/";
     public static final String IMAGE_COURSE = "image/course/";
     public static final String IMAGE_PRODUCT = "image/product/";
