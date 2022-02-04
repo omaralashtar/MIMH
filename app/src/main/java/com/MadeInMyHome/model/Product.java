@@ -40,8 +40,15 @@ public class Product implements Serializable {
     @SerializedName("product_date")
     private String product_date;
 
+    @SerializedName("deleted_at")
+    private String deleted_at;
+
     @SerializedName("category")
     private String category;
+
+    public String getDeleted_at() {
+        return deleted_at;
+    }
 
     @SerializedName("id_user")
     private String id_user ;

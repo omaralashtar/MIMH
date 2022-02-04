@@ -17,12 +17,20 @@
             android:layout_margin="@dimen/margin"
             android:orientation="vertical">
 
-            <ImageView
+            <TextView
+                android:id="@+id/nameUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name_user"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <com.github.siyamed.shapeimageview.RoundedImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/image"
+                android:layout_marginTop="@dimen/betweenTowText"
                 android:cropToPadding="false"
-                android:scaleType="center"
                 android:src="@drawable/defult_product" />
 
             <View
@@ -88,6 +96,14 @@
 
 
             </RelativeLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageStatus"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:baselineAlignBottom="true"
+                android:layout_gravity="bottom|end"
+                android:src="@android:drawable/presence_online"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -1,8 +1,10 @@
 package com.MadeInMyHome.activity.show_product;
 
 import static com.MadeInMyHome.utilities.General.getToken;
+import static com.MadeInMyHome.utilities.constants.CID_KEY;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -18,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.show_channel.ShowChannelActivity;
 import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterRate;
 import com.MadeInMyHome.component.GlideImage;
@@ -30,7 +33,14 @@ import com.MadeInMyHome.utilities.constants;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.nio.channels.ClosedByInterruptException;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import io.getstream.chat.android.client.ChatClient;
+import io.getstream.chat.android.client.channel.ChannelClient;
+import io.getstream.chat.android.client.logger.ChatLogLevel;
+import io.getstream.chat.android.livedata.ChatDomain;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -41,9 +51,10 @@ public class ProductActivity extends AppCompatActivity {
 
     ActivityProductBinding binding;
 
-    String id_product, rating_float;
+    String id_product,owner_id_user, rating_float;
     boolean isFav = false;
 
+    ChatClient client;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +63,10 @@ public class ProductActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        client=ChatClient.instance();
+        new ChatDomain.Builder(client, this).build();
+
 
         id_product = getIntent().getExtras().getString("id_product");
 
@@ -65,7 +80,8 @@ public class ProductActivity extends AppCompatActivity {
         productViewModel.getProduct(this, id_product).observe(this, new Observer<Product>() {
             @Override
             public void onChanged(Product product) {
-
+                binding.chat.setVisibility(View.VISIBLE);
+                owner_id_user=product.getId_user();
                 binding.name.setText(product.getName());
                 binding.price.setText(String.valueOf(product.getPrice()) + "jd");
                 binding.size.setText(String.valueOf(product.getSize()));
@@ -166,6 +182,22 @@ public class ProductActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         showDialogAddComment(user.getId());
+                    }
+                });
+
+                binding.chat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        client.createChannel("messaging", Arrays.asList(user.getId(), owner_id_user)).enqueue(result -> {
+                            if (result.isSuccess()) {
+                                Intent i = new Intent(ProductActivity.this, ShowChannelActivity.class);
+                                i.putExtra(CID_KEY, result.data().getCid());
+                                startActivity(i);
+                            } else {
+                                Toast.makeText(ProductActivity.this, result.error().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
             }

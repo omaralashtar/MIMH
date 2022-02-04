@@ -66,7 +66,7 @@ public class ShowDataUserFragment extends Fragment {
         myProductViewModel.getMyProducts(getActivity(), getActivity().getIntent().getExtras().getString("id")).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> myProducts) {
-                recycleAdapterProduct = new RecycleAdapterProduct(getActivity(), myProducts,"my");
+                recycleAdapterProduct = new RecycleAdapterProduct(getActivity(), myProducts,"product",showUserProfileViewModel);
                 binding.myProductsRecycle.setAdapter(recycleAdapterProduct);
             }
         });

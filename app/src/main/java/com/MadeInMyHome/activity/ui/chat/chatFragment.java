@@ -1,6 +1,7 @@
 package com.MadeInMyHome.activity.ui.chat;
 
 import static com.MadeInMyHome.utilities.General.getSharedPreference;
+import static com.MadeInMyHome.utilities.General.getToken;
 import static com.MadeInMyHome.utilities.constants.CID_KEY;
 import static java.util.Collections.singletonList;
 
@@ -36,7 +37,7 @@ import io.getstream.chat.android.ui.channel.list.viewmodel.factory.ChannelListVi
 public class chatFragment extends Fragment {
 
     ShowUserProfileViewModel showUserProfileViewModel;
-    String myToken;
+
     private FragmentChatBinding binding;
 
     @Override
@@ -47,13 +48,12 @@ public class chatFragment extends Fragment {
         binding = FragmentChatBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        myToken = getSharedPreference(getActivity(), "token");
-        ChatClient client = new ChatClient.Builder(getString(R.string.apikey), getActivity().getApplicationContext())
+        ChatClient client = new ChatClient.Builder(getString(R.string.apikey), getActivity())
                 .logLevel(ChatLogLevel.ALL) // Set to NOTHING in prod
                 .build();
         new ChatDomain.Builder(client, getActivity().getApplicationContext()).build();
 
-        showUserProfileViewModel.getUserProfile(getActivity(), myToken)
+        showUserProfileViewModel.getUserProfile(getActivity(), getToken(getActivity()))
                 .observe(getActivity(), new Observer<com.MadeInMyHome.model.User>() {
                     @Override
                     public void onChanged(com.MadeInMyHome.model.User myUser) {
@@ -70,8 +70,7 @@ public class chatFragment extends Fragment {
                                 user,
                                 token
                         ).enqueue(result ->{
-                            if (result.isSuccess()) {
-                                Toast.makeText(getActivity(), "hi", Toast.LENGTH_SHORT).show();                        } else {
+                            if (!result.isSuccess()) {
                             Toast.makeText(getActivity(), result.error().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                         } );

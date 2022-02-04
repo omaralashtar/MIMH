@@ -1,18 +1,18 @@
 package com.MadeInMyHome.utilities;
 
 public class constants {
-    public static final String BASE_HOST = "http://192.168.1.122/API2022/";
+    public static final String BASE_HOST = "https://madeinmyhome.000webhostapp.com/API/";
     public static final String BASE_HOST_EMAIL = "https://api.mailgun.net/v3/sandbox70d6b319b8eb46e79fc7cb1b990a187c.mailgun.org/";
     public static final String BASE_HOST_EMAIL_MESSAGE = "messages";
-    public static final String USER = "API/user/";
-    public static final String SEARCH = "API/search/";
-    public static final String COURSE = "API/course/";
-    public static final String ENROLL = "API/enroll/";
-    public static final String VIDEO = "API/video/";
-    public static final String PRODUCT = " API/product/";
-    public static final String FAVORITE = "API/favorite/";
-    public static final String RATE = "API/rate/";
-
+    public static final String USER = "user/";
+    public static final String SEARCH = "search/";
+    public static final String COURSE = "course/";
+    public static final String ENROLL = "enroll/";
+    public static final String VIDEO = "video/";
+    public static final String PRODUCT = " product/";
+    public static final String FAVORITE = "favorite/";
+    public static final String RATE = "rate/";
+    public static final String GET_All_code = "userByCode.php";
     public static final String IMAGE_USER = "image/user/";
     public static final String IMAGE_COURSE = "image/course/";
     public static final String IMAGE_PRODUCT = "image/product/";

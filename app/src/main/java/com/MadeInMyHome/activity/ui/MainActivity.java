@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -23,12 +24,17 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.MadeInMyHome.R;
+import com.MadeInMyHome.activity.search.SearchAppActivity;
 import com.MadeInMyHome.activity.welcom.WelcomeActivity;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.databinding.ActivityMainBinding;
 import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.model.User;
 import com.MadeInMyHome.utilities.constants;
+
+import io.getstream.chat.android.client.ChatClient;
+import io.getstream.chat.android.client.logger.ChatLogLevel;
+import io.getstream.chat.android.livedata.ChatDomain;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,11 +52,17 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
+
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
 
-        setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
+        ChatClient client = new ChatClient.Builder(getString(R.string.apikey), this)
+                .logLevel(ChatLogLevel.ALL) // Set to NOTHING in prod
+                .build();
+        new ChatDomain.Builder(client, this).build();
+
 //        binding.drawerLayout.addDrawerListener(
 //                new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close));
 
@@ -83,6 +95,23 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(User user) {
                 name.setText(user.getF_name()+" "+user.getL_name());
                 new GlideImage(MainActivity.this, constants.BASE_HOST + constants.IMAGE_USER + user.getImage(),image);
+
+                io.getstream.chat.android.client.models.User userChat = new io.getstream.chat.android.client.models.User();
+                userChat.setId(user.getId());
+                userChat.setRole("admin");
+                userChat.setName(user.getF_name() + " " + user.getL_name());
+                userChat.setImage(constants.BASE_HOST + constants.IMAGE_USER + user.getImage());
+
+                String token = client.devToken(user.getId());
+
+                client.connectUser(
+                        userChat,
+                        token
+                ).enqueue(result ->{
+                    if (!result.isSuccess()) {
+                        Toast.makeText(MainActivity.this, result.error().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } );
             }
         });
 

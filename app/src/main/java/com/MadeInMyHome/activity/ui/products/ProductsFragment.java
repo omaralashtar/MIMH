@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.adapter.RecycleAdapterProduct;
 import com.MadeInMyHome.databinding.FragmentProductsBinding;
 import com.MadeInMyHome.model.Product;
@@ -23,6 +24,7 @@ public class ProductsFragment extends Fragment {
 
     RecycleAdapterProduct recycleAdapterProduct;
     ProductsViewModel productsViewModel;
+    ShowUserProfileViewModel showUserProfileViewModel;
     private FragmentProductsBinding binding;
 
     int next=0;
@@ -31,6 +33,7 @@ public class ProductsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         productsViewModel= new ViewModelProvider(this).get(ProductsViewModel.class);
+        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
 
         binding = FragmentProductsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -59,7 +62,7 @@ public class ProductsFragment extends Fragment {
                 new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                recycleAdapterProduct =new RecycleAdapterProduct(getActivity(),products,"product");
+                recycleAdapterProduct =new RecycleAdapterProduct(getActivity(),products,"product",showUserProfileViewModel);
                 binding.productsRecycle.setAdapter(recycleAdapterProduct);
             }
         });

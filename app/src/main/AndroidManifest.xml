@@ -20,19 +20,21 @@
             android:name=".activity.user.userProfile.userActivity"
             android:exported="false"
             android:label="@string/title_activity_user"
-            android:theme="@style/Theme.MIMH.NoActionBar" />
+            android:theme="@style/MIMH.NoActionBar" />
         <activity
             android:name=".activity.search.SearchAppActivity"
             android:exported="false"
             android:label="@string/title_activity_search_app"
-            android:theme="@style/Theme.MIMH.NoActionBar" />
+            android:theme="@style/MIMH.NoActionBar" />
         <activity
             android:name=".activity.user.showProfileToUser.showProfileToUserActivity"
             android:exported="false"
-            android:label="@string/title_activity_show_profile_to_user" />
+            android:label="@string/title_activity_show_profile_to_user"
+            android:theme="@style/MIMH.NoActionBar"/>
         <activity
             android:name=".activity.show_channel.ShowChannelActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/MIMH.NoActionBar"/>
         <activity
             android:name=".activity.add_update_product.AddUpdateProductActivity"
             android:exported="false" />

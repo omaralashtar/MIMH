@@ -61,8 +61,6 @@ public class myProductFragment extends Fragment {
 
         binding.myProductsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
-        setAdapter();
-
         binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -73,6 +71,12 @@ public class myProductFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setAdapter();
+    }
+
     public void setAdapter() {
         showUserProfileViewModel.getUserProfile(getActivity(), getToken(getActivity())).observe(getActivity(), new Observer<User>() {
             @Override
@@ -80,7 +84,7 @@ public class myProductFragment extends Fragment {
                 myProductViewModel.getMyProducts(getActivity(), user.getId()).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
                     @Override
                     public void onChanged(ArrayList<Product> myProducts) {
-                        myProductsAdapter = new RecycleAdapterProduct(getActivity(), myProducts, "my");
+                        myProductsAdapter = new RecycleAdapterProduct(getActivity(), myProducts, "my",showUserProfileViewModel);
                         binding.myProductsRecycle.setAdapter(myProductsAdapter);
                     }
                 });

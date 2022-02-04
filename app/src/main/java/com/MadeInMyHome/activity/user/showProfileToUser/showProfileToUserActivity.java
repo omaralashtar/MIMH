@@ -25,7 +25,8 @@ public class showProfileToUserActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
-        getSupportActionBar().hide();
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_show_profile_to_user);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

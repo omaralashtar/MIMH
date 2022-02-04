@@ -55,7 +55,7 @@ public class FavoriteFragment extends Fragment {
                 favoriteViewModel.getProducts(getActivity(), user.getId(), next).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
                     @Override
                     public void onChanged(ArrayList<Product> products) {
-                        recycleAdapterProduct = new RecycleAdapterProduct(getActivity(), products, "product");
+                        recycleAdapterProduct = new RecycleAdapterProduct(getActivity(), products, "product",showUserProfileViewModel);
                         binding.favoriteRecycle.setAdapter(recycleAdapterProduct);
                     }
                 });

@@ -1,5 +1,7 @@
 package com.MadeInMyHome.adapter;
 
+import static android.view.View.GONE;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,13 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.add_update_product.AddUpdateProductActivity;
 import com.MadeInMyHome.activity.show_product.ProductActivity;
+import com.MadeInMyHome.activity.user.showProfileToUser.showProfileToUserActivity;
+import com.MadeInMyHome.activity.user.userProfile.ShowUserProfileViewModel;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.model.Product;
+import com.MadeInMyHome.model.User;
 import com.MadeInMyHome.utilities.constants;
 
 import java.text.ParseException;
@@ -28,11 +34,13 @@ import java.util.Date;
 public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterProduct.viewitem> {
 
     ArrayList<Product> items;
+    ShowUserProfileViewModel showUserProfileViewModel;
     Context context;
     String product;
 
-    public RecycleAdapterProduct(Context c, ArrayList<Product> item, String name) {
+    public RecycleAdapterProduct(Context c, ArrayList<Product> item, String name, ShowUserProfileViewModel s) {
         items = item;
+        showUserProfileViewModel =s;
         context = c;
         product = name;
     }
@@ -50,6 +58,19 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
         holder.name.setText(items.get(position).getName());
         holder.price.setText(String.valueOf(items.get(position).getPrice()) + "jd");
         holder.date.setText(items.get(position).getProduct_date());
+        if(!product.equals("product")) {
+            if (items.get(position).getDeleted_at() != null) {
+                if (items.get(position).getDeleted_at().equals("0")) {
+                    holder.imageStatus.setImageResource(android.R.drawable.presence_online);
+                } else {
+                    holder.imageStatus.setImageResource(android.R.drawable.ic_delete);
+                }
+            } else {
+                holder.imageStatus.setImageResource(R.drawable.ic_baseline_sync_24);
+            }
+        }else{
+            holder.imageStatus.setVisibility(GONE);
+        }
         try {
             if (items.get(position).getDiscount_date() != null) {
                 if (!items.get(position).getDiscount_date().equals("")) {
@@ -57,17 +78,33 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
                             .parse(items.get(position).getDiscount_date()).after(new Date())) {
                         holder.discount.setText(items.get(position).getDiscount());
                     }else{
-                        holder.discount.setVisibility(View.GONE);
+                        holder.discount.setVisibility(GONE);
                     }
                 }
             } else {
-                holder.discount.setVisibility(View.GONE);
+                holder.discount.setVisibility(GONE);
 
             }
         } catch (ParseException e) {
-            holder.discount.setVisibility(View.GONE);
+            holder.discount.setVisibility(GONE);
             Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
         }
+
+        showUserProfileViewModel.getUserProfile(context,items.get(position).getId_user())
+                .observeForever(new Observer<User>() {
+                    @Override
+                    public void onChanged(User user) {
+                        holder.nameUser.setText(user.getF_name()+""+ user.getL_name());
+                        holder.nameUser.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                            Intent i=new Intent(context, showProfileToUserActivity.class);
+                            i.putExtra("id", items.get(holder.getBindingAdapterPosition()).getId_user());
+                            context.startActivity(i);
+                            }
+                        });
+                    }
+                });
 
         new GlideImage(context, constants.BASE_HOST + constants.IMAGE_PRODUCT + items.get(position).getImage(), holder.image);
 
@@ -97,14 +134,16 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
     }
 
     class viewitem extends RecyclerView.ViewHolder {
-        TextView name, price, discount, date;
-        ImageView image;
+        TextView name,nameUser, price, discount, date;
+        ImageView image,imageStatus;
 
         public viewitem(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
+            nameUser = itemView.findViewById(R.id.nameUser);
             price = itemView.findViewById(R.id.price);
             image = itemView.findViewById(R.id.image);
+            imageStatus = itemView.findViewById(R.id.imageStatus);
             discount = itemView.findViewById(R.id.discount);
             date = itemView.findViewById(R.id.create_date);
         }
