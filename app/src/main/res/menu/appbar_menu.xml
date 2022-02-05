@@ -6,6 +6,7 @@
         android:id="@+id/profile"
         android:icon="@drawable/ic_round_person_24"
         android:title="@string/profile"
+        
         app:showAsAction="ifRoom"/>
 
     <item

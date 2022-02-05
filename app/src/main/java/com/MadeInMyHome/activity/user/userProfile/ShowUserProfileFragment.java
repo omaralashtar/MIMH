@@ -1,22 +1,31 @@
 package com.MadeInMyHome.activity.user.userProfile;
 
 import static com.MadeInMyHome.utilities.General.addToSharedPreference;
+import static com.MadeInMyHome.utilities.General.emailMessage;
 import static com.MadeInMyHome.utilities.General.getToken;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.MadeInMyHome.R;
 import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.component.GlideImage;
 import com.MadeInMyHome.component.convertToString;
@@ -29,6 +38,7 @@ import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.listeners.IPickResult;
 
 import java.util.Calendar;
+import java.util.Random;
 
 public class ShowUserProfileFragment extends Fragment implements View.OnClickListener, View.OnFocusChangeListener {
 
@@ -45,9 +55,21 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
 
         binding = FragmentShowProfileUserBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        binding.EmailUser.setEnabled(false);
+        binding.PhoneUser.setEnabled(false);
+        binding.genderUser.setEnabled(false);
+        binding.dateUser.setEnabled(false);
         binding.dateUser.setOnClickListener(this);
         binding.dateUser.setOnFocusChangeListener(this);
+
+
+        ArrayAdapter<String> jordanAdapter =
+                new ArrayAdapter<String>(getActivity(),
+                        R.layout.dropdown_menu_popup_item,
+                        getResources().
+                                getStringArray(R.array.locationList));
+
+        binding.LocationDropdown.setAdapter(jordanAdapter);
 
         binding.imgUserProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,22 +110,7 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
         binding.btnUpdateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.imgUserProfile.getDrawable()).getBitmap());
-                showUserProfileViewModel.updateUser(getActivity(),
-                        getToken(getActivity()),
-                        binding.FirstName.getEditText(),
-                        binding.LastName.getEditText(),
-                        binding.DescriptionUser.getEditText(),
-                        binding.dateUser.getEditText(),
-                        binding.LocationUser.getEditText())
-                        .observe(getViewLifecycleOwner(), new Observer<String>() {
-                            @Override
-                            public void onChanged(String s) {
-                                Intent i = new Intent(getActivity(), MainActivity.class);
-                                startActivity(i);
-                                getActivity().finish();
-                            }
-                        });
+            updateProfile();
             }
         });
 
@@ -140,4 +147,47 @@ public class ShowUserProfileFragment extends Fragment implements View.OnClickLis
         }, year, month, day);
         picker.show();
     }
+
+
+    private void updateProfile() {
+
+        String firstName = binding.FirstName.getEditText().getText().toString();
+        String lastName = binding.LastName.getEditText().getText().toString();
+
+        if (TextUtils.isEmpty(firstName)) {
+            Toast.makeText(getActivity(), "firstName empty", Toast.LENGTH_SHORT).show();
+            binding.FirstName.getEditText().setError("Please Enter firstName");
+            binding.FirstName.getEditText().requestFocus();
+            return;
+        } else if (TextUtils.isEmpty(lastName)) {
+            Toast.makeText(getActivity(), "lastName empty", Toast.LENGTH_SHORT).show();
+            binding.LastName.getEditText().setError("Please Enter lastName");
+            binding.LastName.getEditText().requestFocus();
+            return;
+        } else {
+
+            encodedImage = new convertToString().convertToString(((BitmapDrawable) binding.imgUserProfile.getDrawable()).getBitmap());
+            showUserProfileViewModel.updateUser(getActivity(),
+                    getToken(getActivity()),
+                    binding.FirstName.getEditText(),
+                    binding.LastName.getEditText(),
+                    binding.DescriptionUser.getEditText(),
+                    binding.dateUser.getEditText(),
+                    binding.LocationUser.getEditText())
+                    .observe(getViewLifecycleOwner(), new Observer<String>() {
+                        @Override
+                        public void onChanged(String s) {
+                            Intent i = new Intent(getActivity(), MainActivity.class);
+                            startActivity(i);
+                            getActivity().finish();
+                        }
+                    });
+        }
+    }
+
+
+
+
+
+
 }

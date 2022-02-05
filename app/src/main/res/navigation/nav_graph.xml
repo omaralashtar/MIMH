@@ -19,6 +19,7 @@
         android:id="@+id/SecondFragment"
         android:name="com.MadeInMyHome.activity.user.showProfileToUser.AllProductByUserFragment"
         android:label="@string/second_fragment_label"
+
         tools:layout="@layout/fragment_all_product_by_user">
 
         <action
