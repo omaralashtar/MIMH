@@ -44,7 +44,7 @@ public class RecycleAdapterCategory extends RecyclerView.Adapter<RecycleAdapterC
     public void onBindViewHolder(viewitem holder,  int position) {
         holder.name.setText(items.get(position).getName());
 
-        new GlideImage(context, constants.BASE_HOST +constants.IMAGE_PRODUCT+ items.get(position).getImage(), holder.image);
+        new GlideImage(context, constants.BASE_HOST +constants.IMAGE_CATEGORY+ items.get(position).getImage(), holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

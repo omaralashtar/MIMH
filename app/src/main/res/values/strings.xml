@@ -162,5 +162,9 @@
     //search
     <string name="code_search">Search Code User</string>
     <string name="title_activity_user">user</string>
+    <string name="validation_code">enter validation code</string>
+    <string name="sent_email">We sent an email for</string>
+    <string name="put_email">put email to send key for reset password</string>
+    <string name="new_password">enter new password</string>
 
 </resources>

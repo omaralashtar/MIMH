@@ -94,7 +94,7 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
                 .observeForever(new Observer<User>() {
                     @Override
                     public void onChanged(User user) {
-                        holder.nameUser.setText(user.getF_name()+""+ user.getL_name());
+                        holder.nameUser.setText(user.getF_name()+" "+ user.getL_name());
                         holder.nameUser.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

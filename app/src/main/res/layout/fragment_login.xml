@@ -9,7 +9,7 @@
     <View
         android:id="@+id/header_view"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/_200sdp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -99,7 +99,7 @@
                     android:layout_marginStart="@dimen/margin"
                     android:layout_marginEnd="@dimen/margin"
                     android:gravity="center"
-                    android:text="Log In"
+                    android:text="@string/login"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     app:backgroundTint="@color/colorPrimaryEditor"
                     app:cornerRadius="@dimen/boxCornerRadius"/>
@@ -111,9 +111,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/betweenTowText"
                 android:text="Create a new Acount!"
-                android:textColor="@color/color_red"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/newPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Forget password"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -122,7 +130,7 @@
 
     <View
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/_200sdp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
