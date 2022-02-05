@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorPressedHighlight"
     tools:context=".activity.user.login.LoginFragment">
 
     <View
         android:id="@+id/header_view"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_200sdp"
+        android:layout_height="@dimen/_100sdp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/header_bg" />
+        android:background="@drawable/header_bg"
+        android:translationZ="-1dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -30,15 +32,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/header_view"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_centerVertical="true"
         app:cardBackgroundColor="#00FFFFFF"
         app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/header_view"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -87,7 +87,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -95,14 +95,14 @@
                     android:id="@+id/login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin"
                     android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
                     android:layout_marginEnd="@dimen/margin"
                     android:gravity="center"
                     android:text="@string/login"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     app:backgroundTint="@color/colorPrimaryEditor"
-                    app:cornerRadius="@dimen/boxCornerRadius"/>
+                    app:cornerRadius="@dimen/boxCornerRadius" />
             </LinearLayout>
 
 
@@ -113,6 +113,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/betweenTowText"
                 android:text="Create a new Acount!"
+                android:textColor="@color/color_red"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -122,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Forget password"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -129,11 +131,13 @@
     </androidx.cardview.widget.CardView>
 
     <View
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_200sdp"
+        android:id="@+id/header_view_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bottom_bg" />
+        android:background="@drawable/bottom_bg"
+        android:translationZ="-1dp" />
 
 </RelativeLayout>

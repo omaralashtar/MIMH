@@ -77,8 +77,7 @@ public interface AppApi {
 
     @FormUrlEncoded
     @POST(constants.USER + constants.UPDATE_PASSWORD)
-    Call<ResultResponse> updateUserPassword(@Field("token") String token,
-                                            @Field("password") String password,
+    Call<ResultResponse> updateUserPassword(@Field("email") String email,
                                             @Field("newpassword") String newpassword);
 
     //PRODUCT

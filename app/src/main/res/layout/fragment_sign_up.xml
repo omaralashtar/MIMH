@@ -5,14 +5,9 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="@dimen/margin"
-    android:layout_marginTop="@dimen/margin"
-    android:layout_marginEnd="@dimen/margin"
+    android:background="?android:attr/colorPressedHighlight"
     android:orientation="horizontal"
     tools:context=".activity.user.register.SignUpFragment">
-
-
-
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,11 +26,11 @@
             android:id="@+id/image"
             android:layout_width="@dimen/image"
             android:layout_height="@dimen/_122sdp"
+            android:src="@drawable/profile"
             app:layout_constraintBottom_toTopOf="@+id/f_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/profile" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/f_name"
@@ -142,8 +137,8 @@
                 android:id="@+id/datetext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/date"
-                android:editable="false"/>
+                android:editable="false"
+                android:hint="@string/date" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -241,13 +236,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/login_in_signup"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-
-
-
-
-
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/color_red" />
 
 
         </LinearLayout>

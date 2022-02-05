@@ -2,6 +2,7 @@ package com.MadeInMyHome.activity.user.login;
 
 import static com.MadeInMyHome.utilities.General.addToSharedPreference;
 import static com.MadeInMyHome.utilities.General.emailMessage;
+import static com.MadeInMyHome.utilities.General.emailMessageForgetPassword;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -35,10 +36,11 @@ public class LoginFragment extends Fragment {
     LoginViewModel loginViewModel;
     SignUpViewModel signUpViewModel;
     SendMessageViewModel sendMessageViewModel;
-    EditText code;
+    EditText code,emailF,newPassword;
     private FragmentLoginBinding binding;
     private ProgressDialog progressDialog;
-    private int codeNum;
+    private int codeNum,step=0;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,9 +69,91 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        binding.newPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                forgetPassword();
+            }
+        });
+
         return root;
     }
 
+    public void forgetPassword(){
+
+        View promptUserView = getLayoutInflater().inflate(R.layout.dialog_reset_password, null);
+        emailF = (EditText) promptUserView.findViewById(R.id.email);
+        code = (EditText) promptUserView.findViewById(R.id.code);
+        newPassword = (EditText) promptUserView.findViewById(R.id.newPassword);
+
+        code.setFocusable(false);
+        newPassword.setFocusable(false);
+
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+                .setCancelable(false)
+                .setView(promptUserView)
+                .setTitle("Forget password")
+                .setPositiveButton("next", null)
+                .setNegativeButton("cancel", null)
+                .create();
+
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                alertDialog.getButton(alertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(step==0) {
+                            if (TextUtils.isEmpty(emailF.getText())) {
+                                emailF.setError("Please Enter Email");
+                                emailF.requestFocus();
+                                return;
+                            } else if (!emailF.getText().toString().matches(emailPattern)) {
+                                binding.email.getEditText().setError("format in the email not correct");
+                                binding.email.getEditText().requestFocus();
+                                return;
+                            } else {
+                                codeNum = new Random().nextInt(899999) + 100000;
+
+                                sendMessageViewModel.sendMessage(getActivity(), emailF.getText().toString(), emailMessageForgetPassword(emailF.getText().toString(), String.valueOf(codeNum)))
+                                        .observe(getActivity(), new Observer<String>() {
+                                            @Override
+                                            public void onChanged(String s) {
+
+                                            }
+                                        });
+                                emailF.setFocusable(false);
+                                step++;
+                                code.setFocusable(true);
+                                code.setFocusableInTouchMode(true);}
+                        }else if(step==1){
+                            if (code.getText().toString().equals(codeNum + "")) {
+                                code.setError(null);
+                                code.setFocusable(false);
+                                step++;
+                                newPassword.setFocusable(true);
+                                newPassword.setFocusableInTouchMode(true);
+                            } else {
+                                code.setError("not correct");
+                            }
+                        }else if(step==2){
+                        loginViewModel.resetPassword(getActivity(),emailF.getText().toString(),newPassword.getText().toString())
+                                .observe(getActivity(), new Observer<String>() {
+                                    @Override
+                                    public void onChanged(String s) {
+                                        Toast.makeText(getActivity(), "password changed", Toast.LENGTH_SHORT).show();
+                                        alertDialog.dismiss();
+                                    }
+                                });
+                        }
+                    }
+                });
+            }
+        });
+
+        alertDialog.show();
+
+    }
 
     private void logIn() {
 
@@ -77,30 +161,23 @@ public class LoginFragment extends Fragment {
         String email = binding.email.getEditText().getText().toString().trim();
         String password = binding.password.getEditText().getText().toString();
 
-
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getActivity(), "email empty", Toast.LENGTH_SHORT).show();
             binding.email.getEditText().setError("Please Enter Email");
             binding.email.getEditText().requestFocus();
             return;
         }
        /* else if (!email.matches(emailPattern)) {
-            Toast.makeText(getActivity(), "valid email address", Toast.LENGTH_SHORT).show();
             binding.email.getEditText().setError("format in the email not correct");
             binding.email.getEditText().requestFocus();
             return;
 
         }
         else if (password.length() < 8) {
-           Toast.makeText(getActivity(), "the password must be lingth 8 or more  ", Toast.LENGTH_SHORT).show();
          binding.password.getEditText().setError("Please Enter 8 character or more");
          binding.password.getEditText().requestFocus();
         }*/
 
         else if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getActivity(), "password empty", Toast.LENGTH_SHORT).show();
             binding.password.getEditText().setError("Please Enter Password");
             binding.password.getEditText().requestFocus();
             return;

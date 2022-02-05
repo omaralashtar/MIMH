@@ -32,7 +32,7 @@ public class SendMessageViewModel extends ViewModel {
                 if (data != null) {
                     try {
                         JSONObject obj = new JSONObject(data.toString());
-                        if (obj.get("messages")!=null) {
+                        if (obj.getString("messages").equals("Queued. Thank you.")) {
                             userMutableLiveData.setValue(obj.getJSONArray("message").get(0)+"");
 
                         } else {
