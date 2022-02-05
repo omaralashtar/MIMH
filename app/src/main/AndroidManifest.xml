@@ -41,11 +41,13 @@
         <activity
             android:name=".activity.show_course.CourseActivity"
             android:exported="false"
-            android:label="@string/title_courses"/>
+            android:label="@string/title_courses"
+            android:theme="@style/MIMH.NoActionBar"/>
         <activity
             android:name=".activity.show_product.ProductActivity"
             android:exported="false"
-            android:label="@string/title_products"/>
+            android:label="@string/title_products"
+            android:theme="@style/MIMH.NoActionBar"/>
         <activity
             android:name=".activity.video.VideoActivity"
             android:exported="false"

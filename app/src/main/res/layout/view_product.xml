@@ -3,6 +3,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -103,7 +104,7 @@
                 android:layout_height="@dimen/_32sdp"
                 android:baselineAlignBottom="true"
                 android:layout_gravity="bottom|end"
-                android:src="@android:drawable/presence_online"/>
+                android:src="@drawable/ic_baseline_brightness_1_24"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

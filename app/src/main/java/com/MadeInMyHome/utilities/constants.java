@@ -52,5 +52,5 @@ public class constants {
 
     public final static String CID_KEY = "key:cid";
 
-
+    public static boolean ISVISITOR = false;
 }

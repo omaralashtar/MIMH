@@ -1,15 +1,13 @@
 package com.MadeInMyHome.activity.welcom;
 
+import static com.MadeInMyHome.utilities.constants.ISVISITOR;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.MadeInMyHome.ViewModel.SendMessageViewModel;
 import com.MadeInMyHome.activity.ui.MainActivity;
 import com.MadeInMyHome.activity.user.LoginSignUpActivity;
 import com.MadeInMyHome.databinding.ActivityWelcomBinding;
@@ -25,11 +23,13 @@ public class WelcomeActivity extends AppCompatActivity {
         binding=ActivityWelcomBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        ISVISITOR=false;
 
         binding.visitWelcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(WelcomeActivity.this, MainActivity.class);
+                ISVISITOR=true;
                 startActivity(i);
             }
         });

@@ -6,20 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".activity.show_product.ProductActivity">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <com.github.siyamed.shapeimageview.CircularImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:src="?attr/homeAsUpIndicator"
+            android:background="@color/white"
+            android:translationZ="@dimen/betweenTowText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <ImageView
             android:id="@+id/image"
             android:layout_width="0dp"
-            android:layout_height="@dimen/image"
+            android:layout_height="@dimen/imageHead"
             android:cropToPadding="false"
             android:scaleType="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/defult_product" />
+            app:srcCompat="@drawable/side_nav_bar" >
+
+        </ImageView>
 
         <com.github.siyamed.shapeimageview.CircularImageView
             android:id="@+id/favorite"
@@ -262,7 +276,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/comments"
             app:layout_constraintTop_toTopOf="@+id/comments"
-            app:srcCompat="@drawable/ic_baseline_send_24" />
+            app:srcCompat="@drawable/ic_baseline_add_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -61,9 +61,9 @@ public class RecycleAdapterProduct extends RecyclerView.Adapter<RecycleAdapterPr
         if(!product.equals("product")) {
             if (items.get(position).getDeleted_at() != null) {
                 if (items.get(position).getDeleted_at().equals("0")) {
-                    holder.imageStatus.setImageResource(android.R.drawable.presence_online);
+                    holder.imageStatus.setImageResource(R.drawable.ic_baseline_brightness_2_24);
                 } else {
-                    holder.imageStatus.setImageResource(android.R.drawable.ic_delete);
+                    holder.imageStatus.setImageResource(R.drawable.ic_baseline_brightness_1_24);
                 }
             } else {
                 holder.imageStatus.setImageResource(R.drawable.ic_baseline_sync_24);

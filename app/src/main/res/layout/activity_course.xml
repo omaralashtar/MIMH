@@ -6,10 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".activity.show_course.CourseActivity">
 
+
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:id="@+id/back"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:src="?attr/homeAsUpIndicator"
+        android:background="@color/white"
+        android:translationZ="@dimen/betweenTowText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="0dp"
-        android:layout_height="@dimen/image"
+        android:layout_height="@dimen/imageHead"
         android:cropToPadding="true"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"

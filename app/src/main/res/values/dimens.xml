@@ -3,6 +3,7 @@
     <dimen name="margin">@dimen/_8sdp</dimen>
     <dimen name="boxCornerRadius">@dimen/_15sdp</dimen>
     <dimen name="image">@dimen/_100sdp</dimen>
+    <dimen name="imageHead">@dimen/_150sdp</dimen>
     <dimen name="video">@dimen/_200sdp</dimen>
 
     <dimen name="betweenTowText">@dimen/_2sdp</dimen>

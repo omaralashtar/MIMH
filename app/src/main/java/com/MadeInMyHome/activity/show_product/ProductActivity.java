@@ -2,8 +2,8 @@ package com.MadeInMyHome.activity.show_product;
 
 import static com.MadeInMyHome.utilities.General.getToken;
 import static com.MadeInMyHome.utilities.constants.CID_KEY;
+import static com.MadeInMyHome.utilities.constants.ISVISITOR;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +13,6 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -33,28 +32,26 @@ import com.MadeInMyHome.utilities.constants;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.nio.channels.ClosedByInterruptException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import io.getstream.chat.android.client.ChatClient;
-import io.getstream.chat.android.client.channel.ChannelClient;
-import io.getstream.chat.android.client.logger.ChatLogLevel;
 import io.getstream.chat.android.livedata.ChatDomain;
 
 public class ProductActivity extends AppCompatActivity {
 
-    RecycleAdapterRate recycleAdapterRate,recycleAdapterMyRate;
+    RecycleAdapterRate recycleAdapterRate, recycleAdapterMyRate;
 
     ProductViewModel productViewModel;
     ShowUserProfileViewModel showUserProfileViewModel;
 
     ActivityProductBinding binding;
 
-    String id_product,owner_id_user, rating_float;
+    String id_product, owner_id_user, rating_float;
     boolean isFav = false;
 
     ChatClient client;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,32 +59,43 @@ public class ProductActivity extends AppCompatActivity {
         binding = ActivityProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (!ISVISITOR) {
+            client = ChatClient.instance();
+            new ChatDomain.Builder(client, this).build();
 
-        client=ChatClient.instance();
-        new ChatDomain.Builder(client, this).build();
-
+            showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
+        }else{
+            binding.favorite.setVisibility(View.GONE);
+            binding.add.setVisibility(View.GONE);
+        }
 
         id_product = getIntent().getExtras().getString("id_product");
 
         binding.commentsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         binding.mycommentsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
         productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
+
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         //get product
         productViewModel.getProduct(this, id_product).observe(this, new Observer<Product>() {
             @Override
             public void onChanged(Product product) {
+                if(!ISVISITOR)
                 binding.chat.setVisibility(View.VISIBLE);
-                owner_id_user=product.getId_user();
+                owner_id_user = product.getId_user();
                 binding.name.setText(product.getName());
                 binding.price.setText(String.valueOf(product.getPrice()) + "jd");
                 binding.size.setText(String.valueOf(product.getSize()));
                 binding.unit.setText(product.getUnit());
                 binding.category.setText(product.getCategory());
-                if (product.getDescription()!=null) {
+                if (product.getDescription() != null) {
                     binding.description.setText(product.getDescription());
                 } else {
                     binding.desc.setVisibility(View.GONE);
@@ -111,97 +119,100 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
-        showUserProfileViewModel.getUserProfile(this, getToken(this)).observe(this, new Observer<User>() {
-            @Override
-            public void onChanged(User user) {
-
-                productViewModel.getFavorite(ProductActivity.this, user.getId(), id_product)
-                        .observe(ProductActivity.this, new Observer<String>() {
-                            @Override
-                            public void onChanged(String s) {
-                                isFav = true;
-                                binding.favorite.setImageResource(R.drawable.ic_baseline_favorite_24);
-                            }
-                        });
-                binding.favorite.setOnClickListener(new View.OnClickListener() {
+        //Get Rate
+        productViewModel.getRate(ProductActivity.this, id_product)
+                .observe(ProductActivity.this, new Observer<String>() {
                     @Override
-                    public void onClick(View view) {
-                        if (isFav) {
-                            productViewModel.deleteFavorite(ProductActivity.this, user.getId(), id_product)
-                                    .observe(ProductActivity.this, new Observer<String>() {
-                                        @Override
-                                        public void onChanged(String s) {
-                                            isFav = false;
-                                            binding.favorite.setImageResource(R.drawable.ic_baseline_favorite_border_24);
-                                        }
-                                    });
-                        } else {
-                            productViewModel.addFavorite(ProductActivity.this, user.getId(), id_product)
-                                    .observe(ProductActivity.this, new Observer<String>() {
-                                        @Override
-                                        public void onChanged(String s) {
-                                            isFav = true;
-                                            binding.favorite.setImageResource(R.drawable.ic_baseline_favorite_24);
-                                        }
-                                    });
-                        }
+                    public void onChanged(String s) {
+                        binding.productRate.setRating(s != null ? Float.parseFloat(s) : 5);
                     }
                 });
 
-                //Get MyRate
-                productViewModel.getMyRate(ProductActivity.this,user.getId(), id_product)
-                        .observe(ProductActivity.this, new Observer<ArrayList<Rate>>() {
-                            @Override
-                            public void onChanged(ArrayList<Rate> rate) {
-                                recycleAdapterMyRate = new RecycleAdapterRate(ProductActivity.this, rate,productViewModel,id_product);
-                                binding.mycommentsRecyclerView.setAdapter(recycleAdapterMyRate);
-                                binding.add.setVisibility(View.GONE);
-                            }
-                        });
-
-                //Get Rate
-                productViewModel.getRate(ProductActivity.this, id_product)
-                        .observe(ProductActivity.this, new Observer<String>() {
-                            @Override
-                            public void onChanged(String s) {
-                                binding.productRate.setRating(s!=null?Float.parseFloat(s):5);
-                            }
-                        });
-
-                productViewModel.getAllRate(ProductActivity.this, id_product, "0")
-                        .observe(ProductActivity.this, new Observer<ArrayList<Rate>>() {
-                            @Override
-                            public void onChanged(ArrayList<Rate> rate) {
-                                recycleAdapterRate = new RecycleAdapterRate(ProductActivity.this, rate,null,null);
-                                binding.commentsRecyclerView.setAdapter(recycleAdapterRate);
-                            }
-                        });
-
-                //Add product
-                binding.add.setOnClickListener(new View.OnClickListener() {
+        productViewModel.getAllRate(ProductActivity.this, id_product, "0")
+                .observe(ProductActivity.this, new Observer<ArrayList<Rate>>() {
                     @Override
-                    public void onClick(View v) {
-                        showDialogAddComment(user.getId());
+                    public void onChanged(ArrayList<Rate> rate) {
+                        recycleAdapterRate = new RecycleAdapterRate(ProductActivity.this, rate, null, null);
+                        binding.commentsRecyclerView.setAdapter(recycleAdapterRate);
                     }
                 });
 
-                binding.chat.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+        if (!ISVISITOR) {
+            showUserProfileViewModel.getUserProfile(this, getToken(this)).observe(this, new Observer<User>() {
+                @Override
+                public void onChanged(User user) {
 
-                        client.createChannel("messaging", Arrays.asList(user.getId(), owner_id_user)).enqueue(result -> {
-                            if (result.isSuccess()) {
-                                Intent i = new Intent(ProductActivity.this, ShowChannelActivity.class);
-                                i.putExtra(CID_KEY, result.data().getCid());
-                                startActivity(i);
+                    productViewModel.getFavorite(ProductActivity.this, user.getId(), id_product)
+                            .observe(ProductActivity.this, new Observer<String>() {
+                                @Override
+                                public void onChanged(String s) {
+                                    isFav = true;
+                                    binding.favorite.setImageResource(R.drawable.ic_baseline_favorite_24);
+                                }
+                            });
+                    binding.favorite.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (isFav) {
+                                productViewModel.deleteFavorite(ProductActivity.this, user.getId(), id_product)
+                                        .observe(ProductActivity.this, new Observer<String>() {
+                                            @Override
+                                            public void onChanged(String s) {
+                                                isFav = false;
+                                                binding.favorite.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                                            }
+                                        });
                             } else {
-                                Toast.makeText(ProductActivity.this, result.error().getMessage(), Toast.LENGTH_SHORT).show();
+                                productViewModel.addFavorite(ProductActivity.this, user.getId(), id_product)
+                                        .observe(ProductActivity.this, new Observer<String>() {
+                                            @Override
+                                            public void onChanged(String s) {
+                                                isFav = true;
+                                                binding.favorite.setImageResource(R.drawable.ic_baseline_favorite_24);
+                                            }
+                                        });
                             }
-                        });
-                    }
-                });
-            }
-        });
+                        }
+                    });
+
+                    //Get MyRate
+                    productViewModel.getMyRate(ProductActivity.this, user.getId(), id_product)
+                            .observe(ProductActivity.this, new Observer<ArrayList<Rate>>() {
+                                @Override
+                                public void onChanged(ArrayList<Rate> rate) {
+                                    recycleAdapterMyRate = new RecycleAdapterRate(ProductActivity.this, rate, productViewModel, id_product);
+                                    binding.mycommentsRecyclerView.setAdapter(recycleAdapterMyRate);
+                                    binding.add.setVisibility(View.GONE);
+                                }
+                            });
+
+
+                    //Add product
+                    binding.add.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            showDialogAddComment(user.getId());
+                        }
+                    });
+
+                    binding.chat.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            client.createChannel("messaging", Arrays.asList(user.getId(), owner_id_user)).enqueue(result -> {
+                                if (result.isSuccess()) {
+                                    Intent i = new Intent(ProductActivity.this, ShowChannelActivity.class);
+                                    i.putExtra(CID_KEY, result.data().getCid());
+                                    startActivity(i);
+                                } else {
+                                    Toast.makeText(ProductActivity.this, result.error().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
     }
 
 
@@ -227,7 +238,7 @@ public class ProductActivity extends AppCompatActivity {
                         .observe(ProductActivity.this, new Observer<String>() {
                             @Override
                             public void onChanged(String s) {
-                                rate(id_user,id_product);
+                                rate(id_user, id_product);
                             }
                         });
                 bt.dismiss();
@@ -237,14 +248,14 @@ public class ProductActivity extends AppCompatActivity {
         bt.show();
     }
 
-    public void rate(String id_user,String id_product){
+    public void rate(String id_user, String id_product) {
 
         //Get MyRate
-        productViewModel.getMyRate(ProductActivity.this,id_user, id_product)
+        productViewModel.getMyRate(ProductActivity.this, id_user, id_product)
                 .observe(ProductActivity.this, new Observer<ArrayList<Rate>>() {
                     @Override
                     public void onChanged(ArrayList<Rate> rate) {
-                        recycleAdapterMyRate = new RecycleAdapterRate(ProductActivity.this, rate,productViewModel,id_product);
+                        recycleAdapterMyRate = new RecycleAdapterRate(ProductActivity.this, rate, productViewModel, id_product);
                         binding.mycommentsRecyclerView.setAdapter(recycleAdapterMyRate);
                         binding.add.setVisibility(View.GONE);
                     }
@@ -255,17 +266,12 @@ public class ProductActivity extends AppCompatActivity {
                 .observe(ProductActivity.this, new Observer<String>() {
                     @Override
                     public void onChanged(String s) {
-                        binding.productRate.setRating(s!=null?Float.parseFloat(s):5);
+                        binding.productRate.setRating(s != null ? Float.parseFloat(s) : 5);
                     }
                 });
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        onBackPressed();
-        return super.onOptionsItemSelected(item);
-    }
 }
 
 

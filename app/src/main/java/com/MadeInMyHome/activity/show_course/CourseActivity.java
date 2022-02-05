@@ -1,6 +1,7 @@
 package com.MadeInMyHome.activity.show_course;
 
 import static com.MadeInMyHome.utilities.General.getToken;
+import static com.MadeInMyHome.utilities.constants.ISVISITOR;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -33,46 +34,54 @@ public class CourseActivity extends AppCompatActivity {
         binding = ActivityCourseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         courseViewModel = new ViewModelProvider(this).get(CourseViewModel.class);
-        showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
 
         id_course = getIntent().getExtras().getString("id");
 
-        showUserProfileViewModel.getUserProfile(CourseActivity.this, getToken(CourseActivity.this))
-                .observe(CourseActivity.this, new Observer<User>() {
-                    @Override
-                    public void onChanged(User user) {
-                        courseViewModel.getEnroll(CourseActivity.this, user.getId(), id_course)
-                                .observe(CourseActivity.this, new Observer<String>() {
-                                    @Override
-                                    public void onChanged(String s) {
-                                        enrolled();
-                                    }
-                                });
-                    }
-                });
-
-        binding.enroll.setOnClickListener(new View.OnClickListener() {
+        binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showUserProfileViewModel.getUserProfile(CourseActivity.this, getToken(CourseActivity.this))
-                        .observe(CourseActivity.this, new Observer<User>() {
-                            @Override
-                            public void onChanged(User user) {
-                                courseViewModel.addEnroll(CourseActivity.this, user.getId(), id_course)
-                                        .observe(CourseActivity.this, new Observer<String>() {
-                                            @Override
-                                            public void onChanged(String s) {
-                                                enrolled();
-                                            }
-                                        });
-                            }
-                        });
+                onBackPressed();
             }
         });
 
+        if (!ISVISITOR) {
+            showUserProfileViewModel = new ViewModelProvider(this).get(ShowUserProfileViewModel.class);
+            showUserProfileViewModel.getUserProfile(CourseActivity.this, getToken(CourseActivity.this))
+                    .observe(CourseActivity.this, new Observer<User>() {
+                        @Override
+                        public void onChanged(User user) {
+                            courseViewModel.getEnroll(CourseActivity.this, user.getId(), id_course)
+                                    .observe(CourseActivity.this, new Observer<String>() {
+                                        @Override
+                                        public void onChanged(String s) {
+                                            enrolled();
+                                        }
+                                    });
+                        }
+                    });
+
+            binding.enroll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showUserProfileViewModel.getUserProfile(CourseActivity.this, getToken(CourseActivity.this))
+                            .observe(CourseActivity.this, new Observer<User>() {
+                                @Override
+                                public void onChanged(User user) {
+                                    courseViewModel.addEnroll(CourseActivity.this, user.getId(), id_course)
+                                            .observe(CourseActivity.this, new Observer<String>() {
+                                                @Override
+                                                public void onChanged(String s) {
+                                                    enrolled();
+                                                }
+                                            });
+                                }
+                            });
+                }
+            });
+        } else {
+            binding.enroll.setVisibility(View.GONE);
+        }
         courseViewModel.getCourse(this, getIntent().getExtras().getString("id")).observe(this, new Observer<Course>() {
             @Override
             public void onChanged(Course course) {
@@ -91,9 +100,4 @@ public class CourseActivity extends AppCompatActivity {
         binding.enroll.setClickable(false);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        onBackPressed();
-        return super.onOptionsItemSelected(item);
-    }
 }

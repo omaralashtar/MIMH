@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/title_home" />
+
+    </group>
+
+    <item android:title="@string/title_products">
+        <menu>
+            <group>
+
+                <item
+                    android:id="@+id/navigation_products"
+                    android:icon="@drawable/ic_baseline_shopping_basket_24"
+                    android:title="@string/title_products" />
+
+                <item
+                    android:id="@+id/navigation_categoryProducts"
+                    android:icon="@drawable/ic_baseline_category_24"
+                    android:title="@string/title_categoryProducts" />
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/title_courses">
+        <menu>
+            <group>
+
+                <item
+                    android:id="@+id/navigation_courses"
+                    android:icon="@drawable/ic_baseline_ondemand_video_24"
+                    android:title="@string/title_courses" />
+
+                <item
+                    android:id="@+id/navigation_categoryCourse"
+                    android:icon="@drawable/ic_baseline_category_24"
+                    android:title="@string/title_categoryCourse" />
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/profile">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/navigation_login"
+                    android:icon="@drawable/ic_round_person_24"
+                    android:title="@string/login" />
+
+            </group>
+        </menu>
+    </item>
+</menu>

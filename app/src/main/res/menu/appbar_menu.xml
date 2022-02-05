@@ -6,14 +6,6 @@
         android:id="@+id/profile"
         android:icon="@drawable/ic_round_person_24"
         android:title="@string/profile"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/menuSearch"
-        android:icon="@drawable/ic_round_search_24"
-        android:orderInCategory="100"
-        android:title="Search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="always" />
+        app:showAsAction="always"/>
 
 </menu>
