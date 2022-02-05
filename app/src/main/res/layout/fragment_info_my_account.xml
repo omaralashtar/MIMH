@@ -96,8 +96,36 @@
                         android:text="@string/description"
                         android:textColor="#88888f"
                         android:textSize="13.4sp" />
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_menu_share" />
+
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:lineSpacingExtra="2.6sp"
+                        android:text="@string/location"
+                        android:textColor="#88888f"
+                        android:textSize="13.4sp" />
+
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:lineSpacingExtra="2.6sp"
+                    android:text="@string/code"
+                    android:textColor="#88888f"
+                    android:textSize="13.4sp" />
                 <TextView
                     android:id="@+id/gender"
                     android:layout_width="wrap_content"
@@ -108,6 +136,8 @@
                     android:text="@string/gender"
                     android:textColor="#88888f"
                     android:textSize="13.4sp" />
+
+
             </LinearLayout>
 
             <LinearLayout

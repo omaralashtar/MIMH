@@ -68,26 +68,27 @@ private FragmentHomeBinding binding;
 
         List<SliderItem> sliderItemList = new ArrayList<>();
         //dummy data
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             SliderItem sliderItem = new SliderItem();
 
             if (i  == 0) {
-                sliderItem.setDescription("Slider Item " + i);
-                sliderItem.setImageUrl(R.drawable.ic_menu_camera);
+                sliderItem.setImageUrl(R.drawable.slid_5);
             } else if(i==1) {
-                sliderItem.setDescription("Slider Item " + i);
-                sliderItem.setImageUrl(R.drawable.ic_menu_slideshow);
+                sliderItem.setImageUrl(R.drawable.slid_4);
             }
             else if(i==2)
             {
-                sliderItem.setDescription("Slider Item " + i);
-                sliderItem.setImageUrl(R.drawable.splash_logo);
+                sliderItem.setImageUrl(R.drawable.slid_3);
+            }
+            else if(i==3)
+            {
+                //////////////
+                sliderItem.setImageUrl(R.drawable.slid_1);
             }
             else
-                {
-                    sliderItem.setDescription("Slider Item " + i);
-                    sliderItem.setImageUrl(R.drawable.profile);
-                }
+            {
+                sliderItem.setImageUrl(R.drawable.slid_2);
+            }
             sliderItemList.add(sliderItem);
         }
         adapter.renewItems(sliderItemList);

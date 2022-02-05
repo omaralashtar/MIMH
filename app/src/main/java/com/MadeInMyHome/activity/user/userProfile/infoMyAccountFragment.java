@@ -54,7 +54,8 @@ public class infoMyAccountFragment extends Fragment {
                 binding.name.setText(user.getF_name() + "" + user.getL_name());
                 binding.description.setText(user.getDescription());
                 binding.gender.setText(user.getGender());
-                //binding.LocationUser.getEditText().setText(user.getLocation());
+                binding.location.setText(user.getLocation());
+                binding.code.setText(user.getCode());
                 new GlideImage(getActivity(), constants.BASE_HOST + constants.IMAGE_USER + user.getImage(), binding.image);
 
                 myProductViewModel.getMyProducts(getActivity(), user.getId()).observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
