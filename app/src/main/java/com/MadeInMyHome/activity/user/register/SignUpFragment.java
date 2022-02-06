@@ -109,52 +109,42 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Vi
 
 
         if (TextUtils.isEmpty(firstName)) {
-            Toast.makeText(getActivity(), "firstName empty", Toast.LENGTH_SHORT).show();
             binding.fName.getEditText().setError("Please Enter firstName");
             binding.fName.getEditText().requestFocus();
             return;
         } else if (TextUtils.isEmpty(lastName)) {
-            Toast.makeText(getActivity(), "lastName empty", Toast.LENGTH_SHORT).show();
             binding.lName.getEditText().setError("Please Enter lastName");
             binding.lName.getEditText().requestFocus();
             return;
         } else if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getActivity(), "email empty", Toast.LENGTH_SHORT).show();
             binding.email.getEditText().setError("Please Enter Email");
             binding.email.getEditText().requestFocus();
             return;
         } else if (!email.matches(emailPattern)) {
-            Toast.makeText(getActivity(), "valid email address", Toast.LENGTH_SHORT).show();
             binding.email.getEditText().setError("format in the email not correct");
             binding.email.getEditText().requestFocus();
             return;
 
         } else if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getActivity(), "password empty", Toast.LENGTH_SHORT).show();
             binding.password.getEditText().setError("Please Enter Password");
             binding.password.getEditText().requestFocus();
             return;
         } else if (password.length() < 8) {
-            Toast.makeText(getActivity(), "the password must be lingth 8 or more  ", Toast.LENGTH_SHORT).show();
             binding.password.getEditText().setError("Please Enter 8 character or more");
             binding.password.getEditText().requestFocus();
         } else if (TextUtils.isEmpty(date)) {
-            Toast.makeText(getActivity(), "date  empty", Toast.LENGTH_SHORT).show();
             binding.date.getEditText().setError("Please Enter password");
             binding.date.getEditText().requestFocus();
             return;
         } else if (TextUtils.isEmpty(gender)) {
-            Toast.makeText(getActivity(), "select gender  empty", Toast.LENGTH_SHORT).show();
             binding.gender.getEditText().setError("Please Enter gender");
             binding.gender.getEditText().requestFocus();
             return;
         } else if (TextUtils.isEmpty(phone)) {
-            Toast.makeText(getActivity(), "select phone  empty", Toast.LENGTH_SHORT).show();
             binding.phone.getEditText().setError("Please Enter phone");
             binding.phone.getEditText().requestFocus();
             return;
         } else if (!(phone.length() == 7)) {
-            Toast.makeText(getActivity(), "the phone must be lingth 7 number  ", Toast.LENGTH_SHORT).show();
             binding.phone.getEditText().setError("Please Enter 7 Number Phone ");
             binding.phone.getEditText().requestFocus();
         } else {
