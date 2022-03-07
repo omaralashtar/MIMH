@@ -23,7 +23,7 @@ public final class RestClientEmail {
 
     private static final String API_USERNAME = "api";
 
-    private static final String API_PASSWORD = "key-8e7c94eb8e0ddd18065d1ef33cf2109c";
+    private static final String API_PASSWORD = "";
 
     private static final String AUTH = "Basic " + Base64.encodeToString((API_USERNAME + ":" + API_PASSWORD).getBytes(), Base64.NO_WRAP);
 
