@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Made In My Home</string>
-    <string name="apikey">d5jrhkq7n52q</string>
     <string name="login">Login</string>
     <string name="sign_up">Sign Up</string>
     <string name="logout">Logout</string>
